@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You're In | Second Prime</title>
+  <meta name="description" content="Your Second Prime application has been received." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+  <meta name="theme-color" content="#F7F4F0" />
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="css/styles.css?v=1" />
+  <link rel="stylesheet" href="css/funnel.css?v=5" />
+</head>
+<body class="ap-page">
+
+  <header class="nav ap-nav" id="nav">
+    <div class="nav-inner">
+      <span class="nav-logo" role="img" aria-label="Second Prime"></span>
+      <nav class="nav-links"></nav>
+      <div class="nav-actions"></div>
+    </div>
+  </header>
+
+  <main class="ap">
+    <div class="ap-head">
+      <span class="eyebrow">Application Received</span>
+      <h1 id="tyHeadline">You&rsquo;re in.</h1>
+      <p class="ap-sub">Your application has been received. A member of the Second Prime team will be in touch within 24 hours to confirm your call time and send you a brief preparation guide.</p>
+    </div>
+
+    <div class="ap-process">
+      <div class="ap-p"><b>01</b><div>Confirmation email</div><span>Everything you need to know before the call</span></div>
+      <div class="ap-p"><b>02</b><div>Your 15-minute call</div><span>A diagnostic conversation. No pressure, no pitch.</span></div>
+      <div class="ap-p"><b>03</b><div>Honest assessment</div><span>A straight answer on whether we&rsquo;re the right fit</span></div>
+    </div>
+
+    <div class="ap-card">
+      <div class="book-shell">
+        <div class="spb__confirmed">
+          <div class="spb__check"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <h3>See you on the call.</h3>
+          <p>Check your inbox for the confirmation and calendar invite so you don&rsquo;t miss your appointment. Come ready to be honest about where you are and what you want.</p>
+          <p style="margin-top:22px;"><a class="btn btn-teal" href="index.html">Back to Second Prime &rarr;</a></p>
+        </div>
+      </div>
+    </div>
+
+    <figure class="ap-quote">
+      <span class="ap-qmark" aria-hidden="true">&ldquo;</span>
+      <p>I&rsquo;m not going to promise you a perfect result on day one, because that&rsquo;s not how biology works. What I will tell you is that if we set a reasonable goal together, I&rsquo;m confident we get you there, and I will keep working with you until we do.</p>
+      <figcaption class="ap-who">
+        <span class="ap-ava" aria-hidden="true">AM</span>
+        <span class="ap-name"><b>Andrew Martin</b><span>Founder &amp; Biologist, Second Prime</span></span>
+      </figcaption>
+    </figure>
+  </main>
+
+  <footer class="apply-footer">
+    <div class="f-logo" role="img" aria-label="Second Prime"></div>
+    <p class="tagline">Health &middot; Performance &middot; Longevity</p>
+    <p class="copy">&copy; 2026 Second Prime. All rights reserved.</p>
+  </footer>
+
+  <script>
+  (function () {
+    try {
+      var app = JSON.parse(localStorage.getItem('sp_application') || '{}');
+      var first = new URLSearchParams(window.location.search).get('first_name') || app.firstName;
+      if (first) document.getElementById('tyHeadline').textContent = 'You’re in, ' + first + '.';
+    } catch (e) {}
+  })();
+  </script>
+</body>
+</html>

@@ -4,20 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Apply for Your Consultation | Second Prime</title>
-  <meta name="description" content="Apply for a free consultation with Second Prime. A few quick questions, then book your 15-minute call." />
+  <meta name="description" content="Apply for a free consultation with Second Prime. Seven quick questions, then book your 15-minute call." />
   <meta name="robots" content="noindex, nofollow" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
   <meta name="theme-color" content="#F7F4F0" />
   <script>document.documentElement.classList.add("js");</script>
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/funnel.css" />
+  <link rel="stylesheet" href="css/styles.css?v=1" />
+  <link rel="stylesheet" href="css/funnel.css?v=5" />
 </head>
 <body class="ap-page">
 
   <header class="nav ap-nav" id="nav">
     <div class="nav-inner">
-      <a class="nav-logo" href="/" role="img" aria-label="Second Prime"></a>
+      <span class="nav-logo" role="img" aria-label="Second Prime"></span>
       <nav class="nav-links"></nav>
       <div class="nav-actions"></div>
     </div>
@@ -161,17 +161,6 @@
 
   <script>
     (function () {
-      /* ============================================================
-         GoHighLevel lead capture.
-         Set GHL_WEBHOOK_URL to your Second-Prime GHL Inbound Webhook
-         (Workflow > add "Inbound Webhook" trigger > copy the URL).
-         When set, the full application posts into GHL on submit.
-         Either way, booking on the next screen creates the contact +
-         appointment in GHL natively, so no lead is ever lost.
-         ============================================================ */
-      var GHL_WEBHOOK_URL = ''; // <-- paste GHL inbound webhook URL here
-      var LEAD_SOURCE = 'tests.secondprime.io — Executive Assessment';
-
       var form = document.getElementById('qform');
       var bar = document.getElementById('qbar');
       var count = document.getElementById('qcount');
@@ -180,11 +169,13 @@
       var stepEl = function (q) { return form.querySelector('.qstep[data-q="' + q + '"]'); };
       var idx = 0;
 
+      // The income question swaps based on the business-owner answer.
       function sequence() {
         var owner = form.querySelector('input[name="businessOwner"]:checked');
         var money = owner && owner.value === 'No' ? 'income' : 'revenue';
         return ['outcome', 'symptoms', 'notes', 'owner', money, 'heard', 'contact'];
       }
+
       function pad(n) { return (n < 10 ? '0' : '') + n; }
       function paint() {
         var seq = sequence();
@@ -194,6 +185,7 @@
         count.textContent = (idx + 1) + ' of ' + seq.length;
         ghost.textContent = pad(idx + 1);
         err.classList.remove('on');
+        // Keep the card anchored in view as steps change height.
         var shell = document.querySelector('.ap-shell');
         var target = shell.getBoundingClientRect().top + window.scrollY - 96;
         window.scrollTo({ top: Math.max(0, target), behavior: 'smooth' });
@@ -204,10 +196,12 @@
       function back() { if (idx > 0) { idx--; paint(); } }
       function showErr(msg) { err.textContent = msg; err.classList.add('on'); }
 
+      // Radio steps auto-advance after a beat.
       form.querySelectorAll('input[type="radio"]').forEach(function (r) {
         r.addEventListener('change', function () { setTimeout(next, 280); });
       });
 
+      // Keyboard: A/B/C selects on the active step, Enter continues.
       document.addEventListener('keydown', function (e) {
         if (e.metaKey || e.ctrlKey || e.altKey) return;
         var active = document.activeElement;
@@ -226,6 +220,7 @@
         if (opts[i]) { e.preventDefault(); opts[i].click(); }
       });
 
+      // Back + continue buttons with per-step validation.
       form.addEventListener('click', function (e) {
         if (e.target.closest('[data-back]')) { e.preventDefault(); back(); }
         if (e.target.closest('[data-next]')) {
@@ -247,10 +242,6 @@
         var multi = function (n) { return Array.prototype.slice.call(form.querySelectorAll('input[name="' + n + '"]:checked')).map(function (c) { return c.value; }); };
 
         var data = {
-          firstName: get('firstName'),
-          lastName: get('lastName'),
-          email: get('email'),
-          phone: get('phone'),
           businessOwner: picked('businessOwner'),
           businessRevenue: picked('businessRevenue'),
           annualIncome: picked('annualIncome'),
@@ -258,8 +249,10 @@
           currentSymptoms: multi('currentSymptoms'),
           notes: get('notes'),
           heardAbout: picked('heardAbout'),
-          source: LEAD_SOURCE,
-          tags: ['executive-assessment', 'tests-funnel']
+          firstName: get('firstName'),
+          lastName: get('lastName'),
+          email: get('email'),
+          phone: get('phone')
         };
 
         if (!data.firstName || !data.lastName || !data.email || !data.phone) { showErr('Please fill in your name, email, and phone.'); return; }
@@ -269,27 +262,25 @@
         btn.disabled = true;
         btn.textContent = 'Submitting…';
 
+        /* ==========================================================
+           TODO (web team): POST the `data` object to your CRM here
+           (GHL webhook or form endpoint), e.g.:
+
+           fetch('YOUR_GHL_ENDPOINT', {
+             method: 'POST',
+             headers: { 'Content-Type': 'application/json' },
+             body: JSON.stringify(data)
+           })
+
+           Until wired, answers save to localStorage and the user
+           continues straight to the booking calendar.
+           ========================================================== */
         try { localStorage.setItem('sp_application', JSON.stringify(data)); } catch (_) {}
-
-        var toBooking = function () {
-          var qs = new URLSearchParams({
-            first_name: data.firstName, last_name: data.lastName,
-            email: data.email, phone: data.phone
-          });
-          window.location.href = 'booking.html?' + qs.toString();
-        };
-
-        // Fire the application into GHL if a webhook is configured, then continue.
-        if (GHL_WEBHOOK_URL) {
-          fetch(GHL_WEBHOOK_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-          }).then(toBooking).catch(toBooking);
-          setTimeout(toBooking, 2500); // safety net so the user never stalls
-        } else {
-          toBooking();
-        }
+        var qs = new URLSearchParams({
+          first_name: data.firstName, last_name: data.lastName,
+          email: data.email, phone: data.phone
+        });
+        window.location.href = 'booking.html?' + qs.toString();
       });
 
       paint();
