@@ -125,6 +125,10 @@
     (function () {
       var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
       var userTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      // This page is hosted statically (GitHub Pages), so it calls the live
+      // Second Prime booking API cross-origin. CORS on those endpoints allows
+      // tests.secondprime.io + the github.io preview host.
+      var API_BASE = 'https://secondprime.io';
       var now = new Date();
       var curYear = now.getFullYear();
       var curMonth = now.getMonth();
@@ -225,7 +229,7 @@
         var endDay = new Date(curYear, curMonth + 1, 0).getDate();
         var endDate = curYear + '-' + String(curMonth + 1).padStart(2, '0') + '-' + endDay;
         try {
-          var res = await fetch('/api/slots?startDate=' + startDate + '&endDate=' + endDate + '&timezone=' + encodeURIComponent(userTz));
+          var res = await fetch(API_BASE + '/api/slots?startDate=' + startDate + '&endDate=' + endDate + '&timezone=' + encodeURIComponent(userTz));
           if (!res.ok) throw new Error('api unavailable');
           var data = await res.json();
           availableSlots = {};
@@ -295,7 +299,7 @@
           return;
         }
         try {
-          var res = await fetch('/api/book', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+          var res = await fetch(API_BASE + '/api/book', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
           var data = await res.json();
           if (res.ok && data.success) {
             var t = new Date(selectedSlot);
