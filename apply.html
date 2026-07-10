@@ -279,6 +279,32 @@
           (data.businessOwner === 'Yes' && normDash(data.businessRevenue) === '$0 - $500K') ||
           (data.businessOwner === 'No'  && normDash(data.annualIncome)    === '$0 - $200K');
 
+        /* Send the full application to GHL (Inbound Webhook workflow).
+           Form-encoded avoids a CORS preflight; keepalive lets it finish even
+           as we navigate to booking. Fires for qualified AND disqualified. */
+        try {
+          var wh = new URLSearchParams({
+            first_name: data.firstName, last_name: data.lastName,
+            email: data.email, phone: data.phone,
+            outcome: data.outcome,
+            symptoms: (data.currentSymptoms || []).join(', '),
+            notes: data.notes,
+            business_owner: data.businessOwner,
+            business_revenue: data.businessRevenue,
+            annual_income: data.annualIncome,
+            heard_about: data.heardAbout,
+            qualified: disqualified ? 'No' : 'Yes',
+            application_source: 'Executive Assessment Lead Magnet'
+          });
+          fetch('https://services.leadconnectorhq.com/hooks/FlDP3vggPbCWokd7J6xc/webhook-trigger/152fcbfd-cb5a-4bd7-b31e-5f60a2c91073', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: wh.toString(),
+            mode: 'no-cors',
+            keepalive: true
+          }).catch(function () {});
+        } catch (_) {}
+
         if (disqualified) {
           try { localStorage.setItem('sp_disqualified', '1'); } catch (_) {}
           form.style.display = 'none';
