@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The 1,000+ Biomarker Executive Assessment | Second Prime</title>
+  <meta name="description" content="See every test and biomarker inside the Second Prime Executive Assessment. 1,000+ markers across blood, hormones, gut, genetics, and performance, and why each one matters for longevity and peak performance." />
+  <link rel="canonical" href="https://tests.secondprime.io//" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=3" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png?v=3" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=3" />
+  <meta name="theme-color" content="#101016" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Second Prime" />
+  <meta property="og:title" content="The 1,000+ Biomarker Executive Assessment | Second Prime" />
+  <meta property="og:description" content="Explore every test and biomarker behind the Second Prime Executive Assessment, and why each one matters for longevity and peak performance." />
+  <meta property="og:url" content="https://tests.secondprime.io//" />
+  <meta property="og:image" content="https://tests.secondprime.io/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://tests.secondprime.io/assets/og-image.jpg" />
+  <script>
+    document.documentElement.classList.add("js");
+    // Always open this page at the top (disable browser scroll restoration / bfcache jump)
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.addEventListener('load', function () { if (!location.hash) window.scrollTo(0, 0); });
+    window.addEventListener('pageshow', function () { if (!location.hash) window.scrollTo(0, 0); });
+  </script>
+  <link rel="stylesheet" href="css/styles.css?v=92" />
+
+  <style>
+    /* ============================================================
+       EXECUTIVE ASSESSMENT LEAD MAGNET — page-specific styles.
+       Extends brand tokens from css/styles.css. Funnel form styles
+       (.ap-shell, .qstep, .opt, .fld …) come from funnel.css.
+       ============================================================ */
+
+    /* ---- Hero ---- */
+    .ea-hero {
+      background: linear-gradient(180deg, #050608, #101016 46%, #18181F);
+      color: var(--sand-light); text-align: center;
+      padding: 190px 0 110px; position: relative; overflow: hidden;
+    }
+    .ea-hero .container { position: relative; z-index: 2; }
+    .ea-hero .hero-tag {
+      display: block; font-size: 13px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--teal-bright); margin-bottom: 26px;
+    }
+    .ea-hero h1 { color: #fff; margin-bottom: 6px; }
+    .ea-hero h1 .accent { display: block; font-style: italic; color: var(--teal-bright); }
+    .ea-hero .ea-sub {
+      font-size: 18px; color: rgba(253,251,248,0.7);
+      max-width: 660px; margin: 26px auto 40px; line-height: 1.7;
+    }
+    .ea-hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .ea-hero-stats {
+      display: flex; justify-content: center; gap: 60px; margin-top: 76px; flex-wrap: wrap;
+    }
+    .ea-hero-stats .num {
+      font-family: var(--font-serif); font-size: 46px; line-height: 1; color: #fff;
+      display: block; margin-bottom: 8px;
+    }
+    .ea-hero-stats .lbl {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(253,251,248,0.45);
+    }
+    @media (max-width: 640px) {
+      .ea-hero { padding: 150px 0 72px; }
+      .ea-hero h1 { font-size: clamp(30px, 8.5vw, 42px); text-wrap: initial; }
+      .ea-hero .ea-sub { font-size: 16px; margin: 20px auto 30px; }
+      .ea-hero-stats { gap: 30px; margin-top: 48px; }
+      .ea-hero-stats .num { font-size: 32px; }
+    }
+
+    /* ---- Intro / how-to ---- */
+    .ea-intro { padding: 88px 0 24px; text-align: center; }
+    .ea-intro .lead { margin: 20px auto 0; }
+    .ea-hint {
+      display: inline-flex; align-items: center; gap: 10px; margin-top: 30px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.02em; color: var(--teal-deep);
+      background: rgba(69,141,147,0.08); border: 1px solid rgba(69,141,147,0.2);
+      padding: 9px 16px; border-radius: 999px;
+    }
+    .ea-hint svg { width: 15px; height: 15px; }
+
+    /* ---- Group sections ---- */
+    .ea-group { padding: 56px 0; }
+    .ea-group:nth-of-type(even) { background: var(--bg-light); }
+    .ea-group-head { max-width: 720px; margin: 0 auto 40px; text-align: center; }
+    .ea-group-head .lead { margin: 16px auto 0; }
+
+    /* ---- Category card grid ---- */
+    .ea-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1160px; margin: 0 auto; }
+    @media (max-width: 1040px) { .ea-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 620px) { .ea-grid { grid-template-columns: 1fr; } }
+
+    .ea-card {
+      position: relative; display: flex; align-items: center; gap: 16px; text-align: left;
+      background: var(--white); border: 1px solid var(--border); border-radius: 14px;
+      padding: 16px 18px; cursor: pointer; width: 100%; font: inherit; color: inherit;
+      transition: border-color var(--dur-ui) var(--ease), transform var(--dur-ui) var(--ease), box-shadow var(--dur-ui) var(--ease);
+    }
+    .ea-card:hover { transform: translateY(-3px); border-color: rgba(69,141,147,0.4); box-shadow: 0 16px 40px rgba(22,23,25,0.08); }
+    .ea-card:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+    .ea-card-ic { flex: none; width: 58px; height: 58px; border-radius: 12px; overflow: hidden; background: var(--bg-cool); }
+    .ea-card-ic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ea-card-body { flex: 1; min-width: 0; }
+    .ea-card-body strong { display: block; font-size: 15.5px; font-weight: 600; line-height: 1.25; }
+    .ea-card-body span { display: block; font-size: 12.5px; color: var(--gray); margin-top: 3px; line-height: 1.4; }
+    .ea-card-meta { display: flex; align-items: center; gap: 8px; margin-top: 9px; flex-wrap: wrap; }
+    .ea-count {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--teal-deep); background: rgba(69,141,147,0.1); padding: 3px 9px; border-radius: 999px;
+    }
+    .ea-open { font-size: 11.5px; font-weight: 700; color: var(--teal); }
+    .ea-card:hover .ea-open { color: var(--teal-deep); }
+    .ea-card.is-private .ea-open { color: var(--teal-bright); }
+
+    /* Persistent disclosure chevron so the card always reads as tappable */
+    .ea-card-go {
+      flex: none; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center;
+      color: var(--teal); background: rgba(69,141,147,0.1);
+      transition: background var(--dur-ui) var(--ease), transform var(--dur-ui) var(--ease), color var(--dur-ui) var(--ease);
+    }
+    .ea-card-go svg { width: 15px; height: 15px; }
+    .ea-card:hover .ea-card-go { background: var(--teal); color: #fff; transform: translateX(2px); }
+    .ea-card.is-private .ea-card-go { color: var(--teal-bright); background: rgba(101,200,208,0.14); }
+    .ea-card.is-private:hover .ea-card-go { background: var(--teal-bright); color: #0F2F33; }
+
+    /* Black-exclusive cards go dark, matching the site's private tiles */
+    .ea-card.is-private { background: var(--near-black); border-color: #2A2A34; }
+    .ea-card.is-private:hover { box-shadow: 0 16px 40px rgba(16,16,22,0.34); }
+    .ea-card.is-private .ea-card-body strong { color: var(--sand-light); }
+    .ea-card.is-private .ea-card-body span { color: rgba(247,244,240,0.6); }
+    .ea-card.is-private .ea-count { color: var(--teal-bright); background: rgba(101,200,208,0.14); }
+    .ea-card.is-private .ea-card-ic { background: #23232c; }
+
+    /* ---- Drawer (side panel) ---- */
+    .ea-overlay {
+      position: fixed; inset: 0; z-index: 200; background: rgba(16,16,22,0.5);
+      backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);
+      opacity: 0; pointer-events: none; transition: opacity .35s var(--ease);
+    }
+    .ea-overlay.open { opacity: 1; pointer-events: auto; }
+    .ea-drawer {
+      position: fixed; top: 0; right: 0; z-index: 201; height: 100dvh; width: min(560px, 100%);
+      background: var(--white); box-shadow: -30px 0 80px -30px rgba(16,16,22,0.5);
+      display: flex; flex-direction: column; transform: translateX(102%);
+      transition: transform .42s var(--ease);
+    }
+    .ea-drawer.open { transform: none; }
+    .ea-drawer-head {
+      position: relative; flex: none; padding: 30px 30px 24px; color: var(--sand-light);
+      background: radial-gradient(120% 120% at 80% -10%, #33686E 0%, #23484D 60%, #1B3B40 100%) #23484D;
+    }
+    .ea-drawer.is-private .ea-drawer-head { background: radial-gradient(120% 120% at 80% -10%, #26262f 0%, #17171d 70%) #17171d; }
+    .ea-drawer-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal-bright); }
+    .ea-drawer-head h3 { font-family: var(--font-serif); font-weight: 400; font-size: 27px; line-height: 1.15; color: #fff; margin: 12px 0 8px; }
+    .ea-drawer-head p { font-size: 14px; color: rgba(253,251,248,0.72); line-height: 1.5; max-width: 40ch; }
+    .ea-drawer-lab { display: inline-block; margin-top: 16px; font-size: 11.5px; font-weight: 600; letter-spacing: 0.03em; color: rgba(253,251,248,0.6); border: 1px solid rgba(255,255,255,0.18); padding: 5px 12px; border-radius: 999px; }
+    .ea-drawer-close {
+      position: absolute; top: 22px; right: 22px; width: 38px; height: 38px; display: grid; place-items: center;
+      border-radius: 10px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      color: #fff; cursor: pointer; transition: background var(--dur-ui), border-color var(--dur-ui);
+    }
+    .ea-drawer-close:hover { background: rgba(255,255,255,0.2); }
+    .ea-drawer-list { flex: 1; overflow-y: auto; padding: 14px 22px 40px; }
+    .ea-drawer-note { font-size: 12.5px; color: var(--gray); text-align: center; padding: 12px 10px 4px; }
+    .ea-drawer-cta { display: block; text-align: center; max-width: 320px; margin: 16px auto 8px; }
+
+    /* ---- Footer (self-contained, formerly from funnel.css) ---- */
+    .apply-footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; }
+    .apply-footer .f-logo {
+      width: 150px; height: 30px; margin: 0 auto 14px;
+      color: var(--ink); background: currentColor; opacity: 0.8;
+      -webkit-mask: url("assets/logo.svg") no-repeat center / contain;
+              mask: url("assets/logo.svg") no-repeat center / contain;
+    }
+    .apply-footer .tagline { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+    .apply-footer .copy { font-size: 11.5px; color: var(--gray); }
+
+    .ea-marker { border-bottom: 1px solid var(--border); }
+    .ea-marker-btn {
+      width: 100%; text-align: left; font: inherit; color: var(--ink); cursor: pointer;
+      background: none; border: none; padding: 15px 8px 15px 4px; display: flex; align-items: flex-start; gap: 12px;
+    }
+    .ea-marker-btn:hover .ea-marker-name { color: var(--teal-deep); }
+    .ea-marker-dot { flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--teal); margin-top: 7px; transition: transform var(--dur-ui); }
+    .ea-marker.open .ea-marker-dot { transform: scale(1.5); }
+    .ea-marker-main { flex: 1; min-width: 0; }
+    .ea-marker-name { font-size: 15px; font-weight: 600; line-height: 1.3; transition: color var(--dur-ui); }
+    .ea-marker-badge {
+      display: inline-block; margin-left: 8px; vertical-align: 1px;
+      font-size: 10.5px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase;
+      color: var(--teal-deep); background: rgba(69,141,147,0.1); padding: 2px 8px; border-radius: 999px;
+      white-space: nowrap;
+    }
+    .ea-marker-what { display: block; font-size: 13px; color: var(--gray); margin-top: 3px; line-height: 1.45; }
+    .ea-marker-caret { flex: none; color: var(--teal); font-size: 13px; margin-top: 3px; transition: transform var(--dur-ui) var(--ease); }
+    .ea-marker.open .ea-marker-caret { transform: rotate(180deg); }
+    .ea-marker-why { max-height: 0; overflow: hidden; transition: max-height .4s var(--ease); }
+    .ea-marker-why-inner {
+      padding: 2px 8px 18px 23px; font-size: 14px; line-height: 1.6; color: var(--ink);
+    }
+    .ea-why-tag { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 7px; }
+    @media (prefers-reduced-motion: reduce) { .ea-drawer, .ea-overlay, .ea-marker-why { transition: none; } }
+
+    /* ---- Black band ---- */
+    .ea-black-note {
+      max-width: 760px; margin: 0 auto 8px; text-align: center;
+      font-size: 14px; color: var(--gray);
+    }
+
+
+    /* ---- Sticky mobile CTA bar ---- */
+    .ea-sticky {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
+      background: rgba(16,16,22,0.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: space-between; gap: 14px;
+      padding: 12px 18px calc(12px + env(safe-area-inset-bottom));
+      transform: translateY(120%); transition: transform .4s var(--ease);
+    }
+    .ea-sticky.show { transform: none; }
+    .ea-sticky-txt { color: var(--sand-light); font-size: 13px; line-height: 1.3; }
+    .ea-sticky-txt b { display: block; font-size: 14.5px; color: #fff; font-weight: 600; }
+    .ea-sticky .btn { flex: none; padding: 12px 22px; }
+    @media (prefers-reduced-motion: reduce) { .ea-sticky, .ea-drawer, .ea-overlay { transition: none; } }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAV (standalone landing page — no links back to the main site) ============ -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#top" aria-label="Second Prime"></a>
+      <div class="nav-actions">
+        <a class="btn-cta" href="apply.html">Apply Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="ea-hero" id="top">
+    <div class="container">
+      <span class="hero-tag">The Executive Assessment</span>
+      <h1>1,000+ biomarkers.<span class="accent">One complete picture of you.</span></h1>
+      <p class="ea-sub">Most executives have never been truly measured. We map more than a thousand markers across every system that drives how you feel, perform, and age, then tell you exactly what to do about it. Explore the full panel below.</p>
+      <div class="ea-hero-cta">
+        <a class="btn btn-teal btn-lg" href="#explore">Explore the tests</a>
+        <a class="btn btn-outline btn-lg" href="apply.html" style="color:#fff;border-color:rgba(255,255,255,0.28)">Apply for a consult</a>
+      </div>
+      <div class="ea-hero-stats">
+        <div><span class="num">1,000+</span><span class="lbl">Biomarkers</span></div>
+        <div><span class="num" id="statPanels">25</span><span class="lbl">Test Panels</span></div>
+        <div><span class="num">9</span><span class="lbl">Body Systems</span></div>
+        <div><span class="num">1</span><span class="lbl">Game Plan</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INTRO ============ -->
+  <section class="ea-intro">
+    <div class="container center">
+      <span class="eyebrow">What we measure</span>
+      <h2>Every test behind your assessment</h2>
+      <p class="lead center" style="max-width:640px">A standard physical checks a few dozen markers. We go far deeper: blood, hormones, gut, nutrients, toxins, genetics, and real-world performance.</p>
+      <span class="ea-hint">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 11.5V6a1.5 1.5 0 0 1 3 0v5m0 0V4.5a1.5 1.5 0 0 1 3 0V11m0 0V6.5a1.5 1.5 0 0 1 3 0v7c0 3.5-2 6.5-6 6.5-2.5 0-4-1-5.2-2.8l-2-3.2a1.6 1.6 0 0 1 2.6-1.8L12 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Tap any panel below to open it, then tap a biomarker to see why it matters
+      </span>
+    </div>
+  </section>
+
+  <!-- ============ EXPLORER (rendered by JS) ============ -->
+  <div id="explore"></div>
+
+  <!-- ============ MID-PAGE CTA ============ -->
+  <section class="footer-cta" style="background:linear-gradient(180deg,#101016,#18181F);color:var(--sand-light);text-align:center">
+    <div class="container">
+      <span class="eyebrow" style="color:var(--teal-bright)">This is your baseline</span>
+      <h2 style="color:#fff;max-width:780px;margin:0 auto">You can't fix what you've never measured.</h2>
+      <p class="lead" style="color:rgba(253,251,248,0.7);margin:20px auto 32px;max-width:600px">The assessment is step one. Then your team builds and runs the plan with you. Start with a free 15-minute consultation.</p>
+      <a class="btn btn-teal btn-lg" href="apply.html">Apply for your consultation</a>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="apply-footer">
+    <div class="f-logo" role="img" aria-label="Second Prime"></div>
+    <p class="tagline">Health &middot; Performance &middot; Longevity</p>
+    <p class="copy">&copy; 2026 Second Prime. All rights reserved.</p>
+  </footer>
+
+  <!-- ============ STICKY CTA BAR ============ -->
+  <div class="ea-sticky" id="eaSticky">
+    <div class="ea-sticky-txt"><b>1,000+ biomarkers, one plan</b>Free 15-minute consultation</div>
+    <a class="btn btn-teal" href="apply.html">Apply</a>
+  </div>
+
+  <!-- ============ DRAWER ============ -->
+  <div class="ea-overlay" id="eaOverlay"></div>
+  <aside class="ea-drawer" id="eaDrawer" role="dialog" aria-modal="true" aria-labelledby="eaDrawerTitle">
+    <div class="ea-drawer-head">
+      <button class="ea-drawer-close" id="eaDrawerClose" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </button>
+      <span class="ea-drawer-eyebrow" id="eaDrawerEyebrow"></span>
+      <h3 id="eaDrawerTitle"></h3>
+      <p id="eaDrawerTagline"></p>
+      <span class="ea-drawer-lab" id="eaDrawerLab"></span>
+    </div>
+    <div class="ea-drawer-list" id="eaDrawerList"></div>
+  </aside>
+
+  <script src="js/assessment-data.js"></script>
+  <script>
+  (function () {
+    var data = window.SP_ASSESSMENT;
+    var explore = document.getElementById('explore');
+
+    /* ---------- Render group sections + category cards ---------- */
+    function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+    function sumCount(cat){ return cat.markers.reduce(function(a,m){ return a + (m.c || 1); }, 0); }
+    function cardCount(cat){ return cat.countLabel || (sumCount(cat) + ' markers'); }
+
+    data.groups.forEach(function (g) {
+      var cats = data.categories.filter(function (c) { return c.group === g.id; });
+      if (!cats.length) return;
+
+      var sec = document.createElement('section');
+      sec.className = 'ea-group';
+      var cardsHtml = cats.map(function (c) {
+        return '<button class="ea-card' + (c.private ? ' is-private' : '') + '" data-cat="' + c.id + '">' +
+          '<span class="ea-card-ic"><img src="assets/tiles/' + c.tile + '?v=3" alt="" loading="lazy" /></span>' +
+          '<span class="ea-card-body">' +
+            '<strong>' + esc(c.name) + '</strong>' +
+            '<span>' + esc(c.tagline) + '</span>' +
+            '<span class="ea-card-meta"><span class="ea-count">' + esc(cardCount(c)) + '</span><span class="ea-open">Tap to see the biomarkers &rarr;</span></span>' +
+          '</span>' +
+          '<span class="ea-card-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>' +
+        '</button>';
+      }).join('');
+
+      sec.innerHTML =
+        '<div class="container">' +
+          '<div class="ea-group-head">' +
+            '<span class="eyebrow">' + esc(g.eyebrow) + '</span>' +
+            '<h2>' + esc(g.title) + '</h2>' +
+            '<p class="lead center">' + esc(g.lead) + '</p>' +
+            (g.note ? '<p class="ea-black-note" style="margin-top:14px">' + esc(g.note) + '</p>' : '') +
+          '</div>' +
+          '<div class="ea-grid">' + cardsHtml + '</div>' +
+        '</div>';
+      explore.appendChild(sec);
+    });
+
+    // Dynamic panel count in the hero (lab panels, excluding the "We Also Assess" group)
+    var statPanels = document.getElementById('statPanels');
+    if (statPanels) statPanels.textContent = data.categories.filter(function (c) { return c.group !== 'also'; }).length;
+
+    /* ---------- Drawer logic ---------- */
+    var overlay = document.getElementById('eaOverlay');
+    var drawer = document.getElementById('eaDrawer');
+    var closeBtn = document.getElementById('eaDrawerClose');
+    var listEl = document.getElementById('eaDrawerList');
+    var lastFocus = null;
+
+    function openDrawer(cat) {
+      lastFocus = document.activeElement;
+      drawer.classList.toggle('is-private', !!cat.private);
+      document.getElementById('eaDrawerEyebrow').textContent = cat.lab || '';
+      document.getElementById('eaDrawerTitle').textContent = cat.name;
+      document.getElementById('eaDrawerTagline').textContent = cat.tagline;
+      var labEl = document.getElementById('eaDrawerLab');
+      labEl.textContent = cat.countLabel || (sumCount(cat) + ' biomarkers');
+
+      listEl.innerHTML = cat.markers.map(function (m, i) {
+        var badge = m.cl ? m.cl : (m.c && m.c > 1 ? m.c + ' markers' : '');
+        var badgeHtml = badge ? '<span class="ea-marker-badge">' + esc(badge) + '</span>' : '';
+        var body = m.why
+          ? '<span class="ea-why-tag">Why it matters for longevity &amp; performance</span>' + esc(m.why)
+          : esc(m.w);
+        return '<div class="ea-marker" data-i="' + i + '">' +
+          '<button class="ea-marker-btn" aria-expanded="false">' +
+            '<span class="ea-marker-dot"></span>' +
+            '<span class="ea-marker-main">' +
+              '<span class="ea-marker-name">' + esc(m.n) + badgeHtml + '</span>' +
+              '<span class="ea-marker-what">' + esc(m.w) + '</span>' +
+            '</span>' +
+            '<span class="ea-marker-caret" aria-hidden="true">&#9662;</span>' +
+          '</button>' +
+          '<div class="ea-marker-why"><div class="ea-marker-why-inner">' + body + '</div></div>' +
+        '</div>';
+      }).join('') + '<p class="ea-drawer-note">This is a representative list. Your full report details every marker with your personal results and optimal targets.</p>' +
+        '<a class="btn btn-teal ea-drawer-cta" href="apply.html">Apply for your consultation</a>';
+
+      overlay.classList.add('open');
+      drawer.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    }
+
+    function closeDrawer() {
+      overlay.classList.remove('open');
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+      if (lastFocus) lastFocus.focus();
+    }
+
+    // Card click -> open drawer
+    explore.addEventListener('click', function (e) {
+      var card = e.target.closest('.ea-card');
+      if (!card) return;
+      var cat = data.categories.find(function (c) { return c.id === card.getAttribute('data-cat'); });
+      if (cat) openDrawer(cat);
+    });
+
+    // Marker accordion inside drawer
+    listEl.addEventListener('click', function (e) {
+      var btn = e.target.closest('.ea-marker-btn');
+      if (!btn) return;
+      var marker = btn.closest('.ea-marker');
+      var why = marker.querySelector('.ea-marker-why');
+      var isOpen = marker.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      why.style.maxHeight = isOpen ? (why.scrollHeight + 'px') : '0';
+    });
+
+    overlay.addEventListener('click', closeDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer(); });
+
+    /* ---------- Sticky CTA: show once past the hero ---------- */
+    var sticky = document.getElementById('eaSticky');
+    function onScroll() {
+      sticky.classList.toggle('show', window.scrollY > window.innerHeight * 0.9);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* ---------- Reveal-on-scroll for cards ---------- */
+    if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.style.opacity = 1; en.target.style.transform = 'none'; io.unobserve(en.target); } });
+      }, { threshold: 0.08 });
+      requestAnimationFrame(function () {
+        document.querySelectorAll('.ea-card').forEach(function (c, i) {
+          c.style.opacity = 0; c.style.transform = 'translateY(20px)';
+          c.style.transition = 'opacity .6s cubic-bezier(.16,1,.3,1) ' + ((i % 3) * 0.05) + 's, transform .6s cubic-bezier(.16,1,.3,1) ' + ((i % 3) * 0.05) + 's';
+          io.observe(c);
+        });
+      });
+    }
+  })();
+  </script>
+
+  <!-- ============ NAV + FUNNEL FORM BEHAVIOR ============ -->
+  <script>
+    // Nav scroll state (standalone page, no mobile menu)
+    (function () {
+      var nav = document.getElementById('nav');
+      function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 40); }
+      window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+    })();
+  </script>
+
+</body>
+</html>

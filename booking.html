@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Your 15-Minute Call | Second Prime</title>
+  <meta name="description" content="Pick a time for your free 15-minute Second Prime consultation." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+  <meta name="theme-color" content="#F7F4F0" />
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/funnel.css" />
+  <style>
+    .bk-wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+    .bk-embed {
+      border-radius: 20px; overflow: hidden; background: var(--white);
+      border: 1px solid var(--border); box-shadow: 0 34px 74px -42px rgba(22,56,61,0.35);
+    }
+    .bk-embed iframe { width: 100%; min-height: 720px; border: none; display: block; }
+    .bk-note { text-align: center; font-size: 12.5px; color: var(--gray); margin-top: 18px; }
+  </style>
+</head>
+<body class="ap-page">
+
+  <header class="nav ap-nav" id="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="/" role="img" aria-label="Second Prime"></a>
+      <nav class="nav-links"></nav>
+      <div class="nav-actions"></div>
+    </div>
+  </header>
+
+  <main class="ap">
+    <div class="ap-head">
+      <span class="eyebrow">Final step</span>
+      <h1>Book your 15-minute call</h1>
+      <p class="ap-sub">Pick a time that works. It&rsquo;s a free, no-pressure diagnostic conversation, not a sales pitch.</p>
+    </div>
+
+    <div class="ap-process">
+      <div class="ap-p"><b>01</b><div>Application complete</div><span>Thanks, we&rsquo;ve got your answers</span></div>
+      <div class="ap-p"><b>02</b><div>Pick your time</div><span>Choose a slot below</span></div>
+      <div class="ap-p"><b>03</b><div>We&rsquo;ll be in touch</div><span>Confirmation lands in your inbox</span></div>
+    </div>
+
+    <div class="bk-wrap">
+      <div class="bk-embed">
+        <iframe id="ghl-booking" src="https://api.leadconnectorhq.com/widget/booking/22ApEhFWzdOFUo3GZ2H8" scrolling="no" title="Book your 15-minute call"></iframe>
+      </div>
+      <p class="bk-note">Trouble seeing the calendar? <a href="https://api.leadconnectorhq.com/widget/booking/22ApEhFWzdOFUo3GZ2H8" style="color:var(--teal)">Open it in a new tab.</a></p>
+    </div>
+  </main>
+
+  <footer class="apply-footer">
+    <div class="f-logo" role="img" aria-label="Second Prime"></div>
+    <p class="tagline">Health &middot; Performance &middot; Longevity</p>
+    <p class="copy">&copy; 2026 Second Prime. All rights reserved.</p>
+  </footer>
+
+  <!-- GHL responsive-embed helper -->
+  <script src="https://api.leadconnectorhq.com/js/form_embed.js" type="text/javascript"></script>
+  <script>
+    // Prefill the GHL calendar with the applicant's details from the query string
+    // (falls back to anything stored on the apply step).
+    (function () {
+      var p = new URLSearchParams(location.search);
+      var stored = {};
+      try { stored = JSON.parse(localStorage.getItem('sp_application') || '{}'); } catch (_) {}
+      var fields = {
+        first_name: p.get('first_name') || stored.firstName || '',
+        last_name:  p.get('last_name')  || stored.lastName  || '',
+        email:      p.get('email')      || stored.email     || '',
+        phone:      p.get('phone')      || stored.phone     || ''
+      };
+      var qs = Object.keys(fields)
+        .filter(function (k) { return fields[k]; })
+        .map(function (k) { return encodeURIComponent(k) + '=' + encodeURIComponent(fields[k]); })
+        .join('&');
+      if (qs) {
+        var f = document.getElementById('ghl-booking');
+        f.src = f.src.split('?')[0] + '?' + qs;
+      }
+    })();
+  </script>
+</body>
+</html>

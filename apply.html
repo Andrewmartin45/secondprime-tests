@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apply for Your Consultation | Second Prime</title>
+  <meta name="description" content="Apply for a free consultation with Second Prime. A few quick questions, then book your 15-minute call." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+  <meta name="theme-color" content="#F7F4F0" />
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/funnel.css" />
+</head>
+<body class="ap-page">
+
+  <header class="nav ap-nav" id="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="/" role="img" aria-label="Second Prime"></a>
+      <nav class="nav-links"></nav>
+      <div class="nav-actions"></div>
+    </div>
+  </header>
+
+  <main class="ap" id="apply-form">
+    <div class="ap-head">
+      <span class="eyebrow">Free Consultation</span>
+      <h1>Apply for Your Consultation</h1>
+      <p class="ap-sub">This is not a sales call. It&rsquo;s a diagnostic conversation. We only take on clients we know we can deliver for.</p>
+    </div>
+
+    <div class="ap-process">
+      <div class="ap-p"><b>01</b><div>Complete the application</div><span>Seven questions, about two minutes</span></div>
+      <div class="ap-p"><b>02</b><div>We check the fit</div><span>We make sure we can actually help</span></div>
+      <div class="ap-p"><b>03</b><div>Book your call</div><span>15-minute call, no charge</span></div>
+    </div>
+
+    <div class="ap-card">
+      <div class="ap-shell">
+        <span class="qghost" id="qghost" aria-hidden="true">01</span>
+        <div class="ap-progress" aria-hidden="true">
+          <div class="ap-bar"><i id="qbar"></i></div>
+          <span class="ap-count" id="qcount">1 of 7</span>
+        </div>
+
+        <form id="qform" novalidate>
+
+          <section class="qstep on" data-q="outcome">
+            <h2>What outcome matters most to you right now?</h2>
+            <p class="qsub">This is where we point the assessment first.</p>
+            <label class="opt"><input type="radio" name="outcome" value="Risk reduction (heart, metabolic, cognitive)" /><span class="key">A</span><span class="txt">Risk reduction (heart, metabolic, cognitive)</span></label>
+            <label class="opt"><input type="radio" name="outcome" value="Performance (energy, focus, body composition)" /><span class="key">B</span><span class="txt">Performance (energy, focus, body composition)</span></label>
+            <label class="opt"><input type="radio" name="outcome" value="Longevity (extending peak years)" /><span class="key">C</span><span class="txt">Longevity (extending peak years)</span></label>
+            <label class="opt"><input type="radio" name="outcome" value="All of the above" /><span class="key">D</span><span class="txt">All of the above</span></label>
+          </section>
+          <section class="qstep" data-q="symptoms">
+            <h2>What are you dealing with right now?</h2>
+            <p class="qsub">Select everything that applies. This is what we dig into on your call.</p>
+            <label class="opt"><input type="checkbox" name="currentSymptoms" value="Low energy / fatigue" /><span class="key">A</span><span class="txt">Low energy / fatigue</span></label>
+            <label class="opt"><input type="checkbox" name="currentSymptoms" value="Brain fog / poor focus" /><span class="key">B</span><span class="txt">Brain fog / poor focus</span></label>
+            <label class="opt"><input type="checkbox" name="currentSymptoms" value="Poor sleep / low HRV" /><span class="key">C</span><span class="txt">Poor sleep / low HRV</span></label>
+            <label class="opt"><input type="checkbox" name="currentSymptoms" value="Stubborn body fat" /><span class="key">D</span><span class="txt">Stubborn body fat</span></label>
+            <label class="opt"><input type="checkbox" name="currentSymptoms" value="Low libido / hormonal issues" /><span class="key">E</span><span class="txt">Low libido / hormonal issues</span></label>
+            <label class="opt"><input type="checkbox" name="currentSymptoms" value="Slow recovery from exercise" /><span class="key">F</span><span class="txt">Slow recovery from exercise</span></label>
+            <label class="opt"><input type="checkbox" name="currentSymptoms" value="Elevated cardiovascular risk markers" /><span class="key">G</span><span class="txt">Elevated cardiovascular risk markers</span></label>
+            <label class="opt"><input type="checkbox" name="currentSymptoms" value="Metabolic issues (blood sugar, insulin)" /><span class="key">H</span><span class="txt">Metabolic issues (blood sugar, insulin)</span></label>
+            <label class="opt"><input type="checkbox" name="currentSymptoms" value="Mood / motivation decline" /><span class="key">I</span><span class="txt">Mood / motivation decline</span></label>
+            <label class="opt"><input type="checkbox" name="currentSymptoms" value="None yet, staying ahead of it" /><span class="key">J</span><span class="txt">None yet, staying ahead of it</span></label>
+            <div class="qnav">
+              <button type="button" class="qback" data-back>&larr; Back</button>
+              <button type="button" class="btn btn-teal qnext" data-next>Continue</button>
+            </div>
+          </section>
+          <section class="qstep" data-q="notes">
+            <h2>Anything we should know before we talk?</h2>
+            <p class="qsub">Optional. Past testing, current symptoms, what&rsquo;s not working, what &ldquo;fully restored&rdquo; would mean for you.</p>
+            <label class="fld">
+              <textarea name="notes" rows="4" aria-label="Anything we should know before we talk?"></textarea>
+            </label>
+            <div class="qnav">
+              <button type="button" class="qback" data-back>&larr; Back</button>
+              <button type="button" class="btn btn-teal qnext" data-next>Continue</button>
+            </div>
+          </section>
+          <section class="qstep" data-q="owner">
+            <h2>Are you a business owner?</h2>
+            <p class="qsub">Second Prime is built for people carrying a company on their shoulders.</p>
+            <label class="opt"><input type="radio" name="businessOwner" value="Yes" /><span class="key">A</span><span class="txt">Yes</span></label>
+            <label class="opt"><input type="radio" name="businessOwner" value="No" /><span class="key">B</span><span class="txt">No</span></label>
+          </section>
+          <section class="qstep" data-q="revenue">
+            <h2>What&rsquo;s your annual business revenue?</h2>
+            <p class="qsub">A ballpark is fine. It helps us understand the seat you&rsquo;re in.</p>
+            <label class="opt"><input type="radio" name="businessRevenue" value="$0 – $500K" /><span class="key">A</span><span class="txt">$0 &ndash; $500K</span></label>
+            <label class="opt"><input type="radio" name="businessRevenue" value="$500K – $1M" /><span class="key">B</span><span class="txt">$500K &ndash; $1M</span></label>
+            <label class="opt"><input type="radio" name="businessRevenue" value="$1M – $3M" /><span class="key">C</span><span class="txt">$1M &ndash; $3M</span></label>
+            <label class="opt"><input type="radio" name="businessRevenue" value="$3M – $10M" /><span class="key">D</span><span class="txt">$3M &ndash; $10M</span></label>
+            <label class="opt"><input type="radio" name="businessRevenue" value="$10M – $25M" /><span class="key">E</span><span class="txt">$10M &ndash; $25M</span></label>
+            <label class="opt"><input type="radio" name="businessRevenue" value="$25M+" /><span class="key">F</span><span class="txt">$25M+</span></label>
+          </section>
+          <section class="qstep" data-q="income">
+            <h2>What&rsquo;s your annual income?</h2>
+            <p class="qsub">A ballpark is fine.</p>
+            <label class="opt"><input type="radio" name="annualIncome" value="$0 – $200K" /><span class="key">A</span><span class="txt">$0 &ndash; $200K</span></label>
+            <label class="opt"><input type="radio" name="annualIncome" value="$200K – $400K" /><span class="key">B</span><span class="txt">$200K &ndash; $400K</span></label>
+            <label class="opt"><input type="radio" name="annualIncome" value="$400K – $1M" /><span class="key">C</span><span class="txt">$400K &ndash; $1M</span></label>
+            <label class="opt"><input type="radio" name="annualIncome" value="$1M+" /><span class="key">D</span><span class="txt">$1M+</span></label>
+          </section>
+          <section class="qstep" data-q="heard">
+            <h2>How did you hear about Second Prime?</h2>
+            <p class="qsub">Almost done. Your details are next.</p>
+            <label class="opt"><input type="radio" name="heardAbout" value="Instagram" /><span class="key">A</span><span class="txt">Instagram</span></label>
+            <label class="opt"><input type="radio" name="heardAbout" value="Facebook" /><span class="key">B</span><span class="txt">Facebook</span></label>
+            <label class="opt"><input type="radio" name="heardAbout" value="LinkedIn" /><span class="key">C</span><span class="txt">LinkedIn</span></label>
+            <label class="opt"><input type="radio" name="heardAbout" value="Podcast" /><span class="key">D</span><span class="txt">Podcast</span></label>
+            <label class="opt"><input type="radio" name="heardAbout" value="Referral from a friend or colleague" /><span class="key">E</span><span class="txt">Referral from a friend or colleague</span></label>
+            <label class="opt"><input type="radio" name="heardAbout" value="Google search" /><span class="key">F</span><span class="txt">Google search</span></label>
+            <label class="opt"><input type="radio" name="heardAbout" value="YouTube" /><span class="key">G</span><span class="txt">YouTube</span></label>
+            <label class="opt"><input type="radio" name="heardAbout" value="Other" /><span class="key">H</span><span class="txt">Other</span></label>
+          </section>
+          <section class="qstep" data-q="contact">
+            <h2>Last step. Where do we reach you?</h2>
+            <p class="qsub">You&rsquo;ll book your 15-minute call on the next screen.</p>
+            <div class="fld-row">
+              <label class="fld"><span class="fld__k">First name</span><input type="text" name="firstName" autocomplete="given-name" /></label>
+              <label class="fld"><span class="fld__k">Last name</span><input type="text" name="lastName" autocomplete="family-name" /></label>
+            </div>
+            <div class="fld-row">
+              <label class="fld"><span class="fld__k">Email</span><input type="email" name="email" autocomplete="email" /></label>
+              <label class="fld"><span class="fld__k">Phone</span><input type="tel" name="phone" autocomplete="tel" /></label>
+            </div>
+            <div class="qnav">
+              <button type="button" class="qback" data-back>&larr; Back</button>
+              <button type="submit" class="btn btn-teal qnext" id="qsubmit">Complete my application</button>
+            </div>
+            <p class="qfine">No charge to apply or for the call. Your answers stay private. We will never sell or share your data.</p>
+          </section>
+
+          <div class="qerr" id="qerr" role="status" aria-live="polite"></div>
+        </form>
+        <p class="qkeys" style="color: rgba(225,242,243,0.55)">Tip: press A, B, C&hellip; to answer, and Enter to continue.</p>
+      </div>
+    </div>
+
+    <figure class="ap-quote">
+      <span class="ap-qmark" aria-hidden="true">&ldquo;</span>
+      <p>I came in skeptical. I&rsquo;d done bloodwork a dozen times. Andrew found things in week one nobody had flagged.</p>
+      <figcaption class="ap-who">
+        <span class="ap-ava" aria-hidden="true">RS</span>
+        <span class="ap-name"><b>R. S.</b><span>Founder, Tech &middot; 44</span></span>
+      </figcaption>
+    </figure>
+  </main>
+
+  <footer class="apply-footer">
+    <div class="f-logo" role="img" aria-label="Second Prime"></div>
+    <p class="tagline">Health &middot; Performance &middot; Longevity</p>
+    <p class="copy">&copy; 2026 Second Prime. All rights reserved.</p>
+  </footer>
+
+  <script>
+    (function () {
+      /* ============================================================
+         GoHighLevel lead capture.
+         Set GHL_WEBHOOK_URL to your Second-Prime GHL Inbound Webhook
+         (Workflow > add "Inbound Webhook" trigger > copy the URL).
+         When set, the full application posts into GHL on submit.
+         Either way, booking on the next screen creates the contact +
+         appointment in GHL natively, so no lead is ever lost.
+         ============================================================ */
+      var GHL_WEBHOOK_URL = ''; // <-- paste GHL inbound webhook URL here
+      var LEAD_SOURCE = 'tests.secondprime.io — Executive Assessment';
+
+      var form = document.getElementById('qform');
+      var bar = document.getElementById('qbar');
+      var count = document.getElementById('qcount');
+      var ghost = document.getElementById('qghost');
+      var err = document.getElementById('qerr');
+      var stepEl = function (q) { return form.querySelector('.qstep[data-q="' + q + '"]'); };
+      var idx = 0;
+
+      function sequence() {
+        var owner = form.querySelector('input[name="businessOwner"]:checked');
+        var money = owner && owner.value === 'No' ? 'income' : 'revenue';
+        return ['outcome', 'symptoms', 'notes', 'owner', money, 'heard', 'contact'];
+      }
+      function pad(n) { return (n < 10 ? '0' : '') + n; }
+      function paint() {
+        var seq = sequence();
+        form.querySelectorAll('.qstep').forEach(function (s) { s.classList.remove('on'); });
+        stepEl(seq[idx]).classList.add('on');
+        bar.style.width = (((idx + 1) / seq.length) * 100) + '%';
+        count.textContent = (idx + 1) + ' of ' + seq.length;
+        ghost.textContent = pad(idx + 1);
+        err.classList.remove('on');
+        var shell = document.querySelector('.ap-shell');
+        var target = shell.getBoundingClientRect().top + window.scrollY - 96;
+        window.scrollTo({ top: Math.max(0, target), behavior: 'smooth' });
+        var focusable = stepEl(seq[idx]).querySelector('input[type="text"], input[type="email"], input[type="tel"]');
+        if (focusable && window.matchMedia('(min-width: 961px)').matches) focusable.focus({ preventScroll: true });
+      }
+      function next() { if (idx < sequence().length - 1) { idx++; paint(); } }
+      function back() { if (idx > 0) { idx--; paint(); } }
+      function showErr(msg) { err.textContent = msg; err.classList.add('on'); }
+
+      form.querySelectorAll('input[type="radio"]').forEach(function (r) {
+        r.addEventListener('change', function () { setTimeout(next, 280); });
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.metaKey || e.ctrlKey || e.altKey) return;
+        var active = document.activeElement;
+        var typing = active && /^(INPUT|TEXTAREA)$/.test(active.tagName) && active.type !== 'radio' && active.type !== 'checkbox';
+        var step = stepEl(sequence()[idx]);
+        if (e.key === 'Enter' && !typing) {
+          var nxt = step.querySelector('[data-next], #qsubmit');
+          if (nxt) { e.preventDefault(); nxt.click(); }
+          return;
+        }
+        if (typing) return;
+        var k = e.key.toUpperCase();
+        if (k.length !== 1 || k < 'A' || k > 'Z') return;
+        var opts = step.querySelectorAll('.opt input');
+        var i = k.charCodeAt(0) - 65;
+        if (opts[i]) { e.preventDefault(); opts[i].click(); }
+      });
+
+      form.addEventListener('click', function (e) {
+        if (e.target.closest('[data-back]')) { e.preventDefault(); back(); }
+        if (e.target.closest('[data-next]')) {
+          e.preventDefault();
+          var q = sequence()[idx];
+          if (q === 'symptoms') {
+            var any = form.querySelector('input[name="currentSymptoms"]:checked');
+            if (!any) { showErr('Pick at least one. It tells us where to look first.'); return; }
+          }
+          next();
+        }
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var btn = document.getElementById('qsubmit');
+        var get = function (n) { return (form[n] && form[n].value ? String(form[n].value).trim() : ''); };
+        var picked = function (n) { var el = form.querySelector('input[name="' + n + '"]:checked'); return el ? el.value : ''; };
+        var multi = function (n) { return Array.prototype.slice.call(form.querySelectorAll('input[name="' + n + '"]:checked')).map(function (c) { return c.value; }); };
+
+        var data = {
+          firstName: get('firstName'),
+          lastName: get('lastName'),
+          email: get('email'),
+          phone: get('phone'),
+          businessOwner: picked('businessOwner'),
+          businessRevenue: picked('businessRevenue'),
+          annualIncome: picked('annualIncome'),
+          outcome: picked('outcome'),
+          currentSymptoms: multi('currentSymptoms'),
+          notes: get('notes'),
+          heardAbout: picked('heardAbout'),
+          source: LEAD_SOURCE,
+          tags: ['executive-assessment', 'tests-funnel']
+        };
+
+        if (!data.firstName || !data.lastName || !data.email || !data.phone) { showErr('Please fill in your name, email, and phone.'); return; }
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)) { showErr('That email doesn’t look right. Mind checking it?'); return; }
+        if (!data.businessOwner || !data.outcome || !data.heardAbout || !data.currentSymptoms.length) { showErr('Looks like a question got skipped. Use Back to check your answers.'); return; }
+
+        btn.disabled = true;
+        btn.textContent = 'Submitting…';
+
+        try { localStorage.setItem('sp_application', JSON.stringify(data)); } catch (_) {}
+
+        var toBooking = function () {
+          var qs = new URLSearchParams({
+            first_name: data.firstName, last_name: data.lastName,
+            email: data.email, phone: data.phone
+          });
+          window.location.href = 'booking.html?' + qs.toString();
+        };
+
+        // Fire the application into GHL if a webhook is configured, then continue.
+        if (GHL_WEBHOOK_URL) {
+          fetch(GHL_WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          }).then(toBooking).catch(toBooking);
+          setTimeout(toBooking, 2500); // safety net so the user never stalls
+        } else {
+          toBooking();
+        }
+      });
+
+      paint();
+    })();
+  </script>
+</body>
+</html>
