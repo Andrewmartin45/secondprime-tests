@@ -107,6 +107,12 @@
             <label class="opt"><input type="radio" name="annualIncome" value="$400K – $1M" /><span class="key">C</span><span class="txt">$400K &ndash; $1M</span></label>
             <label class="opt"><input type="radio" name="annualIncome" value="$1M+" /><span class="key">D</span><span class="txt">$1M+</span></label>
           </section>
+          <section class="qstep" data-q="invest">
+            <h2>One honest question about investment.</h2>
+            <p class="qsub">Second Prime clients typically invest at least $10K a year in their health. Is that something you can do right now?</p>
+            <label class="opt"><input type="radio" name="investReady" value="Yes, I can invest at least $10K in my health this year" /><span class="key">A</span><span class="txt">Yes, I can invest at least $10K in my health this year</span></label>
+            <label class="opt"><input type="radio" name="investReady" value="Not something I can do right now" /><span class="key">B</span><span class="txt">Not something I can do right now</span></label>
+          </section>
           <section class="qstep" data-q="heard">
             <h2>How did you hear about Second Prime?</h2>
             <p class="qsub">Almost done. Your details are next.</p>
@@ -177,11 +183,27 @@
       var stepEl = function (q) { return form.querySelector('.qstep[data-q="' + q + '"]'); };
       var idx = 0;
 
-      // The income question swaps based on the business-owner answer.
+      function normDash(s) { return String(s || '').replace(/[–—-]/g, '-').replace(/\s+/g, ' ').trim(); }
+      function picked(n) { var el = form.querySelector('input[name="' + n + '"]:checked'); return el ? el.value : ''; }
+
+      // Below threshold = owner under $500K revenue, or employee under $200K income.
+      // Those applicants get the $10K investment question; everyone above skips it.
+      function belowThreshold() {
+        var owner = picked('businessOwner');
+        if (owner === 'Yes') return normDash(picked('businessRevenue')) === '$0 - $500K';
+        if (owner === 'No') return normDash(picked('annualIncome')) === '$0 - $200K';
+        return false;
+      }
+
+      // The income question swaps based on the business-owner answer, and the
+      // $10K investment question only appears for below-threshold applicants.
       function sequence() {
-        var owner = form.querySelector('input[name="businessOwner"]:checked');
-        var money = owner && owner.value === 'No' ? 'income' : 'revenue';
-        return ['outcome', 'symptoms', 'notes', 'owner', money, 'heard', 'contact'];
+        var owner = picked('businessOwner');
+        var money = owner === 'No' ? 'income' : 'revenue';
+        var seq = ['outcome', 'symptoms', 'notes', 'owner', money];
+        if (belowThreshold()) seq.push('invest');
+        seq.push('heard', 'contact');
+        return seq;
       }
 
       function pad(n) { return (n < 10 ? '0' : '') + n; }
@@ -253,6 +275,7 @@
           businessOwner: picked('businessOwner'),
           businessRevenue: picked('businessRevenue'),
           annualIncome: picked('annualIncome'),
+          investReady: picked('investReady'),
           outcome: picked('outcome'),
           currentSymptoms: multi('currentSymptoms'),
           notes: get('notes'),
@@ -266,18 +289,21 @@
         if (!data.firstName || !data.lastName || !data.email || !data.phone) { showErr('Please fill in your name, email, and phone.'); return; }
         if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)) { showErr('That email doesn’t look right. Mind checking it?'); return; }
         if (!data.businessOwner || !data.outcome || !data.heardAbout || !data.currentSymptoms.length) { showErr('Looks like a question got skipped. Use Back to check your answers.'); return; }
+        if (belowThreshold() && !data.investReady) { showErr('Looks like a question got skipped. Use Back to check your answers.'); return; }
 
         btn.disabled = true;
         btn.textContent = 'Submitting…';
 
         try { localStorage.setItem('sp_application', JSON.stringify(data)); } catch (_) {}
 
-        /* Qualification gate. Not a fit: business owners under $500K revenue,
-           or non-owners (employees) under $200K income. Everyone above books. */
-        function normDash(s) { return String(s || '').replace(/[–—-]/g, '-').replace(/\s+/g, ' ').trim(); }
-        var disqualified =
+        /* Qualification gate.
+           Above threshold (owner $500K+ / employee $200K+): auto-qualified, skips the $10K question, books.
+           Below threshold: rescued only if they can invest at least $10K. Otherwise not a fit. */
+        var below =
           (data.businessOwner === 'Yes' && normDash(data.businessRevenue) === '$0 - $500K') ||
           (data.businessOwner === 'No'  && normDash(data.annualIncome)    === '$0 - $200K');
+        var canInvest = /\$10K/.test(data.investReady || '');
+        var disqualified = below && !canInvest;
 
         /* Send the full application to GHL (Inbound Webhook workflow).
            Form-encoded avoids a CORS preflight; keepalive lets it finish even
@@ -292,6 +318,7 @@
             business_owner: data.businessOwner,
             business_revenue: data.businessRevenue,
             annual_income: data.annualIncome,
+            investment: data.investReady,
             heard_about: data.heardAbout,
             qualified: disqualified ? 'No' : 'Yes',
             application_source: 'Executive Assessment Lead Magnet'
