@@ -4,14 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Apply for Your Consultation | Second Prime</title>
-  <meta name="description" content="Apply for a free consultation with Second Prime. Seven quick questions, then book your 15-minute call." />
+  <meta name="description" content="Apply for a free consultation with Second Prime. Nine quick questions, then book your 15-minute call." />
   <meta name="robots" content="noindex, nofollow" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
   <meta name="theme-color" content="#F7F4F0" />
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="css/styles.css?v=1" />
-  <link rel="stylesheet" href="css/funnel.css?v=5" />
+  <link rel="stylesheet" href="css/funnel.css?v=6" />
+  <style>
+    /* Age slider (matches the main-site apply page, dark jewel card variant) */
+    .age-read { text-align: center; margin: 10px 0 6px; }
+    .age-read b { font-family: var(--font-serif, Zodiak, Georgia, serif); font-weight: 400; font-size: 72px; color: #FDFBF8; letter-spacing: -0.02em; }
+    .age-read span { display: block; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(225,242,243,0.6); margin-top: 2px; }
+    input[type="range"].age { -webkit-appearance: none; appearance: none; width: 100%; height: 4px; border-radius: 4px;
+      background: linear-gradient(to right, #65C8D0 0%, #65C8D0 var(--fill, 40%), rgba(255,255,255,0.16) var(--fill, 40%), rgba(255,255,255,0.16) 100%);
+      outline: none; margin: 18px 0 6px; }
+    input[type="range"].age::-webkit-slider-thumb { -webkit-appearance: none; width: 26px; height: 26px; border-radius: 50%;
+      background: #fff; border: 2px solid #65C8D0; box-shadow: 0 2px 8px rgba(31,31,39,0.18); cursor: grab; }
+    input[type="range"].age::-moz-range-thumb { width: 24px; height: 24px; border-radius: 50%;
+      background: #fff; border: 2px solid #65C8D0; box-shadow: 0 2px 8px rgba(31,31,39,0.18); cursor: grab; }
+    .age-ends { display: flex; justify-content: space-between; font-size: 12px; color: rgba(225,242,243,0.55); margin-bottom: 8px; }
+  </style>
 </head>
 <body class="ap-page">
 
@@ -31,7 +45,7 @@
     </div>
 
     <div class="ap-process">
-      <div class="ap-p"><b>01</b><div>Complete the application</div><span>Seven questions, about two minutes</span></div>
+      <div class="ap-p"><b>01</b><div>Complete the application</div><span>Nine questions, about two minutes</span></div>
       <div class="ap-p"><b>02</b><div>We check the fit</div><span>We make sure we can actually help</span></div>
       <div class="ap-p"><b>03</b><div>Book your call</div><span>15-minute call, no charge</span></div>
     </div>
@@ -41,7 +55,7 @@
         <span class="qghost" id="qghost" aria-hidden="true">01</span>
         <div class="ap-progress" aria-hidden="true">
           <div class="ap-bar"><i id="qbar"></i></div>
-          <span class="ap-count" id="qcount">1 of 7</span>
+          <span class="ap-count" id="qcount">1 of 9</span>
         </div>
 
         <form id="qform" novalidate>
@@ -53,6 +67,17 @@
             <label class="opt"><input type="radio" name="outcome" value="Performance (energy, focus, body composition)" /><span class="key">B</span><span class="txt">Performance (energy, focus, body composition)</span></label>
             <label class="opt"><input type="radio" name="outcome" value="Longevity (extending peak years)" /><span class="key">C</span><span class="txt">Longevity (extending peak years)</span></label>
             <label class="opt"><input type="radio" name="outcome" value="All of the above" /><span class="key">D</span><span class="txt">All of the above</span></label>
+          </section>
+          <section class="qstep" data-q="age">
+            <h2>How old are you?</h2>
+            <p class="qsub">Drag the slider. Your biology sets the starting point of the plan.</p>
+            <div class="age-read"><b id="ageval">48</b><span>years old</span></div>
+            <input type="range" class="age" id="ageslider" min="28" max="75" step="1" value="48" aria-label="Your age" />
+            <div class="age-ends"><span>28</span><span>75+</span></div>
+            <div class="qnav">
+              <button type="button" class="qback" data-back>&larr; Back</button>
+              <button type="button" class="btn btn-teal qnext" data-next>Continue</button>
+            </div>
           </section>
           <section class="qstep" data-q="symptoms">
             <h2>What are you dealing with right now?</h2>
@@ -72,12 +97,14 @@
               <button type="button" class="btn btn-teal qnext" data-next>Continue</button>
             </div>
           </section>
-          <section class="qstep" data-q="notes">
-            <h2>Anything we should know before we talk?</h2>
-            <p class="qsub">Optional. Past testing, current symptoms, what&rsquo;s not working, what &ldquo;fully restored&rdquo; would mean for you.</p>
-            <label class="fld">
-              <textarea name="notes" rows="4" aria-label="Anything we should know before we talk?"></textarea>
-            </label>
+          <section class="qstep" data-q="tried">
+            <h2>What have you already tried?</h2>
+            <p class="qsub">Select all that apply.</p>
+            <label class="opt"><input type="checkbox" name="alreadyTried" value="Regular doctor or concierge medicine" /><span class="key">A</span><span class="txt">Regular doctor or concierge medicine</span></label>
+            <label class="opt"><input type="checkbox" name="alreadyTried" value="TRT or hormone clinic" /><span class="key">B</span><span class="txt">TRT or hormone clinic</span></label>
+            <label class="opt"><input type="checkbox" name="alreadyTried" value="Trainers, nutritionists, or coaches" /><span class="key">C</span><span class="txt">Trainers, nutritionists, or coaches</span></label>
+            <label class="opt"><input type="checkbox" name="alreadyTried" value="Self-directed (wearables, supplements, research)" /><span class="key">D</span><span class="txt">Self-directed (wearables, supplements, research)</span></label>
+            <label class="opt"><input type="checkbox" name="alreadyTried" value="Nothing serious yet" /><span class="key">E</span><span class="txt">Nothing serious yet</span></label>
             <div class="qnav">
               <button type="button" class="qback" data-back>&larr; Back</button>
               <button type="button" class="btn btn-teal qnext" data-next>Continue</button>
@@ -108,10 +135,18 @@
             <label class="opt"><input type="radio" name="annualIncome" value="$1M+" /><span class="key">D</span><span class="txt">$1M+</span></label>
           </section>
           <section class="qstep" data-q="invest">
-            <h2>One honest question about investment.</h2>
-            <p class="qsub">Second Prime clients typically invest at least $10K a year in their health. Is that something you can do right now?</p>
-            <label class="opt"><input type="radio" name="investReady" value="Yes, I can invest at least $10K in my health this year" /><span class="key">A</span><span class="txt">Yes, I can invest at least $10K in my health this year</span></label>
-            <label class="opt"><input type="radio" name="investReady" value="Not something I can do right now" /><span class="key">B</span><span class="txt">Not something I can do right now</span></label>
+            <h2>Are you willing to invest in your health and longevity?</h2>
+            <p class="qsub">Second Prime is a premium service, extensive by design, and the commitment reflects that. Knowing where you stand helps us tell whether we can help.</p>
+            <label class="opt"><input type="radio" name="investReady" value="Yes. I'm comfortable investing at least $10K in my health this year" /><span class="key">A</span><span class="txt">Yes. I&rsquo;m comfortable investing at least $10K in my health this year</span></label>
+            <label class="opt"><input type="radio" name="investReady" value="I could make it happen if it's the right fit" /><span class="key">B</span><span class="txt">I could make it happen if it&rsquo;s the right fit</span></label>
+            <label class="opt"><input type="radio" name="investReady" value="That's more than I can invest right now" /><span class="key">C</span><span class="txt">That&rsquo;s more than I can invest right now</span></label>
+          </section>
+          <section class="qstep" data-q="timeline">
+            <h2>If the fit is right, when would you want to start?</h2>
+            <p class="qsub">Honest answer. It only changes how we follow up.</p>
+            <label class="opt"><input type="radio" name="timeline" value="Now. Within 30 days" /><span class="key">A</span><span class="txt">Now. Within 30 days</span></label>
+            <label class="opt"><input type="radio" name="timeline" value="Within 90 days" /><span class="key">B</span><span class="txt">Within 90 days</span></label>
+            <label class="opt"><input type="radio" name="timeline" value="Just exploring for now" /><span class="key">C</span><span class="txt">Just exploring for now</span></label>
           </section>
           <section class="qstep" data-q="heard">
             <h2>How did you hear about Second Prime?</h2>
@@ -195,14 +230,14 @@
         return false;
       }
 
-      // The income question swaps based on the business-owner answer, and the
+      // The money question swaps based on the business-owner answer, and the
       // $10K investment question only appears for below-threshold applicants.
       function sequence() {
         var owner = picked('businessOwner');
         var money = owner === 'No' ? 'income' : 'revenue';
-        var seq = ['outcome', 'symptoms', 'notes', 'owner', money];
+        var seq = ['outcome', 'age', 'symptoms', 'tried', 'owner', money];
         if (belowThreshold()) seq.push('invest');
-        seq.push('heard', 'contact');
+        seq.push('timeline', 'heard', 'contact');
         return seq;
       }
 
@@ -226,16 +261,36 @@
       function back() { if (idx > 0) { idx--; paint(); } }
       function showErr(msg) { err.textContent = msg; err.classList.add('on'); }
 
-      // Radio steps auto-advance after a beat.
-      form.querySelectorAll('input[type="radio"]').forEach(function (r) {
-        r.addEventListener('change', function () { setTimeout(next, 280); });
+      // Switching the owner answer clears the money answer that no longer applies.
+      form.querySelectorAll('input[name="businessOwner"]').forEach(function (r) {
+        r.addEventListener('change', function () {
+          var stale = r.value === 'Yes' ? 'annualIncome' : 'businessRevenue';
+          form.querySelectorAll('input[name="' + stale + '"]').forEach(function (m) { m.checked = false; });
+        });
       });
+
+      // Radio steps auto-advance after a beat. Bound to click (not change) so
+      // re-selecting the same answer after going Back still moves you forward.
+      form.querySelectorAll('input[type="radio"]').forEach(function (r) {
+        r.addEventListener('click', function () { setTimeout(next, 280); });
+      });
+
+      // Age slider readout + fill.
+      var slider = document.getElementById('ageslider');
+      var ageval = document.getElementById('ageval');
+      function paintAge() {
+        var v = +slider.value;
+        ageval.textContent = v >= 75 ? '75+' : v;
+        slider.style.setProperty('--fill', ((v - 28) / (75 - 28) * 100) + '%');
+      }
+      slider.addEventListener('input', paintAge);
+      paintAge();
 
       // Keyboard: A/B/C selects on the active step, Enter continues.
       document.addEventListener('keydown', function (e) {
         if (e.metaKey || e.ctrlKey || e.altKey) return;
         var active = document.activeElement;
-        var typing = active && /^(INPUT|TEXTAREA)$/.test(active.tagName) && active.type !== 'radio' && active.type !== 'checkbox';
+        var typing = active && /^(INPUT|TEXTAREA)$/.test(active.tagName) && active.type !== 'range' && active.type !== 'radio' && active.type !== 'checkbox';
         var step = stepEl(sequence()[idx]);
         if (e.key === 'Enter' && !typing) {
           var nxt = step.querySelector('[data-next], #qsubmit');
@@ -270,15 +325,18 @@
         var get = function (n) { return (form[n] && form[n].value ? String(form[n].value).trim() : ''); };
         var picked = function (n) { var el = form.querySelector('input[name="' + n + '"]:checked'); return el ? el.value : ''; };
         var multi = function (n) { return Array.prototype.slice.call(form.querySelectorAll('input[name="' + n + '"]:checked')).map(function (c) { return c.value; }); };
+        var ageNum = +slider.value;
 
         var data = {
+          outcome: picked('outcome'),
+          age: ageNum >= 75 ? '75+' : String(ageNum),
+          currentSymptoms: multi('currentSymptoms'),
+          alreadyTried: multi('alreadyTried'),
           businessOwner: picked('businessOwner'),
           businessRevenue: picked('businessRevenue'),
           annualIncome: picked('annualIncome'),
           investReady: picked('investReady'),
-          outcome: picked('outcome'),
-          currentSymptoms: multi('currentSymptoms'),
-          notes: get('notes'),
+          timeline: picked('timeline'),
           heardAbout: picked('heardAbout'),
           firstName: get('firstName'),
           lastName: get('lastName'),
@@ -288,7 +346,8 @@
 
         if (!data.firstName || !data.lastName || !data.email || !data.phone) { showErr('Please fill in your name, email, and phone.'); return; }
         if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)) { showErr('That email doesn’t look right. Mind checking it?'); return; }
-        if (!data.businessOwner || !data.outcome || !data.heardAbout || !data.currentSymptoms.length) { showErr('Looks like a question got skipped. Use Back to check your answers.'); return; }
+        if (!data.businessOwner || !data.outcome || !data.timeline || !data.heardAbout || !data.currentSymptoms.length) { showErr('Looks like a question got skipped. Use Back to check your answers.'); return; }
+        if (data.businessOwner === 'Yes' ? !data.businessRevenue : !data.annualIncome) { showErr('Looks like a question got skipped. Use Back to check your answers.'); return; }
         if (belowThreshold() && !data.investReady) { showErr('Looks like a question got skipped. Use Back to check your answers.'); return; }
 
         btn.disabled = true;
@@ -296,13 +355,13 @@
 
         try { localStorage.setItem('sp_application', JSON.stringify(data)); } catch (_) {}
 
-        /* Qualification gate.
+        /* Qualification gate (shared with secondprime.io/apply).
            Above threshold (owner $500K+ / employee $200K+): auto-qualified, skips the $10K question, books.
-           Below threshold: rescued only if they can invest at least $10K. Otherwise not a fit. */
+           Below threshold: rescued if they can invest at least $10K or could make it happen. Otherwise not a fit. */
         var below =
           (data.businessOwner === 'Yes' && normDash(data.businessRevenue) === '$0 - $500K') ||
           (data.businessOwner === 'No'  && normDash(data.annualIncome)    === '$0 - $200K');
-        var canInvest = /\$10K/.test(data.investReady || '');
+        var canInvest = /\$10K|make it happen/i.test(data.investReady || '');
         var disqualified = below && !canInvest;
 
         /* Send the full application to GHL (Inbound Webhook workflow).
@@ -313,12 +372,15 @@
             first_name: data.firstName, last_name: data.lastName,
             email: data.email, phone: data.phone,
             outcome: data.outcome,
+            age: data.age,
             symptoms: (data.currentSymptoms || []).join(', '),
-            notes: data.notes,
+            already_tried: (data.alreadyTried || []).join(', '),
+            notes: '',
             business_owner: data.businessOwner,
             business_revenue: data.businessRevenue,
             annual_income: data.annualIncome,
-            investment: data.investReady,
+            investment: data.investReady || 'Skipped (above threshold)',
+            timeline: data.timeline,
             heard_about: data.heardAbout,
             qualified: disqualified ? 'No' : 'Yes',
             application_source: 'Executive Assessment Lead Magnet'
