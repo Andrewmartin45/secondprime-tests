@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Results | Second Prime</title>
+  <meta name="description" content="Your Second Prime Score and system-by-system breakdown." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+  <meta name="theme-color" content="#101016" />
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="css/styles.css?v=1" />
+  <link rel="stylesheet" href="css/funnel.css?v=11" />
+  <link rel="stylesheet" href="css/assess.css?v=1" />
+  <!-- Meta pixel (Amartinco LLC's Pixel). Neutral event names only, per Meta health-advertiser rules. -->
+  <script>
+  (function () {
+    if (/^(localhost|127\.0\.0\.1|tests\.secondprime\.io)$|github\.io$/.test(location.hostname)) return; // no pixel on local/test previews
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '500535282073021');
+    fbq('track', 'PageView');
+  })();
+  </script>
+</head>
+<body class="rs-page">
+
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <span class="nav-logo" role="img" aria-label="Second Prime"></span>
+      <nav class="nav-links"></nav>
+      <div class="nav-actions">
+        <a class="btn-cta" href="booking.html" id="navCta">Book My Call</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ SCORE REVEAL ============ -->
+  <section class="rs-hero">
+    <div class="container center">
+      <span class="hero-tag">Your Results</span>
+      <h1 id="rsHeadline">Your Second Prime Score</h1>
+      <div class="rs-gauge" aria-hidden="true">
+        <svg viewBox="0 0 200 120">
+          <path class="rs-track" d="M 20 110 A 80 80 0 0 1 180 110" />
+          <path class="rs-fill" id="gaugeFill" d="M 20 110 A 80 80 0 0 1 180 110" />
+        </svg>
+        <div class="rs-num"><b id="scoreNum">0</b><span>out of 100</span></div>
+      </div>
+      <p class="rs-verdict" id="verdict"></p>
+    </div>
+  </section>
+
+  <!-- ============ SYSTEM BREAKDOWN ============ -->
+  <section style="background: var(--bg-light)">
+    <div class="container">
+      <div class="center reveal in" style="margin-bottom: 40px">
+        <span class="eyebrow">System by System</span>
+        <h2>Where the points went.</h2>
+      </div>
+      <div class="rs-domains" id="domainList"></div>
+      <p class="f-range-note" style="margin-top:28px">Scored from your answers against the profile of a high-output body, the same first read we do with clients.</p>
+    </div>
+  </section>
+
+  <!-- ============ WHAT IT'S COSTING YOU ============ -->
+  <section style="background: var(--white)" id="costSection">
+    <div class="container" style="max-width: 780px">
+      <div class="center" style="margin-bottom: 40px">
+        <span class="eyebrow">Read This Part Slowly</span>
+        <h2 id="costHead">What your answers say</h2>
+      </div>
+      <div class="rs-cost" id="costBlocks"></div>
+    </div>
+  </section>
+
+  <!-- ============ THE GAP ============ -->
+  <section class="rs-gap">
+    <div class="container center">
+      <span class="eyebrow" style="color: var(--teal-bright)">The Honest Caveat</span>
+      <h2>Your answers can point.<br />Only labs can confirm.</h2>
+      <p class="lead">This score reads symptoms. Symptoms are the last thing to show up, years after the numbers start moving. A standard physical checks a few dozen markers. We measure 1,000+ across blood, hormones, gut, and real-world performance, and read every one against optimal instead of &ldquo;normal.&rdquo;</p>
+      <div class="rs-gap-stats">
+        <div><b>1,000+</b><span>biomarkers we test</span></div>
+        <div><b>~40</b><span>markers in a typical physical</span></div>
+        <div><b>-12 yrs</b><span>avg. client biological age reduction</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RESULTS VIDEO ============
+       TODO: replace the placeholder with the real video.
+       Spec: 60–90 seconds, Andrew to camera. Script lives in VIDEO-SCRIPTS.md (Video 2).
+  -->
+  <section style="background: var(--white)">
+    <div class="container center" style="max-width: 820px">
+      <span class="eyebrow">Before You Decide Anything</span>
+      <h2 style="margin-bottom: 28px">Andrew, on what a score like yours usually means.</h2>
+      <div class="as-video" id="resultsVideo">
+        <div class="as-video-frame">
+          <button class="as-play" aria-label="Play video"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+          <span class="as-video-cap">Andrew Martin &middot; Founder &amp; Biologist &middot; 90 seconds</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUALIFIED CTA ============ -->
+  <section class="f-cta" id="ctaQualified">
+    <div class="container center">
+      <span class="eyebrow">The Next 15 Minutes That Matter</span>
+      <h2 id="ctaHead">Your score comes with a conversation.</h2>
+      <p class="lead">A free 15-minute call with our team. We walk through your score, tell you which labs would confirm or clear each flag, and give you a straight answer on whether we can help. If we can&rsquo;t, we&rsquo;ll say so.</p>
+      <div class="rs-cta-steps">
+        <div><b>01</b><span>We review your score and answers before the call</span></div>
+        <div><b>02</b><span>You get the read: what&rsquo;s likely driving what you feel</span></div>
+        <div><b>03</b><span>A straight yes or no on whether we&rsquo;re the right team</span></div>
+      </div>
+      <a class="btn btn-teal btn-lg" href="booking.html" id="bookBtn">Book My Free 15-Minute Call&ensp;&rarr;</a>
+      <p class="note">We take on a limited number of new clients each month. Your results are saved either way.</p>
+    </div>
+  </section>
+
+  <!-- ============ DQ SOFT PATH (hidden unless disqualified) ============ -->
+  <section class="f-cta" id="ctaSoft" style="display:none">
+    <div class="container center">
+      <span class="eyebrow">A Straight Answer</span>
+      <h2>Thank you for being honest with us.</h2>
+      <p class="lead">Based on where you are right now, our programs would be the wrong fit, and we&rsquo;d rather tell you that than take your time or money. Your score above still stands. Use it: get real bloodwork done this year, and treat any flagged system as worth a conversation with your doctor.</p>
+      <a class="btn btn-teal btn-lg" href="https://secondprime.io">Explore Second Prime</a>
+      <p class="note">If your situation changes, the door is open. We&rsquo;d genuinely welcome you back.</p>
+    </div>
+  </section>
+
+  <!-- ============ PROOF ============ -->
+  <section style="background: var(--bg-light)">
+    <div class="container">
+      <div class="center reveal in" style="margin-bottom: 48px">
+        <span class="eyebrow">They Started Here Too</span>
+        <h2>Scores like yours, a year later.</h2>
+      </div>
+      <div class="f-cases">
+        <article class="f-case">
+          <div class="f-case-head">
+            <img class="f-case-avatar" src="assets/cases/dustin-head.jpg" alt="" loading="lazy" style="object-position:center 22%" />
+            <div><span class="tag">Construction Founder, Indiana</span><span class="age">Age 41</span></div>
+          </div>
+          <div class="title">His doctor said he was fine. The labs said diabetes.</div>
+          <ul>
+            <li>-47 lbs body weight</li>
+            <li>Triglycerides 693 &rarr; 167</li>
+            <li>Testosterone +35%</li>
+          </ul>
+        </article>
+        <article class="f-case">
+          <div class="f-case-head">
+            <img class="f-case-avatar" src="assets/cases/rob-head.jpg" alt="" loading="lazy" style="object-position:center 30%" />
+            <div><span class="tag">Aerospace Engineering Manager</span><span class="age">Age 46</span></div>
+          </div>
+          <div class="title">Training hard every day, going backwards. We found why.</div>
+          <ul>
+            <li>Body fat 28% &rarr; 13%</li>
+            <li>+13 lbs lean mass</li>
+            <li>CV risk down 57%</li>
+          </ul>
+        </article>
+        <article class="f-case">
+          <div class="f-case-head">
+            <img class="f-case-avatar" src="assets/cases/andrew-head.jpg" alt="" loading="lazy" style="object-position:center 38%" />
+            <div><span class="tag">Founder &amp; Biologist</span><span class="age">Age 31</span></div>
+          </div>
+          <div class="title">$20,000 of specialists, no answers. He ran his own labs.</div>
+          <ul>
+            <li>Testosterone 380 &rarr; 1,170</li>
+            <li>hs-CRP 15 &rarr; 0.4</li>
+            <li>-40 lbs</li>
+          </ul>
+        </article>
+      </div>
+      <p class="f-disc">Individual results vary and are not typical or guaranteed. Shared with permission.</p>
+      <div class="f-section-cta" id="lowerCta">
+        <a class="btn btn-dark btn-lg" href="booking.html" id="bookBtn2">Book My Free 15-Minute Call&ensp;&rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="f-footer">
+    <div class="container">
+      <div class="f-logo" role="img" aria-label="Second Prime"></div>
+      <p class="tagline">Health &middot; Performance &middot; Longevity</p>
+      <p class="copy">&copy; 2026 Second Prime. All rights reserved.</p>
+      <p class="disc">The Second Prime Score is an educational self-assessment based on your answers. It is not a diagnosis and is not a substitute for medical care, diagnosis, or treatment. Individual results vary and are not typical or guaranteed.</p>
+    </div>
+  </footer>
+
+  <!-- ============ STICKY MOBILE CTA ============ -->
+  <div class="f-sticky" id="fSticky">
+    <div class="f-sticky-txt"><b id="stickyScore">Your score is in</b>Free 15-minute call to walk through it</div>
+    <a class="btn btn-teal" href="booking.html" id="bookBtn3">Book My Call</a>
+  </div>
+
+  <script>
+  (function () {
+    var raw = null;
+    try { raw = JSON.parse(localStorage.getItem('sp_assessment') || 'null'); } catch (_) {}
+    if (!raw || typeof raw.score !== 'number') { window.location.href = 'assessment.html'; return; }
+
+    var data = raw.data || {};
+    var score = raw.score;
+    var domains = raw.domains || {};
+    var qualified = raw.qualified !== false;
+    var first = (data.firstName || '').replace(/[<>&"]/g, '');
+
+    // Headline + verdict by band.
+    var headEl = document.getElementById('rsHeadline');
+    headEl.textContent = first ? first + ', your Second Prime Score is' : 'Your Second Prime Score';
+    var verdict, costHead;
+    if (score >= 85) {
+      verdict = 'A strong baseline. The gaps below are the ones worth closing while they’re still cheap to close.';
+      costHead = 'What’s worth your attention';
+    } else if (score >= 70) {
+      verdict = 'You’re drifting. Slowly enough that every year feels normal, and it’s measurable.';
+      costHead = 'What the drift is costing you';
+    } else if (score >= 50) {
+      verdict = 'Your body is sending signals. Several of them, and they point the same direction.';
+      costHead = 'What this is costing you right now';
+    } else {
+      verdict = 'Your answers match the clients whose labs come back with real findings. That’s worth taking seriously.';
+      costHead = 'What this is costing you right now';
+    }
+    document.getElementById('verdict').textContent = verdict;
+    document.getElementById('costHead').textContent = costHead;
+    document.getElementById('stickyScore').textContent = 'Your score: ' + score;
+
+    // Animated gauge + counter.
+    var fill = document.getElementById('gaugeFill');
+    var numEl = document.getElementById('scoreNum');
+    var LEN = fill.getTotalLength();
+    fill.style.strokeDasharray = LEN;
+    fill.style.strokeDashoffset = LEN;
+    var t0 = null;
+    function tick(ts) {
+      if (!t0) t0 = ts;
+      var p = Math.min((ts - t0) / 1400, 1);
+      var ease = 1 - Math.pow(1 - p, 3);
+      numEl.textContent = Math.round(score * ease);
+      fill.style.strokeDashoffset = LEN * (1 - (score / 100) * ease);
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+
+    // Domain bars.
+    var STATUS = { solid: 'Solid', drift: 'Drifting', flag: 'Red flag' };
+    var order = ['energy', 'metabolic', 'hormones', 'recovery', 'risk'];
+    var listEl = document.getElementById('domainList');
+    order.forEach(function (d, i) {
+      var x = domains[d]; if (!x) return;
+      var row = document.createElement('div');
+      row.className = 'rs-domain is-' + x.status;
+      row.innerHTML =
+        '<div class="rs-d-top"><span class="rs-d-name">' + x.label + '</span><span class="rs-d-status">' + STATUS[x.status] + '</span></div>' +
+        '<div class="rs-d-bar"><i style="width:0%" data-w="' + x.pct + '"></i></div>';
+      listEl.appendChild(row);
+      setTimeout(function () { row.querySelector('i').style.width = x.pct + '%'; }, 300 + i * 180);
+    });
+
+    /* Knife-twist copy per flagged system. Flags first, then drifts, max 3 blocks. */
+    var COST = {
+      energy: {
+        flag: 'Count what the crash costs. Your hardest decisions land in hours your brain has already clocked out of. The company gets your best 4 hours, your family gets what’s left, and your calendar is built around managing a symptom.',
+        drift: 'You’re still producing, and you can feel the tax. Slower afternoons, more coffee, decisions taking a beat longer than they used to. Left alone, that tax compounds year over year.'
+      },
+      metabolic: {
+        flag: 'A waist that keeps winning on the same food and the same training is data. It usually means insulin has been drifting for years. That road ends somewhere specific: hearing "you’re diabetic" from the same doctor who called you fine last year.',
+        drift: 'Something upstream has shifted. Getting softer on the same effort usually means insulin is working harder than it should. Caught at this stage, it’s one of the most fixable things we see.'
+      },
+      hormones: {
+        flag: 'Drive at a fraction of what it was is a lab finding waiting to be run. Low testosterone shows up everywhere: muscle, confidence, decision speed, the edge you built the business with. It also responds fast once you can actually see the numbers.',
+        drift: 'Noticeably lower drive at your age usually maps to hormones sliding about a percent a year. You adapt to each year’s version of yourself. The labs show the full drop all at once.'
+      },
+      recovery: {
+        flag: 'Waking up tired after a full night in bed means the sleep itself is broken. Recovery is where aging shows first, and every other system on this page depends on what happens in those 8 hours.',
+        drift: 'Recovery costing you 2 or 3 days is your body negotiating with you. It’s usually the first system to slip, and the first to respond once the underlying drivers get fixed.'
+      },
+      risk: {
+        flag: 'This is the one that should bother you. Real family history plus years without deep bloodwork means you’re flying blind exactly where the stakes are highest. Half of heart attack patients had "normal" cholesterol on their last labs.',
+        drift: 'You have real unknowns here. A standard physical checks a few dozen markers and calls it a day. The findings that change decades live in the tests it skips.'
+      }
+    };
+    var flags = order.filter(function (d) { return domains[d] && domains[d].status === 'flag'; });
+    var drifts = order.filter(function (d) { return domains[d] && domains[d].status === 'drift'; });
+    var picksArr = flags.concat(drifts).slice(0, 3);
+    var costEl = document.getElementById('costBlocks');
+    if (!picksArr.length) {
+      costEl.innerHTML = '<div class="rs-cost-block is-solid"><h3>You’re holding the line. Here’s the catch.</h3><p>Scores like yours are where we find the quietest problems: the ApoB nobody ordered, the insulin creeping inside "normal," the hormone slide you’ve adapted to. Feeling good and being optimal are separated by about 960 markers your physical never checked.</p></div>';
+    } else {
+      picksArr.forEach(function (d) {
+        var x = domains[d];
+        var div = document.createElement('div');
+        div.className = 'rs-cost-block is-' + x.status;
+        div.innerHTML = '<h3>' + x.label + ' · ' + STATUS[x.status] + '</h3><p>' + COST[d][x.status] + '</p>';
+        costEl.appendChild(div);
+      });
+    }
+
+    // Booking handoff carries contact details for prefill.
+    var qs = new URLSearchParams({
+      first_name: data.firstName || '', last_name: data.lastName || '',
+      email: data.email || '', phone: data.phone || ''
+    }).toString();
+    ['bookBtn', 'bookBtn2', 'bookBtn3', 'navCta'].forEach(function (id) {
+      var el = document.getElementById(id); if (el) el.href = 'booking.html?' + qs;
+    });
+
+    // Disqualified: soft path replaces every booking CTA.
+    if (!qualified) {
+      document.getElementById('ctaQualified').style.display = 'none';
+      document.getElementById('ctaSoft').style.display = '';
+      document.getElementById('lowerCta').style.display = 'none';
+      document.getElementById('fSticky').style.display = 'none';
+      document.getElementById('navCta').style.display = 'none';
+    }
+
+    // Sticky mobile CTA after the first screen.
+    var sticky = document.getElementById('fSticky');
+    function onStickyScroll() { if (qualified) sticky.classList.toggle('show', window.scrollY > window.innerHeight * 0.9); }
+    window.addEventListener('scroll', onStickyScroll, { passive: true });
+    onStickyScroll();
+
+    // Nav theme (dark sections).
+    var nav = document.getElementById('nav');
+    var NAV_DARK = '.rs-hero, .rs-gap, .f-cta, .f-footer';
+    function updateNavTheme() {
+      var r = nav.getBoundingClientRect();
+      var y = r.top + r.height / 2;
+      nav.style.pointerEvents = 'none';
+      var el = document.elementFromPoint(r.left + r.width * 0.5, y);
+      nav.style.pointerEvents = '';
+      nav.classList.toggle('light', !(el && el.closest(NAV_DARK)));
+    }
+    window.addEventListener('scroll', updateNavTheme, { passive: true });
+    updateNavTheme();
+
+    // Video placeholder: until the real video lands, clicking scrolls to the CTA.
+    document.getElementById('resultsVideo').addEventListener('click', function () {
+      var target = qualified ? document.getElementById('ctaQualified') : document.getElementById('ctaSoft');
+      target.scrollIntoView({ behavior: 'smooth' });
+    });
+  })();
+  </script>
+</body>
+</html>

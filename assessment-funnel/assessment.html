@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Second Prime Score | Second Prime</title>
+  <meta name="description" content="14 questions, 3 minutes. Get your Second Prime Score." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+  <meta name="theme-color" content="#F7F4F0" />
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="css/styles.css?v=1" />
+  <link rel="stylesheet" href="css/funnel.css?v=11" />
+  <link rel="stylesheet" href="css/assess.css?v=1" />
+  <!-- Meta pixel (Amartinco LLC's Pixel). Neutral event names only, per Meta health-advertiser rules. -->
+  <script>
+  (function () {
+    if (/^(localhost|127\.0\.0\.1|tests\.secondprime\.io)$|github\.io$/.test(location.hostname)) return; // no pixel on local/test previews
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '500535282073021');
+    fbq('track', 'PageView');
+  })();
+  </script>
+  <style>
+    /* Age slider (dark jewel card variant) */
+    .age-read { text-align: center; margin: 10px 0 6px; }
+    .age-read b { font-family: var(--font-serif, Zodiak, Georgia, serif); font-weight: 400; font-size: 72px; color: #FDFBF8; letter-spacing: -0.02em; }
+    .age-read span { display: block; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(225,242,243,0.6); margin-top: 2px; }
+    input[type="range"].age { -webkit-appearance: none; appearance: none; width: 100%; height: 4px; border-radius: 4px;
+      background: linear-gradient(to right, #65C8D0 0%, #65C8D0 var(--fill, 40%), rgba(255,255,255,0.16) var(--fill, 40%), rgba(255,255,255,0.16) 100%);
+      outline: none; margin: 18px 0 6px; }
+    input[type="range"].age::-webkit-slider-thumb { -webkit-appearance: none; width: 26px; height: 26px; border-radius: 50%;
+      background: #fff; border: 2px solid #65C8D0; box-shadow: 0 2px 8px rgba(31,31,39,0.18); cursor: grab; }
+    input[type="range"].age::-moz-range-thumb { width: 24px; height: 24px; border-radius: 50%;
+      background: #fff; border: 2px solid #65C8D0; box-shadow: 0 2px 8px rgba(31,31,39,0.18); cursor: grab; }
+    .age-ends { display: flex; justify-content: space-between; font-size: 12px; color: rgba(225,242,243,0.55); margin-bottom: 8px; }
+  </style>
+</head>
+<body class="ap-page">
+
+  <header class="nav ap-nav" id="nav">
+    <div class="nav-inner">
+      <span class="nav-logo" role="img" aria-label="Second Prime"></span>
+      <nav class="nav-links"></nav>
+      <div class="nav-actions"></div>
+    </div>
+  </header>
+
+  <main class="ap" id="assessment">
+    <div class="ap-head">
+      <span class="eyebrow">The Second Prime Score</span>
+      <h1>Let&rsquo;s see where you stand.</h1>
+      <p class="ap-sub">14 questions, about 3 minutes. Answer honestly. The score is only as useful as what you put in.</p>
+    </div>
+
+    <div class="ap-card">
+      <div class="ap-shell">
+        <span class="qghost" id="qghost" aria-hidden="true">01</span>
+        <div class="ap-progress" aria-hidden="true">
+          <div class="ap-bar"><i id="qbar"></i></div>
+          <span class="ap-count" id="qcount">1 of 14</span>
+        </div>
+
+        <form id="qform" novalidate>
+
+          <!-- ============ SECTION A: THE SEAT YOU'RE IN ============ -->
+
+          <section class="qstep on" data-q="age" data-kind="q">
+            <h2>How old are you?</h2>
+            <p class="qsub">Drag the slider. Your biology sets the baseline we score against.</p>
+            <div class="age-read"><b id="ageval">48</b><span>years old</span></div>
+            <input type="range" class="age" id="ageslider" min="28" max="75" step="1" value="48" aria-label="Your age" />
+            <div class="age-ends"><span>28</span><span>75+</span></div>
+            <div class="qnav">
+              <button type="button" class="btn btn-teal qnext" data-next>Continue</button>
+            </div>
+          </section>
+
+          <section class="qstep" data-q="role" data-kind="q">
+            <h2>Which best describes you?</h2>
+            <p class="qsub">The score weighs stress load, and carrying a company is its own category.</p>
+            <label class="opt"><input type="radio" name="role" value="I own or co-own a business" /><span class="key">A</span><span class="txt">I own or co-own a business</span></label>
+            <label class="opt"><input type="radio" name="role" value="Executive or senior leader" /><span class="key">B</span><span class="txt">Executive or senior leader</span></label>
+            <label class="opt"><input type="radio" name="role" value="Other" /><span class="key">C</span><span class="txt">Other</span></label>
+          </section>
+
+          <!-- INTERSTITIAL 1: authority stat -->
+          <section class="qstep as-int" data-q="int1" data-kind="int">
+            <span class="as-int-tag">Why this matters</span>
+            <h2 class="as-int-h">Half of heart attack patients had &ldquo;normal&rdquo; cholesterol on their last labs.</h2>
+            <p class="as-int-p">American Heart Journal, 2009. &ldquo;Normal&rdquo; ranges are built from the average of everyone tested, including the unwell. You can pass every physical and still be drifting. That&rsquo;s why we score against optimal, the way we do for the 500+ founders and executives we&rsquo;ve worked with.</p>
+            <div class="qnav qnav-center">
+              <button type="button" class="btn btn-teal qnext" data-next>Got it, keep going</button>
+            </div>
+          </section>
+
+          <!-- ============ SECTION B: ENERGY & FOCUS ============ -->
+
+          <section class="qstep" data-q="energy" data-kind="q">
+            <span class="as-sec">Energy &amp; Focus &middot; 1 of 2</span>
+            <h2>How&rsquo;s your energy through a workday?</h2>
+            <label class="opt"><input type="radio" name="energy" value="Strong from morning to evening" data-domain="energy" data-pts="0" /><span class="key">A</span><span class="txt">Strong from morning to evening</span></label>
+            <label class="opt"><input type="radio" name="energy" value="Good mornings, fading afternoons" data-domain="energy" data-pts="2" /><span class="key">B</span><span class="txt">Good mornings, fading afternoons</span></label>
+            <label class="opt"><input type="radio" name="energy" value="The 3pm crash runs my calendar" data-domain="energy" data-pts="4" /><span class="key">C</span><span class="txt">The 3pm crash runs my calendar</span></label>
+            <label class="opt"><input type="radio" name="energy" value="I'm running on coffee and willpower" data-domain="energy" data-pts="5" /><span class="key">D</span><span class="txt">I&rsquo;m running on coffee and willpower</span></label>
+          </section>
+
+          <section class="qstep" data-q="focus" data-kind="q">
+            <span class="as-sec">Energy &amp; Focus &middot; 2 of 2</span>
+            <h2>And your mental sharpness?</h2>
+            <p class="qsub">Decision speed, word recall, holding focus in long meetings.</p>
+            <label class="opt"><input type="radio" name="focus" value="As sharp as I've ever been" data-domain="energy" data-pts="0" /><span class="key">A</span><span class="txt">As sharp as I&rsquo;ve ever been</span></label>
+            <label class="opt"><input type="radio" name="focus" value="A step slower than I was" data-domain="energy" data-pts="2" /><span class="key">B</span><span class="txt">A step slower than I was</span></label>
+            <label class="opt"><input type="radio" name="focus" value="Words go missing, focus drifts, most days" data-domain="energy" data-pts="4" /><span class="key">C</span><span class="txt">Words go missing, focus drifts, most days</span></label>
+          </section>
+
+          <!-- INTERSTITIAL 2: testimonial (energy/brain fog) -->
+          <section class="qstep as-int" data-q="int2" data-kind="int">
+            <span class="as-int-tag">From a client file</span>
+            <div class="as-int-quote">
+              <div class="f-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p>&ldquo;The brain fog I thought was just &lsquo;getting older&rsquo; is completely gone. My decision-making is sharper, energy is consistent all day, and I&rsquo;m present with my kids in a way I wasn&rsquo;t before.&rdquo;</p>
+              <div class="as-int-who"><b>D.R.</b><span>Founder, Construction &middot; Age 52</span></div>
+            </div>
+            <p class="as-int-p">Brain fog at 45 or 55 usually has a measurable cause: hormones, inflammation, blood sugar, sleep architecture. When we run the labs, we find it far more often than not.</p>
+            <div class="qnav qnav-center">
+              <button type="button" class="btn btn-teal qnext" data-next>Continue</button>
+            </div>
+          </section>
+
+          <!-- ============ SECTION C: BODY & METABOLIC ============ -->
+
+          <section class="qstep" data-q="bodycomp" data-kind="q">
+            <span class="as-sec">Metabolic Health &middot; 1 of 2</span>
+            <h2>What&rsquo;s your body been doing the last few years?</h2>
+            <label class="opt"><input type="radio" name="bodycomp" value="Lean and holding steady" data-domain="metabolic" data-pts="0" /><span class="key">A</span><span class="txt">Lean and holding steady</span></label>
+            <label class="opt"><input type="radio" name="bodycomp" value="Softer than I was, but manageable" data-domain="metabolic" data-pts="2" /><span class="key">B</span><span class="txt">Softer than I was, but manageable</span></label>
+            <label class="opt"><input type="radio" name="bodycomp" value="Same training, same eating, waist keeps winning" data-domain="metabolic" data-pts="4" /><span class="key">C</span><span class="txt">Same training, same eating, waist keeps winning</span></label>
+            <label class="opt"><input type="radio" name="bodycomp" value="Gaining, and nothing I do stops it" data-domain="metabolic" data-pts="5" /><span class="key">D</span><span class="txt">Gaining, and nothing I do stops it</span></label>
+          </section>
+
+          <section class="qstep" data-q="insulin" data-kind="q">
+            <span class="as-sec">Metabolic Health &middot; 2 of 2</span>
+            <h2>Have you ever seen your fasting insulin number?</h2>
+            <p class="qsub">Insulin, the hormone. Most physicals check glucose and stop there.</p>
+            <label class="opt"><input type="radio" name="insulin" value="Yes, within the last year" data-domain="metabolic" data-pts="0" /><span class="key">A</span><span class="txt">Yes, within the last year</span></label>
+            <label class="opt"><input type="radio" name="insulin" value="I've had glucose checked, never insulin" data-domain="metabolic" data-pts="3" /><span class="key">B</span><span class="txt">I&rsquo;ve had glucose checked, never insulin</span></label>
+            <label class="opt"><input type="radio" name="insulin" value="I have no idea what my numbers are" data-domain="metabolic" data-pts="4" /><span class="key">C</span><span class="txt">I have no idea what my numbers are</span></label>
+          </section>
+
+          <!-- INTERSTITIAL 3: case study (metabolic) -->
+          <section class="qstep as-int" data-q="int3" data-kind="int">
+            <span class="as-int-tag">Case file</span>
+            <div class="as-int-case">
+              <img src="assets/cases/dustin-head.jpg" alt="" loading="lazy" style="object-position:center 22%" />
+              <div>
+                <h2 class="as-int-h" style="margin:0 0 6px">His doctor said he was fine. The labs said diabetes.</h2>
+                <span class="as-int-sub">Construction founder, Indiana &middot; Age 41</span>
+              </div>
+            </div>
+            <ul class="as-int-stats">
+              <li><b>-47 lbs</b><span>body weight</span></li>
+              <li><b>693 &rarr; 167</b><span>triglycerides</span></li>
+              <li><b>+35%</b><span>testosterone</span></li>
+            </ul>
+            <p class="as-int-p">Insulin resistance shows up in blood years before glucose gets flagged. His physical never ordered the test. Ours did.</p>
+            <div class="qnav qnav-center">
+              <button type="button" class="btn btn-teal qnext" data-next>Continue</button>
+            </div>
+          </section>
+
+          <!-- ============ SECTION D: SLEEP, RECOVERY & DRIVE ============ -->
+
+          <section class="qstep" data-q="sleep" data-kind="q">
+            <span class="as-sec">Sleep &amp; Recovery &middot; 1 of 3</span>
+            <h2>How do you wake up most mornings?</h2>
+            <label class="opt"><input type="radio" name="sleep" value="Rested and ready" data-domain="recovery" data-pts="0" /><span class="key">A</span><span class="txt">Rested and ready</span></label>
+            <label class="opt"><input type="radio" name="sleep" value="I sleep 7-8 hours and still wake up tired" data-domain="recovery" data-pts="3" /><span class="key">B</span><span class="txt">I sleep 7&ndash;8 hours and still wake up tired</span></label>
+            <label class="opt"><input type="radio" name="sleep" value="Broken sleep, most nights" data-domain="recovery" data-pts="4" /><span class="key">C</span><span class="txt">Broken sleep, most nights</span></label>
+          </section>
+
+          <section class="qstep" data-q="recovery" data-kind="q">
+            <span class="as-sec">Sleep &amp; Recovery &middot; 2 of 3</span>
+            <h2>How does your body handle hard training?</h2>
+            <label class="opt"><input type="radio" name="recovery" value="I bounce back in a day" data-domain="recovery" data-pts="0" /><span class="key">A</span><span class="txt">I bounce back in a day</span></label>
+            <label class="opt"><input type="radio" name="recovery" value="A hard workout costs me 2-3 days now" data-domain="recovery" data-pts="2" /><span class="key">B</span><span class="txt">A hard workout costs me 2&ndash;3 days now</span></label>
+            <label class="opt"><input type="radio" name="recovery" value="I've mostly stopped pushing. Recovery is brutal" data-domain="recovery" data-pts="4" /><span class="key">C</span><span class="txt">I&rsquo;ve mostly stopped pushing. Recovery is brutal</span></label>
+            <label class="opt"><input type="radio" name="recovery" value="I don't train right now" data-domain="recovery" data-pts="3" /><span class="key">D</span><span class="txt">I don&rsquo;t train right now</span></label>
+          </section>
+
+          <section class="qstep" data-q="drive" data-kind="q">
+            <span class="as-sec">Sleep &amp; Recovery &middot; 3 of 3</span>
+            <h2>Drive and libido. Where are they versus 10 years ago?</h2>
+            <p class="qsub">This one&rsquo;s a hormone question, and it stays private like everything else here.</p>
+            <label class="opt"><input type="radio" name="drive" value="Where they've always been" data-domain="hormones" data-pts="0" /><span class="key">A</span><span class="txt">Where they&rsquo;ve always been</span></label>
+            <label class="opt"><input type="radio" name="drive" value="Noticeably lower" data-domain="hormones" data-pts="3" /><span class="key">B</span><span class="txt">Noticeably lower</span></label>
+            <label class="opt"><input type="radio" name="drive" value="A fraction of what they were" data-domain="hormones" data-pts="5" /><span class="key">C</span><span class="txt">A fraction of what they were</span></label>
+          </section>
+
+          <!-- INTERSTITIAL 4: hormone stat + testimonial -->
+          <section class="qstep as-int" data-q="int4" data-kind="int">
+            <span class="as-int-tag">The math on hormones</span>
+            <h2 class="as-int-h">Testosterone falls about 1% a year from your mid-30s.</h2>
+            <p class="as-int-p">Slow enough that you adapt. Fast enough that by 50, a quarter of your drive, muscle, and recovery capacity can be gone, and every year of it felt &ldquo;normal.&rdquo;</p>
+            <div class="as-int-quote">
+              <div class="f-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p>&ldquo;My testosterone doubled, inflammation markers are down, and I&rsquo;m performing at a level I haven&rsquo;t seen since my 30s.&rdquo;</p>
+              <div class="as-int-who"><b>J.M.</b><span>Founder &amp; CEO, Real Estate &middot; Age 47</span></div>
+            </div>
+            <div class="qnav qnav-center">
+              <button type="button" class="btn btn-teal qnext" data-next>Continue</button>
+            </div>
+          </section>
+
+          <!-- ============ SECTION E: RISK & BLIND SPOTS ============ -->
+
+          <section class="qstep" data-q="labs" data-kind="q">
+            <span class="as-sec">Hidden Risk &middot; 1 of 3</span>
+            <h2>When were you last tested beyond a standard physical?</h2>
+            <p class="qsub">Think full hormone panel, ApoB, fasting insulin, inflammation markers.</p>
+            <label class="opt"><input type="radio" name="labs" value="Comprehensive panel in the last 12 months" data-domain="risk" data-pts="0" /><span class="key">A</span><span class="txt">Deep panel in the last 12 months</span></label>
+            <label class="opt"><input type="radio" name="labs" value="Standard annual physical only" data-domain="risk" data-pts="3" /><span class="key">B</span><span class="txt">Standard annual physical only</span></label>
+            <label class="opt"><input type="radio" name="labs" value="It's been years since any real bloodwork" data-domain="risk" data-pts="5" /><span class="key">C</span><span class="txt">It&rsquo;s been years since any real bloodwork</span></label>
+          </section>
+
+          <section class="qstep" data-q="family" data-kind="q">
+            <span class="as-sec">Hidden Risk &middot; 2 of 3</span>
+            <h2>Any of these in your family?</h2>
+            <p class="qsub">Parents, siblings, grandparents. Heart disease, diabetes, stroke, dementia, cancer.</p>
+            <label class="opt"><input type="radio" name="family" value="Yes, more than one" data-domain="risk" data-pts="4" /><span class="key">A</span><span class="txt">Yes, more than one</span></label>
+            <label class="opt"><input type="radio" name="family" value="One that concerns me" data-domain="risk" data-pts="2" /><span class="key">B</span><span class="txt">One that concerns me</span></label>
+            <label class="opt"><input type="radio" name="family" value="Clean family history" data-domain="risk" data-pts="0" /><span class="key">C</span><span class="txt">Clean family history</span></label>
+          </section>
+
+          <section class="qstep" data-q="trigger" data-kind="q">
+            <span class="as-sec">Hidden Risk &middot; 3 of 3</span>
+            <h2>What put your health on your radar right now?</h2>
+            <p class="qsub">The honest answer shapes what we look at first.</p>
+            <label class="opt"><input type="radio" name="triggerEvent" value="A lab result or scan that got my attention" /><span class="key">A</span><span class="txt">A lab result or scan that got my attention</span></label>
+            <label class="opt"><input type="radio" name="triggerEvent" value="Family health history I don't want to repeat" /><span class="key">B</span><span class="txt">Family health history I don&rsquo;t want to repeat</span></label>
+            <label class="opt"><input type="radio" name="triggerEvent" value="Energy and performance aren't what they were" /><span class="key">C</span><span class="txt">Energy and performance aren&rsquo;t what they were</span></label>
+            <label class="opt"><input type="radio" name="triggerEvent" value="A big transition (sale, exit, new kid, milestone birthday)" /><span class="key">D</span><span class="txt">A big transition (sale, exit, new kid, milestone birthday)</span></label>
+            <label class="opt"><input type="radio" name="triggerEvent" value="Nothing specific, staying ahead of it" /><span class="key">E</span><span class="txt">Nothing specific, staying ahead of it</span></label>
+          </section>
+
+          <!-- INTERSTITIAL 5: skeptic proof -->
+          <section class="qstep as-int" data-q="int5" data-kind="int">
+            <span class="as-int-tag">For the skeptics</span>
+            <h2 class="as-int-h">A standard physical checks a few dozen markers. We measure 1,000+.</h2>
+            <div class="as-int-quote">
+              <div class="f-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p>&ldquo;I came in skeptical. I&rsquo;d done bloodwork a dozen times. Andrew found things in week one nobody had flagged.&rdquo;</p>
+              <div class="as-int-who"><b>R.S.</b><span>Founder, Tech &middot; Age 44</span></div>
+            </div>
+            <p class="as-int-p">Almost done. 3 quick fit questions, then your score.</p>
+            <div class="qnav qnav-center">
+              <button type="button" class="btn btn-teal qnext" data-next>Continue</button>
+            </div>
+          </section>
+
+          <!-- ============ SECTION F: FIT ============ -->
+
+          <section class="qstep" data-q="revenue" data-kind="q">
+            <span class="as-sec">Fit &middot; 1 of 3</span>
+            <h2>What&rsquo;s your annual business revenue?</h2>
+            <p class="qsub">A ballpark is fine. It helps us understand the seat you&rsquo;re in.</p>
+            <label class="opt"><input type="radio" name="businessRevenue" value="$0 – $500K" /><span class="key">A</span><span class="txt">$0 &ndash; $500K</span></label>
+            <label class="opt"><input type="radio" name="businessRevenue" value="$500K – $1M" /><span class="key">B</span><span class="txt">$500K &ndash; $1M</span></label>
+            <label class="opt"><input type="radio" name="businessRevenue" value="$1M – $3M" /><span class="key">C</span><span class="txt">$1M &ndash; $3M</span></label>
+            <label class="opt"><input type="radio" name="businessRevenue" value="$3M – $10M" /><span class="key">D</span><span class="txt">$3M &ndash; $10M</span></label>
+            <label class="opt"><input type="radio" name="businessRevenue" value="$10M – $25M" /><span class="key">E</span><span class="txt">$10M &ndash; $25M</span></label>
+            <label class="opt"><input type="radio" name="businessRevenue" value="$25M+" /><span class="key">F</span><span class="txt">$25M+</span></label>
+          </section>
+
+          <section class="qstep" data-q="income" data-kind="q">
+            <span class="as-sec">Fit &middot; 1 of 3</span>
+            <h2>What&rsquo;s your annual income?</h2>
+            <p class="qsub">A ballpark is fine.</p>
+            <label class="opt"><input type="radio" name="annualIncome" value="$0 – $200K" /><span class="key">A</span><span class="txt">$0 &ndash; $200K</span></label>
+            <label class="opt"><input type="radio" name="annualIncome" value="$200K – $400K" /><span class="key">B</span><span class="txt">$200K &ndash; $400K</span></label>
+            <label class="opt"><input type="radio" name="annualIncome" value="$400K – $1M" /><span class="key">C</span><span class="txt">$400K &ndash; $1M</span></label>
+            <label class="opt"><input type="radio" name="annualIncome" value="$1M+" /><span class="key">D</span><span class="txt">$1M+</span></label>
+          </section>
+
+          <section class="qstep" data-q="invest" data-kind="q">
+            <span class="as-sec">Fit &middot; 2 of 3</span>
+            <h2>Are you ready to invest in your health and longevity?</h2>
+            <p class="qsub">Second Prime is a premium service, extensive by design, and the commitment reflects that. Knowing where you stand helps us tell whether we can help.</p>
+            <label class="opt"><input type="radio" name="investReady" value="Yes. I'm comfortable investing at least $10K in my health this year" /><span class="key">A</span><span class="txt">Yes. I&rsquo;m comfortable investing at least $10K in my health this year</span></label>
+            <label class="opt"><input type="radio" name="investReady" value="I could make it happen if it's the right fit" /><span class="key">B</span><span class="txt">I could make it happen if it&rsquo;s the right fit</span></label>
+            <label class="opt"><input type="radio" name="investReady" value="That's more than I can invest right now" /><span class="key">C</span><span class="txt">That&rsquo;s more than I can invest right now</span></label>
+          </section>
+
+          <section class="qstep" data-q="timeline" data-kind="q">
+            <span class="as-sec">Fit &middot; 3 of 3</span>
+            <h2>If your results say something worth acting on, when would you want to start?</h2>
+            <p class="qsub">Honest answer. It only changes how we follow up.</p>
+            <label class="opt"><input type="radio" name="timeline" value="Now. Within 30 days" /><span class="key">A</span><span class="txt">Now. Within 30 days</span></label>
+            <label class="opt"><input type="radio" name="timeline" value="Within 90 days" /><span class="key">B</span><span class="txt">Within 90 days</span></label>
+            <label class="opt"><input type="radio" name="timeline" value="Just exploring for now" /><span class="key">C</span><span class="txt">Just exploring for now</span></label>
+          </section>
+
+          <!-- ============ CONTACT ============ -->
+
+          <section class="qstep" data-q="contact" data-kind="contact">
+            <h2>Your score is ready. Where do we send it?</h2>
+            <p class="qsub">It shows on the next screen too, with your system-by-system breakdown.</p>
+            <div class="fld-row">
+              <label class="fld"><span class="fld__k">First name</span><input type="text" name="firstName" autocomplete="given-name" /></label>
+              <label class="fld"><span class="fld__k">Last name</span><input type="text" name="lastName" autocomplete="family-name" /></label>
+            </div>
+            <div class="fld-row">
+              <label class="fld"><span class="fld__k">Email</span><input type="email" name="email" autocomplete="email" /></label>
+              <label class="fld"><span class="fld__k">Phone</span><input type="tel" name="phone" autocomplete="tel" /></label>
+            </div>
+            <div class="qnav">
+              <button type="button" class="qback" data-back>&larr; Back</button>
+              <button type="submit" class="btn btn-teal qnext" id="qsubmit">Show my score</button>
+            </div>
+            <p class="qfine">Free, no charge for anything here. Your answers stay private. We will never sell or share your data.</p>
+          </section>
+
+          <div class="qerr" id="qerr" role="status" aria-live="polite"></div>
+        </form>
+
+        <!-- Calculating overlay -->
+        <div class="as-calc" id="calcScreen" style="display:none">
+          <div class="as-calc-ring"></div>
+          <h2>Scoring your answers&hellip;</h2>
+          <p id="calcLine">Reading your energy pattern</p>
+        </div>
+
+        <p class="qkeys" style="color: rgba(225,242,243,0.55)">Tip: press A, B, C&hellip; to answer, and Enter to continue.</p>
+      </div>
+    </div>
+
+    <figure class="ap-quote">
+      <span class="ap-qmark" aria-hidden="true">&ldquo;</span>
+      <p>I&rsquo;ve worked with trainers, doctors, and specialists for years. No one connected the dots the way Second Prime did.</p>
+      <figcaption class="ap-who">
+        <span class="ap-ava" aria-hidden="true">JM</span>
+        <span class="ap-name"><b>J. M.</b><span>Founder &amp; CEO, Real Estate &middot; 47</span></span>
+      </figcaption>
+    </figure>
+  </main>
+
+  <footer class="apply-footer">
+    <div class="f-logo" role="img" aria-label="Second Prime"></div>
+    <p class="tagline">Health &middot; Performance &middot; Longevity</p>
+    <p class="copy">&copy; 2026 Second Prime. All rights reserved.</p>
+  </footer>
+
+  <script>
+    (function () {
+      var form = document.getElementById('qform');
+      var bar = document.getElementById('qbar');
+      var count = document.getElementById('qcount');
+      var ghost = document.getElementById('qghost');
+      var err = document.getElementById('qerr');
+      var stepEl = function (q) { return form.querySelector('.qstep[data-q="' + q + '"]'); };
+      var idx = 0;
+
+      function normDash(s) { return String(s || '').replace(/[–—-]/g, '-').replace(/\s+/g, ' ').trim(); }
+      function picked(n) { var el = form.querySelector('input[name="' + n + '"]:checked'); return el ? el.value : ''; }
+
+      // Owners are anyone who picked "I own or co-own a business".
+      function isOwner() { return picked('role') === 'I own or co-own a business'; }
+
+      // Below threshold = owner under $500K revenue, or non-owner under $200K income.
+      // Those applicants get the $10K investment question; everyone above skips it.
+      function belowThreshold() {
+        if (isOwner()) return normDash(picked('businessRevenue')) === '$0 - $500K';
+        if (picked('role')) return normDash(picked('annualIncome')) === '$0 - $200K';
+        return false;
+      }
+
+      /* Full step sequence, interstitials included. The money question swaps on
+         the role answer, and the $10K question only appears below threshold. */
+      function sequence() {
+        var money = isOwner() ? 'revenue' : 'income';
+        var seq = ['age', 'role', 'int1',
+                   'energy', 'focus', 'int2',
+                   'bodycomp', 'insulin', 'int3',
+                   'sleep', 'recovery', 'drive', 'int4',
+                   'labs', 'family', 'trigger', 'int5',
+                   money];
+        if (belowThreshold()) seq.push('invest');
+        seq.push('timeline', 'contact');
+        return seq;
+      }
+
+      // Progress counts questions only, so interstitials never inflate "X of 14".
+      function qOnly(seq) { return seq.filter(function (q) { return stepEl(q).dataset.kind === 'q'; }); }
+      function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+      function paint() {
+        var seq = sequence();
+        form.querySelectorAll('.qstep').forEach(function (s) { s.classList.remove('on'); });
+        var cur = seq[idx];
+        stepEl(cur).classList.add('on');
+        var qs = qOnly(seq);
+        var qIdx = 0;
+        for (var i = 0; i <= idx; i++) { if (stepEl(seq[i]).dataset.kind === 'q') qIdx++; }
+        bar.style.width = ((qIdx / qs.length) * 100) + '%';
+        var kind = stepEl(cur).dataset.kind;
+        count.textContent = kind === 'q' ? qIdx + ' of ' + qs.length : (kind === 'contact' ? 'Last step' : '');
+        ghost.textContent = kind === 'q' ? pad(qIdx) : '';
+        err.classList.remove('on');
+        var shell = document.querySelector('.ap-shell');
+        var target = shell.getBoundingClientRect().top + window.scrollY - 96;
+        window.scrollTo({ top: Math.max(0, target), behavior: 'smooth' });
+        var focusable = stepEl(cur).querySelector('input[type="text"], input[type="email"], input[type="tel"]');
+        if (focusable && window.matchMedia('(min-width: 961px)').matches) focusable.focus({ preventScroll: true });
+      }
+      function next() { if (idx < sequence().length - 1) { idx++; paint(); } }
+      function back() {
+        // Skip interstitials when going back so nobody re-reads them.
+        var seq = sequence();
+        var i = idx - 1;
+        while (i > 0 && stepEl(seq[i]).dataset.kind === 'int') i--;
+        if (i >= 0) { idx = i; paint(); }
+      }
+      function showErr(msg) { err.textContent = msg; err.classList.add('on'); }
+
+      // Switching the role answer clears the money answer that no longer applies.
+      form.querySelectorAll('input[name="role"]').forEach(function (r) {
+        r.addEventListener('change', function () {
+          var stale = r.value === 'I own or co-own a business' ? 'annualIncome' : 'businessRevenue';
+          form.querySelectorAll('input[name="' + stale + '"]').forEach(function (m) { m.checked = false; });
+        });
+      });
+
+      // Radio steps auto-advance after a beat.
+      form.querySelectorAll('input[type="radio"]').forEach(function (r) {
+        r.addEventListener('click', function () { setTimeout(next, 280); });
+      });
+
+      // Age slider readout + fill.
+      var slider = document.getElementById('ageslider');
+      var ageval = document.getElementById('ageval');
+      function paintAge() {
+        var v = +slider.value;
+        ageval.textContent = v >= 75 ? '75+' : v;
+        slider.style.setProperty('--fill', ((v - 28) / (75 - 28) * 100) + '%');
+      }
+      slider.addEventListener('input', paintAge);
+      paintAge();
+
+      // Keyboard: A/B/C selects on the active step, Enter continues.
+      document.addEventListener('keydown', function (e) {
+        if (e.metaKey || e.ctrlKey || e.altKey) return;
+        var active = document.activeElement;
+        var typing = active && /^(INPUT|TEXTAREA)$/.test(active.tagName) && active.type !== 'range' && active.type !== 'radio' && active.type !== 'checkbox';
+        var step = stepEl(sequence()[idx]);
+        if (e.key === 'Enter' && !typing) {
+          var nxt = step.querySelector('[data-next], #qsubmit');
+          if (nxt) { e.preventDefault(); nxt.click(); }
+          return;
+        }
+        if (typing) return;
+        var k = e.key.toUpperCase();
+        if (k.length !== 1 || k < 'A' || k > 'Z') return;
+        var opts = step.querySelectorAll('.opt input');
+        var i = k.charCodeAt(0) - 65;
+        if (opts[i]) { e.preventDefault(); opts[i].click(); }
+      });
+
+      // Back + continue buttons.
+      form.addEventListener('click', function (e) {
+        if (e.target.closest('[data-back]')) { e.preventDefault(); back(); }
+        if (e.target.closest('[data-next]')) { e.preventDefault(); next(); }
+      });
+
+      /* ============ SCORING ============
+         Each scored answer carries data-domain + data-pts (deduction points).
+         Score = 100 - (total deductions x 2). Domain status comes from the
+         share of that domain's maximum possible deduction. */
+      var DOMAIN_MAX = { energy: 9, metabolic: 9, recovery: 4, hormones: 5, risk: 9 };
+      var DOMAIN_LABELS = { energy: 'Energy & Focus', metabolic: 'Metabolic Health', hormones: 'Hormones', recovery: 'Sleep & Recovery', risk: 'Hidden Risk' };
+      // recovery counts the worse of sleep/recovery answers plus half the other,
+      // computed below; DOMAIN_MAX.recovery reflects the single-answer max of 4.
+
+      function computeScore() {
+        var pts = { energy: 0, metabolic: 0, recovery: 0, hormones: 0, risk: 0 };
+        var recoveryAnswers = [];
+        form.querySelectorAll('input[type="radio"]:checked').forEach(function (el) {
+          var d = el.dataset.domain;
+          if (!d) return;
+          var p = +el.dataset.pts || 0;
+          if (d === 'recovery') { recoveryAnswers.push(p); return; }
+          pts[d] += p;
+        });
+        // Sleep + recovery blend: worst answer full weight, other half weight.
+        recoveryAnswers.sort(function (a, b) { return b - a; });
+        pts.recovery = (recoveryAnswers[0] || 0) + (recoveryAnswers[1] || 0) * 0.5;
+        DOMAIN_MAX.recovery = 6; // 4 + 4*0.5
+        var total = 0, maxTotal = 0;
+        Object.keys(pts).forEach(function (d) { total += pts[d]; maxTotal += DOMAIN_MAX[d]; });
+        var score = Math.round(100 - (total / maxTotal) * 78); // floor of 22
+        var domains = {};
+        Object.keys(pts).forEach(function (d) {
+          var share = pts[d] / DOMAIN_MAX[d];
+          domains[d] = {
+            label: DOMAIN_LABELS[d],
+            pct: Math.round(100 - share * 100),
+            status: share >= 0.7 ? 'flag' : share >= 0.3 ? 'drift' : 'solid'
+          };
+        });
+        return { score: score, domains: domains };
+      }
+
+      // Calculating screen: rotate lines, then go to results.
+      var CALC_LINES = ['Reading your energy pattern', 'Weighing metabolic signals', 'Checking hormone markers', 'Mapping your risk profile', 'Building your breakdown'];
+      function runCalc(done) {
+        form.style.display = 'none';
+        document.querySelector('.qkeys').style.display = 'none';
+        document.querySelector('.ap-progress').style.display = 'none';
+        document.getElementById('qghost').style.display = 'none';
+        var el = document.getElementById('calcScreen');
+        el.style.display = 'block';
+        var line = document.getElementById('calcLine');
+        var i = 0;
+        var t = setInterval(function () {
+          i++;
+          if (i >= CALC_LINES.length) { clearInterval(t); done(); return; }
+          line.textContent = CALC_LINES[i];
+        }, 700);
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var btn = document.getElementById('qsubmit');
+        var get = function (n) { return (form[n] && form[n].value ? String(form[n].value).trim() : ''); };
+        var ageNum = +slider.value;
+
+        var data = {
+          age: ageNum >= 75 ? '75+' : String(ageNum),
+          role: picked('role'),
+          energy: picked('energy'),
+          focus: picked('focus'),
+          bodycomp: picked('bodycomp'),
+          insulin: picked('insulin'),
+          sleep: picked('sleep'),
+          recovery: picked('recovery'),
+          drive: picked('drive'),
+          labs: picked('labs'),
+          family: picked('family'),
+          triggerEvent: picked('triggerEvent'),
+          businessRevenue: picked('businessRevenue'),
+          annualIncome: picked('annualIncome'),
+          investReady: picked('investReady'),
+          timeline: picked('timeline'),
+          firstName: get('firstName'),
+          lastName: get('lastName'),
+          email: get('email'),
+          phone: get('phone')
+        };
+
+        if (!data.firstName || !data.lastName || !data.email || !data.phone) { showErr('Please fill in your name, email, and phone.'); return; }
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)) { showErr('That email doesn’t look right. Mind checking it?'); return; }
+        var required = ['role', 'energy', 'focus', 'bodycomp', 'insulin', 'sleep', 'recovery', 'drive', 'labs', 'family', 'triggerEvent', 'timeline'];
+        for (var i = 0; i < required.length; i++) {
+          if (!data[required[i]]) { showErr('Looks like a question got skipped. Use Back to check your answers.'); return; }
+        }
+        if (isOwner() ? !data.businessRevenue : !data.annualIncome) { showErr('Looks like a question got skipped. Use Back to check your answers.'); return; }
+        if (belowThreshold() && !data.investReady) { showErr('Looks like a question got skipped. Use Back to check your answers.'); return; }
+
+        btn.disabled = true;
+        btn.textContent = 'Scoring…';
+
+        var result = computeScore();
+
+        /* Qualification gate (same thresholds as funnel v2).
+           Below threshold: rescued if they can invest at least $10K or could
+           make it happen. Otherwise the results page shows the soft path. */
+        var below =
+          (isOwner() && normDash(data.businessRevenue) === '$0 - $500K') ||
+          (!isOwner() && normDash(data.annualIncome) === '$0 - $200K');
+        var canInvest = /\$10K|make it happen/i.test(data.investReady || '');
+        var disqualified = below && !canInvest;
+
+        var payload = {
+          data: data,
+          score: result.score,
+          domains: result.domains,
+          qualified: !disqualified
+        };
+        try { localStorage.setItem('sp_assessment', JSON.stringify(payload)); } catch (_) {}
+        try { localStorage.setItem('sp_application', JSON.stringify(data)); } catch (_) {}
+
+        /* Send everything to GHL (same inbound webhook as funnel v2).
+           Form-encoded avoids a CORS preflight; keepalive lets it finish even
+           as we navigate to results. Fires for qualified AND disqualified. */
+        try {
+          var domainSummary = Object.keys(result.domains).map(function (d) {
+            var x = result.domains[d];
+            return x.label + ': ' + x.pct + ' (' + x.status + ')';
+          }).join(' | ');
+          var wh = new URLSearchParams({
+            first_name: data.firstName, last_name: data.lastName,
+            email: data.email, phone: data.phone,
+            outcome: 'Assessment score: ' + result.score,
+            age: data.age,
+            trigger_event: data.triggerEvent,
+            symptoms: ['Energy: ' + data.energy, 'Focus: ' + data.focus, 'Body: ' + data.bodycomp, 'Sleep: ' + data.sleep, 'Recovery: ' + data.recovery, 'Drive: ' + data.drive].join(' | '),
+            already_tried: 'Labs: ' + data.labs + ' | Insulin: ' + data.insulin + ' | Family: ' + data.family,
+            notes: 'Second Prime Score ' + result.score + '. ' + domainSummary,
+            business_owner: isOwner() ? 'Yes' : 'No',
+            business_revenue: data.businessRevenue,
+            annual_income: data.annualIncome,
+            investment: data.investReady || 'Skipped (above threshold)',
+            timeline: data.timeline,
+            heard_about: 'Assessment Funnel',
+            qualified: disqualified ? 'No' : 'Yes',
+            application_source: 'Assessment Funnel V1'
+          });
+          fetch('https://services.leadconnectorhq.com/hooks/FlDP3vggPbCWokd7J6xc/webhook-trigger/152fcbfd-cb5a-4bd7-b31e-5f60a2c91073', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: wh.toString(),
+            mode: 'no-cors',
+            keepalive: true
+          }).catch(function () {});
+        } catch (_) {}
+
+        try { if (window.fbq) fbq('track', 'CompleteRegistration'); } catch (_) {}
+
+        runCalc(function () { window.location.href = 'results.html'; });
+      });
+
+      paint();
+    })();
+  </script>
+</body>
+</html>
