@@ -1,74 +1,90 @@
 # Second Prime Assessment Funnel — Handoff
 
-Built July 2026 for cold Meta traffic. A quiz funnel: the prospect scores
-themselves, the results page interprets the score and twists the knife, and the
-call is positioned as the way to confirm what the score suggests. Five pages,
-self-contained (fonts, logo, images, CSS all included, copied from funnel-v2).
+Built July 2026 for cold Meta traffic, reworked July 27 after Andrew's review.
+A quiz funnel where the assessment is the intake: the prospect scores
+themselves, qualified people go straight to the calendar with their results as
+the reason to show up, and the written breakdown arrives by email. Six files,
+self-contained (fonts, logo, images, CSS copied from funnel-v2).
 
-**Flow:** `index.html` (landing + video) → `assessment.html` (14 questions +
-5 trust interstitials) → `results.html` (score + breakdown + video + CTA) →
-`booking.html` → `thank-you.html`.
+**Flow:** `index.html` (landing + video) → `assessment.html` (13 questions +
+4 dynamic trust interstitials) → qualified: `booking.html` → `thank-you.html`
+/ disqualified: `results.html` soft path. `FLOW.html` is a visual map of every
+step and branch; open it in a browser.
 
 ## How it works
 
-**Landing (`index.html`)** — short by design. Hero with video slot, the 5
-systems the score reads, 3-step how-it-works, proof band, cases, final CTA.
-Every CTA goes to the assessment.
+**Landing (`index.html`)** — video slot at top of the hero, every CTA goes to
+the assessment. Copy promises the score plus a Risk and Performance read.
 
 **Assessment (`assessment.html`)**
-- 14 scored/context questions in 6 sections: the seat you're in, energy and
-  focus, metabolic, sleep/recovery/drive, hidden risk, fit.
-- 5 interstitials between sections (Hims/Hers style): the AHA "normal
-  cholesterol" stat, the D.R. brain-fog testimonial, the Dustin case card, the
-  testosterone-decline stat with the J.M. quote, and the R.S. skeptic quote.
-  They're steps in the sequence with `data-kind="int"`; progress counts
-  questions only, and Back skips over them.
-- Scoring: answers carry `data-domain` + `data-pts` (deductions). Score =
-  100 minus scaled deductions, floor ~22 so nobody bottoms out. Domains get
-  solid / drifting / red-flag status by share of max deduction.
-- Qualification is the same gate as funnel v2, framed as "fit" questions:
-  owners under $500K revenue and non-owners under $200K income get the $10K
-  investment question; a no there marks them disqualified. DQ users still see
-  their results, minus the booking CTAs (soft path instead).
-- Contact gate sits before the score ("Your score is ready. Where do we send
-  it?"), then a fake-calculating screen, then results.
+- 13 questions: outcome, age, role, then 4 performance (energy, focus, sleep,
+  drive), 3 risk (body comp, family history, testing depth), trigger event,
+  money question (revenue for owners, income otherwise), conditional $10K
+  invest question, timeline, then contact.
+- 4 interstitials, 3 of them DYNAMIC: each reads the answers just given and
+  shows matching proof. Role → "built for owners/operators" positioning.
+  Worst performance answer → testosterone math + J.M., or the 3pm-fog
+  chemistry + D.R., or the strong-baseline + R.S. variant. Risk answers →
+  family-history stat, or 1,000-vs-40-markers, or "the read is the other
+  half," all ending on the Dustin case card. Copy pulls from
+  `outputs/Market_Copy_Messaging_File.md` (the market's own words).
+- Scoring: 2 buckets. Performance = energy + focus + sleep + drive (max 18
+  deduction points). Risk = body comp + family + testing gap (max 14). Bucket
+  status: solid under 28%, drifting to 60%, flagged above. Overall score =
+  100 minus scaled deductions, floor ~22.
+- Qualification: same gate as funnel v2. Owners under $500K revenue and
+  non-owners under $200K income get the $10K question; a "more than I can
+  invest" there disqualifies.
+- Routing after submit: qualified → `booking.html` directly (results are the
+  call's agenda, never shown first). Disqualified → `results.html` soft path.
 
-**Results (`results.html`)** — reads `localStorage.sp_assessment`. Animated
-gauge, verdict line by score band, domain bars, up to 3 "what it's costing
-you" blocks (flags first), the honest-caveat section (answers point, labs
-confirm), video slot, booking CTA with the 3-step call preview, case strip.
-Direct visits with no stored result bounce back to the assessment.
+**Results (`results.html`)** — now primarily for disqualified users, the
+thank-you link, and the email link. Book CTA + video at the very top (both
+hidden for DQ). Two sections, worse one first: Risk and Performance, each
+with a score bar and "mirror" cards: the person's own answer quoted back,
+with what it usually means in labs. Direct visits with no stored result
+bounce to the assessment.
 
-**Booking / thank-you** — copied from funnel-v2 (custom calendar with GHL
-widget fallback), with the process copy reworded around the score review.
+**Booking (`booking.html`)** — headline: "Your results are ready. Pick a time
+and we'll walk you through them." Score teaser strip above the calendar
+(score number + both statuses, no detail). Custom calendar with GHL widget
+fallback, same as funnel v2.
+
+**Thank-you (`thank-you.html`)** — show-rate homework + "see your full
+breakdown" button to the results page. Curiosity gets satisfied after
+booking.
 
 ## Wiring
 
-- **GHL webhook:** same inbound webhook as funnel v2. Fires on assessment
-  submit for qualified AND disqualified. `application_source` is
-  `Assessment Funnel V1`; the score and domain breakdown arrive in `notes`
-  (e.g. `Second Prime Score 61. Energy & Focus: 44 (flag) | ...`), and the
-  symptom answers are packed into `symptoms` / `already_tried` so Mike sees
-  everything before triage.
+- **GHL webhook:** same inbound webhook as funnel v2, fires for qualified AND
+  disqualified. `application_source` = `Assessment Funnel V1`. Score and both
+  reads in `notes` (`Second Prime Score 61. Risk: 43 (flag) | Performance: 61
+  (drift)`), performance answers in `symptoms`, risk answers in
+  `already_tried`, trigger event in `trigger_event`.
+- **Results email:** the funnel promises results by email. Build the GHL
+  workflow from `RESULTS-EMAIL.md` (2 variants + a 24-hour no-book nudge).
+  This is required wiring, the same tier as SMS reminders.
 - **Facebook pixel:** wired on all 5 pages (Amartinco LLC's Pixel,
   `500535282073021`, from the Dr. Martin - EHP 1 ad account). PageView
   everywhere, `CompleteRegistration` on assessment submit, `Schedule` on the
-  thank-you page. Neutral names only per Meta health-advertiser rules; the
-  pixel does not fire on localhost. If ads should run from a different ad
-  account/pixel, swap the ID in the head snippet on all 5 pages.
-- **Videos:** two slots with placeholder frames. Scripts and swap instructions
-  in `VIDEO-SCRIPTS.md`. Until real videos land, the landing placeholder
-  click starts the assessment and the results placeholder scrolls to the CTA.
-- **Hosting:** same two modes as funnel v2. Static anywhere (booking falls
-  back to the embedded GHL widget) or Vercel with `GHL_CALENDAR_ID` +
-  `GHL_API_KEY` for the native calendar (`api/` included).
+  thank-you page. Neutral names only per Meta health-advertiser rules. The
+  pixel does not fire on localhost, github.io, or tests.secondprime.io.
+- **Videos:** two slots (landing hero, top of results). Scripts in
+  `VIDEO-SCRIPTS.md`. Until real videos land, the landing placeholder click
+  starts the assessment and the results placeholder scrolls to the CTA.
+- **GHL calendar:** cap availability at 14 days out, align the widget copy to
+  "15-minute call," instant SMS confirmation + reminder (highest-impact
+  show-rate lever in the research).
+- **Hosting:** static anywhere (booking falls back to the GHL widget) or
+  Vercel with `GHL_CALENDAR_ID` + `GHL_API_KEY` for the native calendar
+  (`api/` included). Preview lives at tests.secondprime.io/assessment-funnel/.
 
 ## Brand rules baked in (do not deviate)
 
 - Zodiak headlines, Satoshi everything else, loaded locally.
-- New styles live in `css/assess.css` only; `styles.css` and `funnel.css` are
-  untouched copies from funnel-v2. Bump `?v=` on edits.
+- New styles live in `css/assess.css` only; bump `?v=` on edits.
 - The call is a **15-minute call** everywhere. No pricing on any page.
-- Stats and testimonials are reused verbatim from funnel-v2 / the live site.
-  Nothing new was invented; if you add claims, source them first.
-- Score disclaimer (educational, not a diagnosis) is in both footers. Keep it.
+- Stats and testimonials reused verbatim from funnel-v2 / the live site plus
+  the Market Copy Messaging File. If you add claims, source them first.
+- Score disclaimer (educational, not a diagnosis) stays in both footers and
+  the results email.

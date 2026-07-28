@@ -72,7 +72,8 @@
 .as-int-who { margin-top: 14px; font-size: 14px; color: rgba(225,242,243,0.65); }
 .as-int-who b { color: #FDFBF8; margin-right: 8px; }
 
-.as-int-case { display: flex; align-items: center; gap: 18px; max-width: 560px; margin: 6px auto 0; text-align: left; }
+.as-int-case { display: flex; align-items: center; gap: 18px; max-width: 560px; margin: 22px auto 0; text-align: left; }
+.as-int-casetitle { font-family: var(--font-serif); font-weight: 400; font-size: 21px; color: #FDFBF8; margin: 0 0 4px; }
 .as-int-case img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(101,200,208,0.5); flex-shrink: 0; }
 .as-int-stats { list-style: none; display: flex; justify-content: center; gap: 34px; margin: 22px 0 0; padding: 0; flex-wrap: wrap; }
 .as-int-stats b { display: block; font-family: var(--font-serif); font-weight: 400; font-size: 30px; color: var(--teal-bright); }
@@ -115,6 +116,40 @@
 .rs-num b { display: block; font-family: var(--font-serif); font-weight: 400; font-size: clamp(58px, 8vw, 84px); color: #FDFBF8; line-height: 1; }
 .rs-num span { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(225,242,243,0.55); }
 .rs-verdict { max-width: 52ch; margin: 18px auto 0; font-size: clamp(17px, 2vw, 20px); line-height: 1.6; color: rgba(253,251,248,0.85); }
+
+/* ---------- Results: tighter hero with top CTA + video ---------- */
+.rs-hero-tight { padding-bottom: 84px; }
+.rs-hero-tight .rs-gauge { margin-bottom: 0; }
+.rs-topcta { margin: 26px 0 40px; }
+.rs-hero-tight .as-video { margin-top: 0; }
+
+/* ---------- Results: bucket sections (Risk / Performance) ---------- */
+.rs-bucket { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 30px; margin-bottom: 22px; }
+.rs-b-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
+.rs-b-head h3 { font-family: var(--font-serif); font-weight: 400; font-size: 28px; margin: 0 0 2px; }
+.rs-b-head p { font-size: 14px; color: var(--gray); margin: 0; }
+.rs-bucket .rs-d-bar { margin-bottom: 6px; }
+.rs-bucket.is-solid .rs-d-status { color: var(--teal-deep); background: rgba(69,141,147,0.12); }
+.rs-bucket.is-drift .rs-d-status { color: #8A6A1F; background: rgba(217,200,174,0.35); }
+.rs-bucket.is-flag .rs-d-status { color: #9C3B32; background: rgba(196,88,77,0.14); }
+.rs-bucket.is-solid .rs-d-bar i { background: var(--teal); }
+.rs-bucket.is-drift .rs-d-bar i { background: #C9A85C; }
+.rs-bucket.is-flag .rs-d-bar i { background: #C4584D; }
+
+.rs-mirror { border-top: 1px solid var(--border); padding: 16px 0 4px; margin-top: 16px; }
+.rs-m-you { font-family: var(--font-serif); font-size: 18px; line-height: 1.5; color: var(--ink); margin: 0 0 6px; }
+.rs-m-mean { font-size: 15px; line-height: 1.65; color: var(--gray); margin: 0; }
+.rs-mirror-solid { border-top: none; padding-top: 10px; margin-top: 8px; }
+
+/* ---------- Booking: score teaser strip ---------- */
+.bk-teaser {
+  max-width: 680px; margin: -8px auto 30px; display: flex; align-items: center; justify-content: center;
+  gap: 18px; flex-wrap: wrap; padding: 16px 22px; border-radius: var(--radius);
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(101,200,208,0.3);
+}
+.bk-teaser .bk-t-score { font-family: var(--font-serif); font-weight: 400; font-size: 40px; color: var(--teal-bright); line-height: 1; }
+.bk-teaser .bk-t-txt { text-align: left; font-size: 14px; line-height: 1.5; color: rgba(225,242,243,0.85); max-width: 40ch; }
+.bk-teaser .bk-t-txt b { display: block; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(225,242,243,0.6); margin-bottom: 3px; font-weight: 700; }
 
 /* ---------- Results: domain bars ---------- */
 .rs-domains { max-width: 720px; margin: 0 auto; display: grid; gap: 16px; }

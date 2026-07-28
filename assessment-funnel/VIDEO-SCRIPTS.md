@@ -39,12 +39,14 @@ read every time. One idea per sentence.
 
 ---
 
-## Video 2 — Results page (60 to 90 seconds)
+## Video 2 — Results page, top of page (60 to 90 seconds)
 
-Job: they just saw their score and the flagged systems. This video makes the
-score feel real, twists the knife on the cost of waiting, then makes the call
-feel safe and worth 15 minutes. Speak to a score in the 50-75 range since
-that's where most viewers will land.
+Placement note (July 27 rework): this video now sits at the very top of the
+results page, right under the score, next to the book button. Qualified
+people mostly reach this page from the results email or the thank-you link,
+so many viewers have already booked or bailed on booking; the video's job is
+to make the read feel real and pull the unbooked ones onto the calendar.
+Speak to a score in the 50-75 range since that's where most land.
 
 **Structure:**
 

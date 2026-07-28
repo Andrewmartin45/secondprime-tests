@@ -12,6 +12,7 @@
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="css/styles.css?v=1" />
   <link rel="stylesheet" href="css/funnel.css?v=11" />
+  <link rel="stylesheet" href="css/assess.css?v=2" />
   <!-- Meta pixel (Amartinco LLC's Pixel). Neutral event names only, per Meta health-advertiser rules. -->
   <script>
   (function () {
@@ -34,13 +35,18 @@
 
   <main class="ap">
     <div class="ap-head">
-      <span class="eyebrow">Score Saved</span>
-      <h1 id="bkHeadline">One step left.<br />Pick your time.</h1>
-      <p class="ap-sub">Grab a spot for your free 15-minute call. Sooner beats later: the momentum you have right now is worth keeping.<span id="emailNote"></span></p>
+      <span class="eyebrow">Results Ready</span>
+      <h1 id="bkHeadline">Your results are ready.<br />Pick a time and we&rsquo;ll walk you through them.</h1>
+      <p class="ap-sub">A free 15-minute call. We review your Risk and Performance read before we get on, and your written summary lands in your inbox either way.<span id="emailNote"></span></p>
+    </div>
+
+    <div class="bk-teaser" id="bkTeaser" style="display:none">
+      <span class="bk-t-score" id="bkScore"></span>
+      <div class="bk-t-txt"><b>Your Second Prime Score</b><span id="bkTease"></span></div>
     </div>
 
     <div class="ap-process">
-      <div class="ap-p"><b>01</b><div>The score review</div><span>We go through your score and answers before the call</span></div>
+      <div class="ap-p"><b>01</b><div>The results walkthrough</div><span>Your Risk and Performance read, explained live</span></div>
       <div class="ap-p"><b>02</b><div>Can we help?</div><span>A straight answer on whether we&rsquo;re the right fit</span></div>
       <div class="ap-p"><b>03</b><div>The plan</div><span>What the process looks like, timeline, how to start</span></div>
     </div>
@@ -193,8 +199,21 @@
       if (firstName) {
         finish.href = 'thank-you.html?first_name=' + encodeURIComponent(firstName);
         var head = document.getElementById('bkHeadline');
-        head.innerHTML = firstName.replace(/[<>&"]/g, '') + ', one step left.<br />Pick your time.';
+        head.innerHTML = firstName.replace(/[<>&"]/g, '') + ', your results are ready.<br />Pick a time and we&rsquo;ll walk you through them.';
       }
+
+      /* Score teaser strip: pulls the result saved by the assessment. Keeping
+         the full read for the call is deliberate; this line sustains the pull. */
+      try {
+        var res = JSON.parse(localStorage.getItem('sp_assessment') || 'null');
+        if (res && typeof res.score === 'number' && res.risk && res.perf) {
+          var label = function (s) { return s === 'flag' ? 'flagged' : s === 'drift' ? 'drifting' : 'solid'; };
+          document.getElementById('bkScore').textContent = res.score;
+          document.getElementById('bkTease').textContent =
+            'Risk: ' + label(res.risk.status) + '. Performance: ' + label(res.perf.status) + '. We’ll walk through what’s behind both on your call.';
+          document.getElementById('bkTeaser').style.display = '';
+        }
+      } catch (_) {}
 
       /* If /api/slots isn't deployed (plain static hosting), fall back to the
          embedded GHL booking widget so the page always works. */
