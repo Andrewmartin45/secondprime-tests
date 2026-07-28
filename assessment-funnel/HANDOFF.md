@@ -1,10 +1,12 @@
 # Second Prime Assessment Funnel — Handoff
 
-Built July 2026 for cold Meta traffic, reworked July 27 after Andrew's review.
-A quiz funnel where the assessment is the intake: the prospect scores
-themselves, qualified people go straight to the calendar with their results as
-the reason to show up, and the written breakdown arrives by email. Six files,
-self-contained (fonts, logo, images, CSS copied from funnel-v2).
+Built July 2026 for cold Meta traffic, repositioned July 27 after Andrew's
+review. POSITIONING (do not drift from this): the funnel is an INTAKE, step 1
+of working with Second Prime, and the call is step 2 where they get answers
+and a direction. The intake arms the team; nobody "reviews results" with the
+prospect, and no numeric score is ever shown to them (it exists only for
+internal triage in the webhook). Self-contained files (fonts, logo, images,
+CSS copied from funnel-v2).
 
 **Flow:** `index.html` (landing + video) → `assessment.html` (13 questions +
 4 dynamic trust interstitials) → qualified: `booking.html` → `thank-you.html`
@@ -38,17 +40,20 @@ the assessment. Copy promises the score plus a Risk and Performance read.
 - Routing after submit: qualified → `booking.html` directly (results are the
   call's agenda, never shown first). Disqualified → `results.html` soft path.
 
-**Results (`results.html`)** — now primarily for disqualified users, the
-thank-you link, and the email link. Book CTA + video at the very top (both
-hidden for DQ). Two sections, worse one first: Risk and Performance, each
-with a score bar and "mirror" cards: the person's own answer quoted back,
-with what it usually means in labs. Direct visits with no stored result
-bounce to the assessment.
+**Intake summary (`results.html`)** — for disqualified users, the thank-you
+link, and the email link. No gauge, no number: status chips (Risk /
+Performance) up top, book CTA + video at the very top (both hidden for DQ),
+then the two sections, worse one first, each with "mirror" cards: the
+person's own answer quoted back, with what it usually means in labs. Direct
+visits with no stored result bounce to the intake. `?demo=1` / `?demo=dq`
+preview modes.
 
-**Booking (`booking.html`)** — headline: "Your results are ready. Pick a time
-and we'll walk you through them." Score teaser strip above the calendar
-(score number + both statuses, no detail). Custom calendar with GHL widget
-fallback, same as funnel v2.
+**Booking (`booking.html`)** — step 2 of 2. Headline: "Your intake is in.
+Pick your time." Above the calendar: up to 3 plain-language flags computed
+from their answers ("The afternoon energy crash", "Family health history"),
+never a score. Video slot below the calendar ("what happens on the call").
+Custom calendar with GHL widget fallback, same as funnel v2. `?demo=1`
+previews the flags strip.
 
 **Thank-you (`thank-you.html`)** — show-rate homework + "see your full
 breakdown" button to the results page. Curiosity gets satisfied after

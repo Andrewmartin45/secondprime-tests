@@ -1,81 +1,79 @@
-# Results email (for the GHL workflow)
+# Intake summary email (for the GHL workflow)
 
-Qualified people go straight to booking, so this email delivers the written
-results afterward and catches the ones who bailed before picking a time. Wire
-it into the same GHL workflow the webhook triggers (`application_source =
-Assessment Funnel V1`). Send it 10 to 15 minutes after submission so the call
-booking stays the first ask.
+Qualified people go straight to booking after the intake, so this email
+delivers the written summary and catches the ones who bailed before picking a
+time. Wire it into the GHL workflow the webhook triggers
+(`application_source = Assessment Funnel V1`). Send 10 to 15 minutes after
+submission so booking stays the first ask.
 
-The webhook delivers everything needed as contact fields: the score and both
-reads arrive in `notes` (e.g. `Second Prime Score 61. Risk: 43 (flag) |
-Performance: 61 (drift)`), the performance answers in `symptoms`, and the
-risk answers in `already_tried`. Map them to custom fields when building the
-workflow so the merge tags below resolve.
+Positioning rule for every send: the intake armed us, the call is where they
+get answers. Never frame the call as "reviewing your results." No numeric
+score anywhere; the score exists only for internal triage.
+
+The webhook delivers what's needed: risk and performance statuses in `notes`,
+performance answers in `symptoms`, risk answers in `already_tried`, trigger
+in `trigger_event`. Map to custom fields so the merge tags resolve.
 
 Two variants. GHL branches on the `qualified` field.
 
 ---
 
-## Variant A — qualified, hasn't booked yet (or booked; same email works)
+## Variant A — qualified (booked or not; same email works)
 
 **Subject options (test these):**
-1. `{{contact.first_name}}, your Second Prime Score: {{score}}`
-2. Your results, in writing
-3. What your answers say, {{contact.first_name}}
+1. `{{contact.first_name}}, your intake summary`
+2. What your intake flagged
+3. Your intake is in. Here's what stood out.
 
 **Body:**
 
 {{contact.first_name}},
 
-Your Second Prime Score came out to **{{score}} out of 100**.
+Your intake is in, and we've been through it. The short version:
 
-The short version:
-
-- **Risk: {{risk_status}}.** Built from what you told us about your body
+- **Risk: {{risk_status}}.** From what you told us about your body
   composition, family history, and how long it's been since anyone tested you
   past a standard physical.
-- **Performance: {{performance_status}}.** Built from your energy, focus,
-  sleep, and drive answers.
+- **Performance: {{performance_status}}.** From your energy, focus, sleep,
+  and drive answers.
 
-Here's the honest caveat. Your answers can point, and only labs can confirm.
-Symptoms are the last thing to show up, usually years after the numbers start
-moving. A standard physical checks a few dozen markers. We measure 1,000+ and
-read them against optimal, the way we've done for 500+ founders and
-executives.
+Here's the thing about an intake like this. Your answers tell us where to
+look. They can't tell us what's there. Symptoms show up years after the
+numbers start moving, and a standard physical checks a few dozen markers
+where we measure 1,000+.
 
-That's exactly what the 15-minute call is for. We go through your read line by
-line, tell you which labs would confirm or clear each flag, and give you a
-straight answer on whether we can help. No pitch at the end.
+That's what the call is for. We come armed with everything you told us, we
+tell you what we'd test first and why, and you get a straight answer on
+whether we can help. 15 minutes, free, no pitch at the end.
 
-**[Book your 15-minute call]({{booking_link}})**
+**[Pick your time]({{booking_link}})**
 
 Andrew Martin
 Founder and Biologist, Second Prime
 
-*This score is an educational self-assessment based on your answers. It is
-not a diagnosis and is not a substitute for medical care.*
+*Your intake summary is educational and based on your answers. It is not a
+diagnosis and is not a substitute for medical care.*
 
 ---
 
 ## Variant B — disqualified
 
-**Subject:** Your results, and a straight answer
+**Subject:** Your intake summary, and a straight answer
 
 **Body:**
 
 {{contact.first_name}},
 
-Your Second Prime Score came out to **{{score}} out of 100**. Risk:
-{{risk_status}}. Performance: {{performance_status}}.
+Your intake is in. Risk came back {{risk_status}}, performance
+{{performance_status}}.
 
 We'll be straight with you: based on where you are right now, our programs
 would be the wrong fit, and we'd rather say that than take your time or
 money.
 
-Your results still stand, so use them. Get real bloodwork done this year.
-Anything flagged in your read is worth a conversation with your doctor, and
+Your summary still stands, so use it. Get real bloodwork done this year, and
 ask for more than the standard panel: fasting insulin, ApoB, a full hormone
-panel, hs-CRP.
+panel, hs-CRP. Anything flagged in your intake is worth that conversation.
 
 If your situation changes, the door is open. We'd genuinely welcome you back.
 
@@ -88,9 +86,8 @@ Founder and Biologist, Second Prime
 
 ## Follow-up sequence note
 
-If the qualified contact hasn't booked within 24 hours, GHL should send one
-nudge: subject `Your results are still waiting, {{contact.first_name}}`, body
-2 lines: "Your Risk read came back {{risk_status}}. 15 minutes gets it
-explained: {{booking_link}}." After that, drop them into the normal
-long-term nurture. The trigger-event answer (`trigger_event` field) is the
-best personalization hook for later sends.
+If a qualified contact hasn't booked within 24 hours, send one nudge: subject
+`Your call time is still open, {{contact.first_name}}`, body 2 lines: "Your
+intake flagged your {{worst_area}}. 15 minutes gets you our read on it:
+{{booking_link}}." Then drop into normal nurture. The `trigger_event` field
+is the best personalization hook for later sends.

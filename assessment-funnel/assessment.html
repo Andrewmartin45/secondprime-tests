@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Second Prime Score | Second Prime</title>
-  <meta name="description" content="13 questions, 3 minutes. Get your Second Prime Score." />
+  <title>The Second Prime Intake | Second Prime</title>
+  <meta name="description" content="Step 1 of 2: a 3-minute intake that maps your risk and performance gaps before your call." />
   <meta name="robots" content="noindex, nofollow" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
@@ -12,7 +12,7 @@
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="css/styles.css?v=1" />
   <link rel="stylesheet" href="css/funnel.css?v=11" />
-  <link rel="stylesheet" href="css/assess.css?v=2" />
+  <link rel="stylesheet" href="css/assess.css?v=3" />
   <!-- Meta pixel (Amartinco LLC's Pixel). Neutral event names only, per Meta health-advertiser rules. -->
   <script>
   (function () {
@@ -49,9 +49,9 @@
 
   <main class="ap" id="assessment">
     <div class="ap-head">
-      <span class="eyebrow">The Second Prime Score</span>
-      <h1>Let&rsquo;s see where you stand.</h1>
-      <p class="ap-sub">13 questions, about 3 minutes. Answer honestly. The score is only as useful as what you put in.</p>
+      <span class="eyebrow">The Second Prime Intake &middot; Step 1 of 2</span>
+      <h1>Let&rsquo;s get your background.</h1>
+      <p class="ap-sub">13 questions, about 3 minutes. Your answers shape what we look for and what we bring to your call. Answer honestly; the read is only as useful as what you put in.</p>
     </div>
 
     <div class="ap-card">
@@ -68,7 +68,7 @@
 
           <section class="qstep on" data-q="outcome" data-kind="q">
             <h2>What do you want most from the next 10 years?</h2>
-            <p class="qsub">This decides what your report leads with.</p>
+            <p class="qsub">This decides what we dig into first.</p>
             <label class="opt"><input type="radio" name="outcome" value="Lower my risk (heart disease, diabetes, decline)" /><span class="key">A</span><span class="txt">Lower my risk (heart disease, diabetes, decline)</span></label>
             <label class="opt"><input type="radio" name="outcome" value="Perform like I used to (energy, focus, body)" /><span class="key">B</span><span class="txt">Perform like I used to (energy, focus, body)</span></label>
             <label class="opt"><input type="radio" name="outcome" value="More strong years with the people I love" /><span class="key">C</span><span class="txt">More strong years with the people I love</span></label>
@@ -89,7 +89,7 @@
 
           <section class="qstep" data-q="role" data-kind="q">
             <h2>Which best describes you?</h2>
-            <p class="qsub">The score weighs stress load, and carrying a company is its own category.</p>
+            <p class="qsub">The intake weighs stress load, and carrying a company is its own category.</p>
             <label class="opt"><input type="radio" name="role" value="I own or co-own a business" /><span class="key">A</span><span class="txt">I own or co-own a business</span></label>
             <label class="opt"><input type="radio" name="role" value="Executive or senior leader" /><span class="key">B</span><span class="txt">Executive or senior leader</span></label>
             <label class="opt"><input type="radio" name="role" value="Other" /><span class="key">C</span><span class="txt">Other</span></label>
@@ -263,13 +263,13 @@
           <!-- INTERSTITIAL 4: pre-contact expectation setting -->
           <section class="qstep as-int" data-q="int4" data-kind="int">
             <span class="as-int-tag">Last stretch</span>
-            <h2 class="as-int-h">Your Risk and Performance read is built.</h2>
+            <h2 class="as-int-h">Your intake is almost in.</h2>
             <div class="as-int-quote">
               <div class="f-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
               <p>&ldquo;I came in skeptical. I&rsquo;d done bloodwork a dozen times. Andrew found things in week one nobody had flagged.&rdquo;</p>
               <div class="as-int-who"><b>R.S.</b><span>Founder, Tech &middot; Age 44</span></div>
             </div>
-            <p class="as-int-p">One more screen: where to send it. Then we&rsquo;ll get you your results.</p>
+            <p class="as-int-p">One more screen for your details, then you&rsquo;ll pick a time for your call. We review everything you just told us before we get on.</p>
             <div class="qnav qnav-center">
               <button type="button" class="btn btn-teal qnext" data-next>Continue</button>
             </div>
@@ -278,8 +278,8 @@
           <!-- ============ CONTACT ============ -->
 
           <section class="qstep" data-q="contact" data-kind="contact">
-            <h2>Where do we send your results?</h2>
-            <p class="qsub">Your score and full Risk and Performance breakdown.</p>
+            <h2>Last step. Who is this intake for?</h2>
+            <p class="qsub">We&rsquo;ll send your intake summary here, and you&rsquo;ll pick your call time on the next screen.</p>
             <div class="fld-row">
               <label class="fld"><span class="fld__k">First name</span><input type="text" name="firstName" autocomplete="given-name" /></label>
               <label class="fld"><span class="fld__k">Last name</span><input type="text" name="lastName" autocomplete="family-name" /></label>
@@ -290,7 +290,7 @@
             </div>
             <div class="qnav">
               <button type="button" class="qback" data-back>&larr; Back</button>
-              <button type="submit" class="btn btn-teal qnext" id="qsubmit">Get my results</button>
+              <button type="submit" class="btn btn-teal qnext" id="qsubmit">Complete my intake</button>
             </div>
             <p class="qfine">Free, no charge for anything here. Your answers stay private. We will never sell or share your data.</p>
           </section>
@@ -301,8 +301,8 @@
         <!-- Calculating overlay -->
         <div class="as-calc" id="calcScreen" style="display:none">
           <div class="as-calc-ring"></div>
-          <h2>Scoring your answers&hellip;</h2>
-          <p id="calcLine">Reading your performance pattern</p>
+          <h2>Logging your intake&hellip;</h2>
+          <p id="calcLine">Reading your background</p>
         </div>
 
         <p class="qkeys" style="color: rgba(225,242,243,0.55)">Tip: press A, B, C&hellip; to answer, and Enter to continue.</p>
@@ -527,7 +527,7 @@
       }
 
       // Calculating screen: rotate lines, then hand off.
-      var CALC_LINES = ['Reading your performance pattern', 'Weighing your risk signals', 'Comparing against 500+ owner profiles', 'Building your breakdown'];
+      var CALC_LINES = ['Reading your background', 'Mapping your performance gaps', 'Mapping your risk factors', 'Prepping your call notes'];
       function runCalc(done) {
         form.style.display = 'none';
         document.querySelector('.qkeys').style.display = 'none';
@@ -582,7 +582,7 @@
         if (belowThreshold() && !data.investReady) { showErr('Looks like a question got skipped. Use Back to check your answers.'); return; }
 
         btn.disabled = true;
-        btn.textContent = 'Scoring…';
+        btn.textContent = 'Logging…';
 
         var result = computeScore();
 

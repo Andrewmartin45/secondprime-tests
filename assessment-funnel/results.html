@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Results | Second Prime</title>
-  <meta name="description" content="Your Second Prime Score with your Risk and Performance breakdown." />
+  <title>Your Intake Summary | Second Prime</title>
+  <meta name="description" content="Your intake summary: risk and performance gaps, in your own words." />
   <meta name="robots" content="noindex, nofollow" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
@@ -12,7 +12,7 @@
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="css/styles.css?v=1" />
   <link rel="stylesheet" href="css/funnel.css?v=11" />
-  <link rel="stylesheet" href="css/assess.css?v=2" />
+  <link rel="stylesheet" href="css/assess.css?v=3" />
   <!-- Meta pixel (Amartinco LLC's Pixel). Neutral event names only, per Meta health-advertiser rules. -->
   <script>
   (function () {
@@ -38,21 +38,13 @@
   <!-- ============ SCORE + VIDEO + TOP CTA ============ -->
   <section class="rs-hero rs-hero-tight">
     <div class="container center">
-      <span class="hero-tag">Your Results</span>
-      <h1 id="rsHeadline">Your Second Prime Score</h1>
-      <div class="rs-scoreline">
-        <div class="rs-gauge" aria-hidden="true">
-          <svg viewBox="0 0 200 120">
-            <path class="rs-track" d="M 20 110 A 80 80 0 0 1 180 110" />
-            <path class="rs-fill" id="gaugeFill" d="M 20 110 A 80 80 0 0 1 180 110" />
-          </svg>
-          <div class="rs-num"><b id="scoreNum">0</b><span>out of 100</span></div>
-        </div>
-      </div>
+      <span class="hero-tag">Your Intake Summary</span>
+      <h1 id="rsHeadline">Here&rsquo;s what your intake flagged.</h1>
+      <div class="rs-herochips" id="heroChips"></div>
       <p class="rs-verdict" id="verdict"></p>
       <div class="rs-topcta" id="topCta">
         <a class="btn btn-teal btn-lg" href="booking.html" id="bookBtn">Book My Free 15-Minute Call&ensp;&rarr;</a>
-        <p class="f-hero-note" style="margin-top:12px">We review your results before the call and walk you through them live.</p>
+        <p class="f-hero-note" style="margin-top:12px">We review your intake before the call: what your answers point to, and what we&rsquo;d test first.</p>
       </div>
 
       <!-- ============ RESULTS VIDEO ============
@@ -62,7 +54,7 @@
       <div class="as-video" id="resultsVideo" style="margin-bottom:0">
         <div class="as-video-frame">
           <button class="as-play" aria-label="Play video"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
-          <span class="as-video-cap">Andrew Martin &middot; What a score like yours usually means &middot; 90 seconds</span>
+          <span class="as-video-cap">Andrew Martin &middot; What an intake like yours usually means &middot; 90 seconds</span>
         </div>
       </div>
     </div>
@@ -73,7 +65,7 @@
     <div class="container" style="max-width: 840px">
       <div class="center" style="margin-bottom: 44px">
         <span class="eyebrow">The Read</span>
-        <h2 id="readHead">Two numbers decide your next decade.</h2>
+        <h2 id="readHead">Two reads decide your next decade.</h2>
       </div>
       <div id="buckets"></div>
       <p class="f-range-note" style="margin-top:26px">Scored from your answers against the profile of a high-output body, the same first read we do with clients. Your words below, and what they usually mean in the labs.</p>
@@ -98,15 +90,15 @@
   <section class="f-cta" id="ctaQualified">
     <div class="container center">
       <span class="eyebrow">The Next 15 Minutes That Matter</span>
-      <h2>Your results come with a conversation.</h2>
-      <p class="lead">A free 15-minute call with our team. We walk through your Risk and Performance read, tell you which labs would confirm or clear each flag, and give you a straight answer on whether we can help. If we can&rsquo;t, we&rsquo;ll say so.</p>
+      <h2>The next step is a conversation.</h2>
+      <p class="lead">A free 15-minute call with our team. We come armed with your intake, tell you what we&rsquo;d test first and why, and give you a straight answer on whether we can help. If we can&rsquo;t, we&rsquo;ll say so.</p>
       <div class="rs-cta-steps">
-        <div><b>01</b><span>We review your results before the call</span></div>
+        <div><b>01</b><span>We review your intake before the call, every answer</span></div>
         <div><b>02</b><span>You get the read: what&rsquo;s likely driving what you feel</span></div>
         <div><b>03</b><span>A straight yes or no on whether we&rsquo;re the right team</span></div>
       </div>
       <a class="btn btn-teal btn-lg" href="booking.html" id="bookBtn2">Book My Free 15-Minute Call&ensp;&rarr;</a>
-      <p class="note">We take on a limited number of new clients each month. Your results are saved either way.</p>
+      <p class="note">We take on a limited number of new clients each month. Your intake is saved either way.</p>
     </div>
   </section>
 
@@ -115,7 +107,7 @@
     <div class="container center">
       <span class="eyebrow">A Straight Answer</span>
       <h2>Thank you for being honest with us.</h2>
-      <p class="lead">Based on where you are right now, our programs would be the wrong fit, and we&rsquo;d rather tell you that than take your time or money. Your results above still stand. Use them: get real bloodwork done this year, and treat anything flagged as worth a conversation with your doctor.</p>
+      <p class="lead">Based on where you are right now, our programs would be the wrong fit, and we&rsquo;d rather tell you that than take your time or money. Your summary above still stands. Use it: get real bloodwork done this year, and treat anything flagged as worth a conversation with your doctor.</p>
       <a class="btn btn-teal btn-lg" href="https://secondprime.io">Explore Second Prime</a>
       <p class="note">If your situation changes, the door is open. We&rsquo;d genuinely welcome you back.</p>
     </div>
@@ -215,38 +207,24 @@
     var qualified = raw.qualified !== false;
     var first = (data.firstName || '').replace(/[<>&"]/g, '');
 
-    // Headline + verdict by band.
-    document.getElementById('rsHeadline').textContent = first ? first + ', your Second Prime Score is' : 'Your Second Prime Score';
+    // Headline, status chips, verdict. The numeric score stays internal (webhook
+    // triage) and never renders here; flags mean something, numbers don't.
+    document.getElementById('rsHeadline').textContent = first ? first + ', here’s what your intake flagged.' : 'Here’s what your intake flagged.';
+    var STATUS = { solid: 'Solid', drift: 'Drifting', flag: 'Flagged' };
+    document.getElementById('heroChips').innerHTML =
+      '<span class="rs-hchip is-' + raw.risk.status + '">Risk &middot; ' + STATUS[raw.risk.status] + '</span>' +
+      '<span class="rs-hchip is-' + raw.perf.status + '">Performance &middot; ' + STATUS[raw.perf.status] + '</span>';
+    var statuses = [raw.risk.status, raw.perf.status];
     var verdict;
-    if (score >= 85) verdict = 'A strong baseline. The gaps below are the ones worth closing while they’re still cheap to close.';
-    else if (score >= 70) verdict = 'You’re drifting. Slowly enough that every year feels normal, and it’s measurable.';
-    else if (score >= 50) verdict = 'Your body is sending signals. Several of them, and they point the same direction.';
-    else verdict = 'Your answers match the clients whose labs come back with real findings. That’s worth taking seriously.';
+    if (statuses.indexOf('flag') >= 0) verdict = 'The flags below are your body asking for a closer look. Here it is in your own words, and what each usually means in the labs.';
+    else if (statuses.indexOf('drift') >= 0) verdict = 'You’re drifting. Slowly enough that every year feels normal, and it’s measurable. Here it is in your own words.';
+    else verdict = 'Nothing loud in your answers. The gaps worth closing are the quiet ones, and those only show up in blood.';
     document.getElementById('verdict').textContent = verdict;
-    document.getElementById('stickyScore').textContent = 'Your score: ' + score;
-
-    // Animated gauge + counter.
-    var fill = document.getElementById('gaugeFill');
-    var numEl = document.getElementById('scoreNum');
-    var LEN = fill.getTotalLength();
-    fill.style.strokeDasharray = LEN;
-    fill.style.strokeDashoffset = LEN;
-    var t0 = null;
-    function tick(ts) {
-      if (!t0) t0 = ts;
-      var p = Math.min((ts - t0) / 1400, 1);
-      var ease = 1 - Math.pow(1 - p, 3);
-      numEl.textContent = Math.round(score * ease);
-      fill.style.strokeDashoffset = LEN * (1 - (score / 100) * ease);
-      if (p < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
+    document.getElementById('stickyScore').textContent = 'Your intake summary is in';
 
     /* ============ THE TWO READS ============
        Each bucket renders a score bar plus mirror cards: the answer they gave,
        quoted back, with what it usually means in the labs. */
-    var STATUS = { solid: 'Solid', drift: 'Drifting', flag: 'Flagged' };
-
     var MIRRORS = {
       energy: {
         'Good mornings, fading after lunch': 'An afternoon fade this consistent is usually blood sugar or cortisol rhythm. Both show up in labs long before they show up in your calendar.',

@@ -117,6 +117,13 @@
 .rs-num span { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(225,242,243,0.55); }
 .rs-verdict { max-width: 52ch; margin: 18px auto 0; font-size: clamp(17px, 2vw, 20px); line-height: 1.6; color: rgba(253,251,248,0.85); }
 
+/* ---------- Results: hero status chips ---------- */
+.rs-herochips { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin: 24px 0 4px; }
+.rs-hchip { font-size: 14px; font-weight: 700; letter-spacing: 0.04em; padding: 10px 20px; border-radius: 100px; border: 1px solid transparent; }
+.rs-hchip.is-solid { color: #A8E3E8; background: rgba(101,200,208,0.12); border-color: rgba(101,200,208,0.4); }
+.rs-hchip.is-drift { color: #EBD9A9; background: rgba(201,168,92,0.14); border-color: rgba(201,168,92,0.45); }
+.rs-hchip.is-flag { color: #F2B7B0; background: rgba(196,88,77,0.16); border-color: rgba(196,88,77,0.5); }
+
 /* ---------- Results: tighter hero with top CTA + video ---------- */
 .rs-hero-tight { padding-bottom: 84px; }
 .rs-hero-tight .rs-gauge { margin-bottom: 0; }
@@ -141,15 +148,18 @@
 .rs-m-mean { font-size: 15px; line-height: 1.65; color: var(--gray); margin: 0; }
 .rs-mirror-solid { border-top: none; padding-top: 10px; margin-top: 8px; }
 
-/* ---------- Booking: score teaser strip ---------- */
+/* ---------- Booking: intake flags strip (sits on the light section) ---------- */
 .bk-teaser {
-  max-width: 680px; margin: -8px auto 30px; display: flex; align-items: center; justify-content: center;
-  gap: 18px; flex-wrap: wrap; padding: 16px 22px; border-radius: var(--radius);
-  background: rgba(255,255,255,0.06); border: 1px solid rgba(101,200,208,0.3);
+  max-width: 680px; margin: -8px auto 34px; display: flex; align-items: center; justify-content: center;
+  gap: 18px; flex-wrap: wrap; padding: 18px 24px 20px; border-radius: var(--radius);
+  background: var(--white); border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(31,31,39,0.06);
 }
-.bk-teaser .bk-t-score { font-family: var(--font-serif); font-weight: 400; font-size: 40px; color: var(--teal-bright); line-height: 1; }
-.bk-teaser .bk-t-txt { text-align: left; font-size: 14px; line-height: 1.5; color: rgba(225,242,243,0.85); max-width: 40ch; }
-.bk-teaser .bk-t-txt b { display: block; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(225,242,243,0.6); margin-bottom: 3px; font-weight: 700; }
+.bk-teaser .bk-t-txt { font-size: 14px; line-height: 1.5; color: var(--gray); }
+.bk-teaser .bk-t-txt b { display: block; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 3px; font-weight: 700; }
+.bk-flags { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.bk-flag { font-style: normal; font-size: 13.5px; font-weight: 600; color: #7E2E27; background: rgba(196,88,77,0.1); border: 1px solid rgba(196,88,77,0.35); border-radius: 100px; padding: 6px 14px; }
+.bk-teaser #bkTease { font-size: 13.5px; color: var(--gray); }
 
 /* ---------- Results: domain bars ---------- */
 .rs-domains { max-width: 720px; margin: 0 auto; display: grid; gap: 16px; }

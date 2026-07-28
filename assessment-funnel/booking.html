@@ -12,7 +12,7 @@
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="css/styles.css?v=1" />
   <link rel="stylesheet" href="css/funnel.css?v=11" />
-  <link rel="stylesheet" href="css/assess.css?v=2" />
+  <link rel="stylesheet" href="css/assess.css?v=3" />
   <!-- Meta pixel (Amartinco LLC's Pixel). Neutral event names only, per Meta health-advertiser rules. -->
   <script>
   (function () {
@@ -35,18 +35,20 @@
 
   <main class="ap">
     <div class="ap-head">
-      <span class="eyebrow">Results Ready</span>
-      <h1 id="bkHeadline">Your results are ready.<br />Pick a time and we&rsquo;ll walk you through them.</h1>
-      <p class="ap-sub">A free 15-minute call. We review your Risk and Performance read before we get on, and your written summary lands in your inbox either way.<span id="emailNote"></span></p>
+      <span class="eyebrow">Step 2 of 2 &middot; Intake Received</span>
+      <h1 id="bkHeadline">Your intake is in.<br />Pick your time.</h1>
+      <p class="ap-sub">A free 15-minute call. We review your intake before we get on, so it&rsquo;s about you from the first minute: what your answers point to, what we&rsquo;d test first, and whether we can help.<span id="emailNote"></span></p>
     </div>
 
     <div class="bk-teaser" id="bkTeaser" style="display:none">
-      <span class="bk-t-score" id="bkScore"></span>
-      <div class="bk-t-txt"><b>Your Second Prime Score</b><span id="bkTease"></span></div>
+      <div class="bk-t-txt" style="text-align:center; max-width:none"><b>Your intake flagged</b>
+        <span class="bk-flags" id="bkFlags"></span>
+        <span id="bkTease" style="display:block; margin-top:8px"></span>
+      </div>
     </div>
 
     <div class="ap-process">
-      <div class="ap-p"><b>01</b><div>The results walkthrough</div><span>Your Risk and Performance read, explained live</span></div>
+      <div class="ap-p"><b>01</b><div>We do the homework</div><span>Your intake gets reviewed before the call, every answer</span></div>
       <div class="ap-p"><b>02</b><div>Can we help?</div><span>A straight answer on whether we&rsquo;re the right fit</span></div>
       <div class="ap-p"><b>03</b><div>The plan</div><span>What the process looks like, timeline, how to start</span></div>
     </div>
@@ -118,6 +120,17 @@
         </div>
       </div>
     </section>
+
+    <!-- ============ BOOKING VIDEO ============
+         TODO: replace the placeholder with the real video.
+         Spec: ~60 seconds, Andrew to camera: what happens on the call. Script in VIDEO-SCRIPTS.md (Video 2).
+    -->
+    <div class="as-video" id="bookingVideo" style="margin-top:44px">
+      <div class="as-video-frame">
+        <button class="as-play" aria-label="Play video"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+        <span class="as-video-cap">Andrew Martin &middot; What happens on the call &middot; 60 seconds</span>
+      </div>
+    </div>
 
     <figure class="ap-quote">
       <span class="ap-qmark" aria-hidden="true">&ldquo;</span>
@@ -199,23 +212,44 @@
       if (firstName) {
         finish.href = 'thank-you.html?first_name=' + encodeURIComponent(firstName);
         var head = document.getElementById('bkHeadline');
-        head.innerHTML = firstName.replace(/[<>&"]/g, '') + ', your results are ready.<br />Pick a time and we&rsquo;ll walk you through them.';
+        head.innerHTML = firstName.replace(/[<>&"]/g, '') + ', your intake is in.<br />Pick your time.';
       }
 
-      /* Score teaser strip: pulls the result saved by the assessment. Keeping
-         the full read for the call is deliberate; this line sustains the pull. */
+      /* Intake-flags teaser: plain-language flags from their answers, ranked
+         by severity. No score shown; the read itself belongs to the call. */
       try {
         var res = JSON.parse(localStorage.getItem('sp_assessment') || 'null');
         // ?demo=1 previews the teaser strip without stored assessment data.
-        if (params.get('demo') && !(res && typeof res.score === 'number')) {
-          res = { score: 58, risk: { status: 'flag' }, perf: { status: 'drift' } };
+        if (params.get('demo') && !(res && res.data)) {
+          res = { data: { energy: 'The 3pm crash runs my calendar', family: 'One that concerns me', labs: 'Standard annual physical only' } };
         }
-        if (res && typeof res.score === 'number' && res.risk && res.perf) {
-          var label = function (s) { return s === 'flag' ? 'flagged' : s === 'drift' ? 'drifting' : 'solid'; };
-          document.getElementById('bkScore').textContent = res.score;
-          document.getElementById('bkTease').textContent =
-            'Risk: ' + label(res.risk.status) + '. Performance: ' + label(res.perf.status) + '. We’ll walk through what’s behind both on your call.';
-          document.getElementById('bkTeaser').style.display = '';
+        var FLAGS = [
+          { f: 'energy',   match: /crash|coffee/i,            label: 'The afternoon energy crash', w: 5 },
+          { f: 'drive',    match: /lower|fraction/i,          label: 'Drive and libido decline', w: 5 },
+          { f: 'bodycomp', match: /waist keeps|nothing I do/i, label: 'Body composition drifting despite effort', w: 5 },
+          { f: 'family',   match: /more than one|concerns me/i, label: 'Family health history', w: 4 },
+          { f: 'labs',     match: /physical only|been years/i, label: 'No deep bloodwork on record', w: 4 },
+          { f: 'sleep',    match: /still wake up tired|broken/i, label: 'Waking up tired after full nights', w: 3 },
+          { f: 'focus',    match: /foggy/i,                   label: 'Brain fog most days', w: 3 },
+          { f: 'energy',   match: /fading after lunch/i,      label: 'Afternoon energy fade', w: 2 },
+          { f: 'focus',    match: /step slower/i,             label: 'Sharpness a step slower', w: 2 },
+          { f: 'bodycomp', match: /softer/i,                  label: 'Body composition starting to drift', w: 2 }
+        ];
+        if (res && res.data) {
+          var seen = {}, hits = [];
+          FLAGS.forEach(function (fl) {
+            var ans = res.data[fl.f] || '';
+            if (!seen[fl.f] && fl.match.test(ans)) { seen[fl.f] = true; hits.push(fl); }
+          });
+          hits.sort(function (a, b) { return b.w - a.w; });
+          var top = hits.slice(0, 3);
+          if (top.length) {
+            document.getElementById('bkFlags').innerHTML = top.map(function (fl) {
+              return '<i class="bk-flag">' + fl.label + '</i>';
+            }).join('');
+            document.getElementById('bkTease').textContent = 'On the call: what’s likely behind ' + (top.length > 1 ? 'these' : 'this') + ', and what we’d test first.';
+            document.getElementById('bkTeaser').style.display = '';
+          }
         }
       } catch (_) {}
 
