@@ -172,7 +172,7 @@
          calendar with sample availability so the design can be reviewed.
          In production the same failure falls back to the GHL widget. */
       var demoMode = false;
-      var isLocal = /^(localhost|127\.0\.0\.1)$|github\.io$/.test(location.hostname);
+      var isLocal = /^(localhost|127\.0\.0\.1|tests\.secondprime\.io)$|github\.io$/.test(location.hostname);
       function demoSlots() {
         var out = {};
         var d = new Date();
