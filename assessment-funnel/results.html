@@ -193,6 +193,21 @@
   (function () {
     var raw = null;
     try { raw = JSON.parse(localStorage.getItem('sp_assessment') || 'null'); } catch (_) {}
+    /* ?demo=1 renders a representative result for review (no stored data needed).
+       ?demo=dq previews the disqualified soft path. */
+    var demo = new URLSearchParams(location.search).get('demo');
+    if (demo && (!raw || typeof raw.score !== 'number' || !raw.perf)) {
+      raw = {
+        data: { firstName: 'Andrew', energy: 'The 3pm crash runs my calendar', focus: 'A step slower than I was',
+                sleep: 'I sleep 7-8 hours and still wake up tired', drive: 'Noticeably lower',
+                bodycomp: 'Same training, same eating, waist keeps winning', family: 'One that concerns me',
+                labs: 'Standard annual physical only' },
+        score: 58,
+        perf: { pts: 10, pct: 44, status: 'drift' },
+        risk: { pts: 9, pct: 36, status: 'flag' },
+        qualified: demo !== 'dq'
+      };
+    }
     if (!raw || typeof raw.score !== 'number' || !raw.perf) { window.location.href = 'assessment.html'; return; }
 
     var data = raw.data || {};

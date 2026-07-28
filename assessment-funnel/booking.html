@@ -206,6 +206,10 @@
          the full read for the call is deliberate; this line sustains the pull. */
       try {
         var res = JSON.parse(localStorage.getItem('sp_assessment') || 'null');
+        // ?demo=1 previews the teaser strip without stored assessment data.
+        if (params.get('demo') && !(res && typeof res.score === 'number')) {
+          res = { score: 58, risk: { status: 'flag' }, perf: { status: 'drift' } };
+        }
         if (res && typeof res.score === 'number' && res.risk && res.perf) {
           var label = function (s) { return s === 'flag' ? 'flagged' : s === 'drift' ? 'drifting' : 'solid'; };
           document.getElementById('bkScore').textContent = res.score;
