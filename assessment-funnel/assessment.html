@@ -12,7 +12,7 @@
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="css/styles.css?v=1" />
   <link rel="stylesheet" href="css/funnel.css?v=11" />
-  <link rel="stylesheet" href="css/assess.css?v=9" />
+  <link rel="stylesheet" href="css/assess.css?v=11" />
   <!-- Meta pixel (Amartinco LLC's Pixel). Neutral event names only, per Meta health-advertiser rules. -->
   <script>
   (function () {
@@ -148,9 +148,13 @@
             <h2 class="as-int-h" id="int2H">The 3pm fog has a chemistry.</h2>
             <p class="as-int-p" id="int2P"></p>
             <div class="as-int-quote">
-              <div class="f-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <span class="as-q-label">Client testimonial</span>
+              <div class="as-q-head">
+                <img class="as-q-ava" id="int2QImg" src="assets/cases/rob-head.jpg" alt="" style="display:none" />
+                <div class="as-q-id"><b id="int2QW"></b><span id="int2QS"></span></div>
+                <div class="f-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              </div>
               <p id="int2Q"></p>
-              <div class="as-int-who"><b id="int2QW"></b><span id="int2QS"></span></div>
             </div>
             <div class="qnav qnav-center">
               <button type="button" class="btn btn-teal qnext" data-next>Continue</button>
@@ -161,12 +165,13 @@
 
           <section class="qstep" data-q="bodycomp" data-kind="q">
             <span class="as-sec">Risk &middot; 1 of 3</span>
-            <h2>How far is your weight from your best?</h2>
-            <p class="qsub">Your best adult weight, whenever that was.</p>
-            <label class="opt"><input type="radio" name="bodycomp" value="At my best, or leaner" data-bucket="risk" data-pts="0" /><span class="key">A</span><span class="txt">At my best, or leaner</span></label>
-            <label class="opt"><input type="radio" name="bodycomp" value="Up 5 to 15 lbs" data-bucket="risk" data-pts="2" /><span class="key">B</span><span class="txt">Up 5 to 15 lbs</span></label>
-            <label class="opt"><input type="radio" name="bodycomp" value="Up 15 to 30 lbs" data-bucket="risk" data-pts="4" /><span class="key">C</span><span class="txt">Up 15 to 30 lbs</span></label>
-            <label class="opt"><input type="radio" name="bodycomp" value="Up 30 lbs or more" data-bucket="risk" data-pts="5" /><span class="key">D</span><span class="txt">Up 30 lbs or more</span></label>
+            <h2>How do you feel about your weight?</h2>
+            <p class="qsub">No judgment. It tells us where to look.</p>
+            <label class="opt"><input type="radio" name="bodycomp" value="I feel good where I am" data-bucket="risk" data-pts="0" /><span class="key">A</span><span class="txt">I feel good where I am</span></label>
+            <label class="opt"><input type="radio" name="bodycomp" value="I need to lose 5 to 25 lbs" data-bucket="risk" data-pts="2" /><span class="key">B</span><span class="txt">I need to lose 5 to 25 lbs</span></label>
+            <label class="opt"><input type="radio" name="bodycomp" value="I need to lose 25 to 50 lbs" data-bucket="risk" data-pts="4" /><span class="key">C</span><span class="txt">I need to lose 25 to 50 lbs</span></label>
+            <label class="opt"><input type="radio" name="bodycomp" value="I need to lose 50+ lbs" data-bucket="risk" data-pts="5" /><span class="key">D</span><span class="txt">I need to lose 50+ lbs</span></label>
+            <label class="opt"><input type="radio" name="bodycomp" value="I need to gain weight" data-bucket="risk" data-pts="2" /><span class="key">E</span><span class="txt">I need to gain weight</span></label>
           </section>
 
           <section class="qstep" data-q="family" data-kind="q">
@@ -202,10 +207,10 @@
             <p class="as-int-p" id="int3P"></p>
             <div class="as-ranges" aria-hidden="true">
               <p class="as-ranges-head">3 markers that come back &ldquo;normal&rdquo; and still cost you</p>
-              <p class="as-ranges-sub">Each red dot is inside the lab&rsquo;s &ldquo;normal&rdquo; range and still outside optimal. That gap is where &ldquo;you&rsquo;re fine&rdquo; lives.</p>
               <div class="as-range">
                 <span class="as-r-name">Free Testosterone <em>drive &middot; muscle &middot; decision speed</em></span>
                 <div class="as-r-bar"><span class="as-r-zone">lab &ldquo;normal&rdquo;</span><i class="as-r-opt" style="left:62%;width:34%">optimal</i><b class="as-r-you" style="left:24%"></b></div>
+                <div class="as-r-gapline"><span style="left:27%;width:33%">the gap &ldquo;fine&rdquo; hides</span></div>
               </div>
               <div class="as-range">
                 <span class="as-r-name">Fasting Insulin <em>the earliest metabolic warning</em></span>
@@ -215,7 +220,6 @@
                 <span class="as-r-name">ApoB <em>predicts heart disease better than cholesterol</em></span>
                 <div class="as-r-bar"><span class="as-r-zone" style="left:auto;right:12px">lab &ldquo;normal&rdquo;</span><i class="as-r-opt" style="left:2%;width:28%">optimal</i><b class="as-r-you" style="left:58%"></b></div>
               </div>
-              <p class="as-r-legend"><span class="as-l-you"></span> you, told you&rsquo;re &ldquo;fine&rdquo;</p>
             </div>
             <div class="as-int-case">
               <img src="assets/cases/dustin-head.jpg" alt="" loading="lazy" style="object-position:center 22%" />
@@ -237,7 +241,7 @@
           <!-- ============ TRIGGER + FIT ============ -->
 
           <section class="qstep" data-q="trigger" data-kind="q">
-            <h2>What put your health on your radar right now?</h2>
+            <h2>What&rsquo;s your motivation for prioritizing your health right now?</h2>
             <p class="qsub">The honest answer shapes what we look at first.</p>
             <label class="opt"><input type="radio" name="triggerEvent" value="A lab result or scan that got my attention" /><span class="key">A</span><span class="txt">A lab result or scan that got my attention</span></label>
             <label class="opt"><input type="radio" name="triggerEvent" value="Family health history I don't want to repeat" /><span class="key">B</span><span class="txt">Family health history I don&rsquo;t want to repeat</span></label>
@@ -435,25 +439,29 @@
       }
 
       function paintInt2() {
-        var quote = function (q, w, s) { set('int2Q', '“' + q + '”'); set('int2QW', w); set('int2QS', s); };
+        var quote = function (q, w, s, img) {
+          set('int2Q', '“' + q + '”'); set('int2QW', w); set('int2QS', s);
+          var el = document.getElementById('int2QImg');
+          if (img) { el.src = img; el.style.display = ''; } else { el.style.display = 'none'; }
+        };
         var e = pts('energy') + pts('focus');
         var sl = pts('sleep');
         var dr = pts('drive');
         if (dr >= 3 && dr >= e && dr >= sl) {
           set('int2Tag', 'The math on what you just said');
           set('int2H', 'Testosterone falls about 1% a year from your mid-30s.');
-          set('int2P', 'Slow enough that you adapt. Fast enough that by 50, a quarter of your drive, muscle, and recovery can be gone, and every year of it felt “normal.” Drive tracks testosterone closer than almost any symptom. We read it against optimal, where a high-output body runs, and that’s a far higher bar than your doctor’s “in range.”');
-          quote('My testosterone doubled, inflammation markers are down, and I’m performing at a level I haven’t seen since my 30s.', 'J.M.', 'Founder & CEO, Real Estate · Age 47');
+          set('int2P', 'Slow enough that you adapt. Fast enough that a quarter of your drive, muscle, and recovery can be gone by 50. All measurable.');
+          quote('My testosterone doubled, inflammation markers are down, and I’m performing at a level I haven’t seen since my 30s.', 'J.M.', 'Founder & CEO, Real Estate · Age 47', null);
         } else if (e >= 4 || sl >= 3) {
           set('int2Tag', 'You just described a pattern we test for');
           set('int2H', sl >= 3 && sl > e ? 'Tired after a full night in bed means the sleep itself is broken.' : 'The 3pm fog has a chemistry.');
-          set('int2P', 'The coffee at 11, 1, and 3. Maybe the car nap. It stops feeling like a discipline problem and starts feeling like something deeper is off. It usually is: blood sugar, cortisol rhythm, thyroid, hormones. All of it measurable, and your doctor’s “normal” range is built from the average of sick people.');
-          quote('The brain fog I thought was just ‘getting older’ is completely gone. My decision-making is sharper, energy is consistent all day, and I’m present with my kids in a way I wasn’t before.', 'D.R.', 'Founder, Construction · Age 52');
+          set('int2P', 'Coffee at 11, 1, and 3. Maybe the car nap. That pattern is usually blood sugar, cortisol, or thyroid. All measurable.');
+          quote('The brain fog I thought was just ‘getting older’ is completely gone. My decision-making is sharper, energy is consistent all day, and I’m present with my kids in a way I wasn’t before.', 'Rob', 'Aerospace Engineering Manager · Age 46', 'assets/cases/rob-head.jpg');
         } else {
           set('int2Tag', 'Strong so far');
           set('int2H', 'You’re holding the line better than most owners we test.');
-          set('int2P', 'Worth knowing: most of the founders we work with felt fine walking in and still carried 2 or 3 findings worth acting on. Feeling good and being optimal are 2 different reads.');
-          quote('I came in skeptical. I’d done bloodwork a dozen times. Andrew found things in week one nobody had flagged.', 'R.S.', 'Founder, Tech · Age 44');
+          set('int2P', 'Most founders we test feel fine walking in and still carry 2 or 3 findings worth acting on.');
+          quote('I came in skeptical. I’d done bloodwork a dozen times. Andrew found things in week one nobody had flagged.', 'R.S.', 'Founder, Tech · Age 44', null);
         }
       }
 
