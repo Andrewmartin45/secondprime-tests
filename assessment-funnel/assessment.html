@@ -12,7 +12,7 @@
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="css/styles.css?v=1" />
   <link rel="stylesheet" href="css/funnel.css?v=11" />
-  <link rel="stylesheet" href="css/assess.css?v=12" />
+  <link rel="stylesheet" href="css/assess.css?v=13" />
   <!-- Meta pixel (Amartinco LLC's Pixel). Neutral event names only, per Meta health-advertiser rules. -->
   <script>
   (function () {
@@ -208,9 +208,9 @@
             <div class="as-ranges" aria-hidden="true">
               <p class="as-ranges-head">3 markers that come back &ldquo;normal&rdquo; and still cost you</p>
               <div class="as-range">
-                <span class="as-r-name">Free Testosterone <em>drive &middot; muscle &middot; decision speed</em></span>
+                <span class="as-r-name">Free Testosterone <em>drive &middot; muscle &middot; recovery</em></span>
                 <div class="as-r-bar"><span class="as-r-zone">lab &ldquo;normal&rdquo;</span><i class="as-r-opt" style="left:62%;width:34%">optimal</i><b class="as-r-you" style="left:24%"></b></div>
-                <div class="as-r-gapline"><span style="left:27%;width:33%">the gap &ldquo;fine&rdquo; hides</span></div>
+                <div class="as-r-gapline"><span style="left:27%;width:33%">the gap between normal and optimal</span></div>
               </div>
               <div class="as-range">
                 <span class="as-r-name">Fasting Insulin <em>the earliest metabolic warning</em></span>
@@ -261,6 +261,17 @@
             <label class="opt"><input type="checkbox" name="alreadyTried" value="Nothing serious yet" /><span class="key">F</span><span class="txt">Nothing serious yet</span></label>
             <div class="qnav">
               <button type="button" class="qback" data-back>&larr; Back</button>
+              <button type="button" class="btn btn-teal qnext" data-next>Continue</button>
+            </div>
+          </section>
+
+          <!-- INTERSTITIAL 5: pokes holes in what they've already tried -->
+          <section class="qstep as-int" data-q="int5t" data-kind="int">
+            <span class="as-int-tag" id="int5tTag">About what you&rsquo;ve tried</span>
+            <h2 class="as-int-h" id="int5tH">Here&rsquo;s why none of it stuck.</h2>
+            <div class="as-holes" id="int5tList"></div>
+            <p class="as-int-p" id="int5tP">Each was one piece, with nobody accountable for the whole. That&rsquo;s the job we take.</p>
+            <div class="qnav qnav-center">
               <button type="button" class="btn btn-teal qnext" data-next>Continue</button>
             </div>
           </section>
@@ -410,7 +421,7 @@
         var seq = ['outcome', 'age', 'role', 'int1',
                    'energy', 'focus', 'sleep', 'drive', 'int2',
                    'bodycomp', 'family', 'labs', 'int3',
-                   'trigger', 'tried', money];
+                   'trigger', 'tried', 'int5t', money];
         if (belowThreshold()) seq.push('invest');
         seq.push('timeline', 'int4', 'contact');
         return seq;
@@ -483,7 +494,36 @@
         }
       }
 
-      var INT_PAINTERS = { int1: paintInt1, int2: paintInt2, int3: paintInt3 };
+      /* Interstitial 5: one hole-poke line per thing they've already tried. */
+      var HOLES = {
+        'Regular doctor or concierge medicine': { label: 'Your doctor', line: 'About 40 markers, graded against &ldquo;normal,&rdquo; 8 minutes per visit. Optimizing you was never the assignment.' },
+        'TRT or hormone clinic': { label: 'The TRT clinic', line: 'Ran just enough labs to prescribe, and never chased why your testosterone fell in the first place.' },
+        'Functional medicine practitioner': { label: 'The functional doc', line: 'Ran real labs, handed you a bag of supplements, and hoped. The follow-through was your job.' },
+        'Trainers, nutritionists, or coaches': { label: 'The coaches', line: 'Programmed effort without ever seeing your blood. You can&rsquo;t out-train a hormone or insulin problem.' },
+        'Self-directed (wearables, supplements, research)': { label: 'Doing it yourself', line: 'The wearable put you in the driver&rsquo;s seat. Synthesizing it into a protocol became a second job you don&rsquo;t have time for.' }
+      };
+      function paintInt5t() {
+        var picked = Array.prototype.slice.call(form.querySelectorAll('input[name="alreadyTried"]:checked'))
+          .map(function (c) { return c.value; }).filter(function (v) { return HOLES[v]; }).slice(0, 3);
+        var list = document.getElementById('int5tList');
+        if (!picked.length) {
+          set('int5tTag', 'A head start');
+          set('int5tH', 'You get to skip the expensive detours.');
+          list.innerHTML = '';
+          set('int5tP', 'Most clients arrive after years of clinics, coaches, and supplement cabinets that never connected. Starting with the full picture is cheaper in every way.');
+          return;
+        }
+        set('int5tTag', 'About what you’ve tried');
+        set('int5tH', picked.length > 1 ? 'Here’s why none of it stuck.' : 'Here’s why it didn’t stick.');
+        list.innerHTML = picked.map(function (v) {
+          return '<div class="as-hole"><b>' + HOLES[v].label + '</b><p>' + HOLES[v].line + '</p></div>';
+        }).join('');
+        set('int5tP', picked.length > 1
+          ? 'Each was one piece, with nobody accountable for the whole. That’s the job we take.'
+          : 'It was one piece, with nobody accountable for the whole. That’s the job we take.');
+      }
+
+      var INT_PAINTERS = { int1: paintInt1, int2: paintInt2, int3: paintInt3, int5t: paintInt5t };
 
       // Progress counts questions only; interstitials and contact don't inflate it.
       function qOnly(seq) { return seq.filter(function (q) { return stepEl(q).dataset.kind === 'q'; }); }

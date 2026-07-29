@@ -101,12 +101,20 @@
 
 .qnav-center { justify-content: center !important; margin-top: 26px; }
 
+/* ---------- Interstitial 5: hole-poke rows for what they've tried ---------- */
+.as-holes { max-width: 540px; margin: 20px auto 0; text-align: left; }
+.as-hole { display: flex; gap: 14px; align-items: baseline; padding: 12px 0; border-top: 1px solid rgba(255,255,255,0.1); }
+.as-hole:first-child { border-top: none; padding-top: 4px; }
+.as-hole b { flex: none; width: 128px; text-align: right; font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal-bright); }
+.as-hole p { font-size: 13.5px; line-height: 1.55; color: rgba(225,242,243,0.85); margin: 0; }
+@media (max-width: 480px) { .as-hole { flex-direction: column; gap: 3px; } .as-hole b { text-align: left; width: auto; } }
+
 /* ---------- Interstitial: normal-vs-optimal range bars (dark card) ---------- */
 .as-ranges { max-width: 540px; margin: 24px auto 0; text-align: left; }
 .as-ranges-head { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-bright); margin-bottom: 18px; text-align: center; }
 .as-range { margin-bottom: 16px; }
-.as-r-name { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 14px; font-weight: 600; color: #FDFBF8; }
-.as-r-name em { font-style: normal; font-size: 11.5px; font-weight: 400; color: rgba(225,242,243,0.55); text-align: right; }
+.as-r-name { display: flex; justify-content: flex-start; align-items: baseline; gap: 10px; font-size: 14px; font-weight: 600; color: #FDFBF8; flex-wrap: wrap; }
+.as-r-name em { font-style: normal; font-size: 11.5px; font-weight: 400; color: rgba(225,242,243,0.6); text-align: left; }
 .as-r-bar { position: relative; height: 22px; border-radius: 100px; background: rgba(255,255,255,0.13); border: 1px solid rgba(255,255,255,0.22); margin-top: 27px; }
 .as-r-zone { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(225,242,243,0.6); white-space: nowrap; }
 .as-r-opt { position: absolute; top: -1px; bottom: -1px; border-radius: 100px; background: rgba(101,200,208,0.95); font-style: normal; font-size: 9px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #0F2F33; display: flex; align-items: center; justify-content: center; }
@@ -126,8 +134,9 @@
 .as-r-gapline span {
   position: absolute; top: 0; border-top: 2px dashed rgba(196,88,77,0.75);
   font-size: 9.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-  color: rgba(242,183,176,0.95); text-align: center; padding-top: 4px;
+  color: rgba(242,183,176,0.95); text-align: center; padding-top: 4px; white-space: nowrap; text-overflow: clip;
 }
+@media (max-width: 480px) { .as-r-gapline span { font-size: 8px; letter-spacing: 0.04em; } }
 
 /* ---------- Contact step: optional context textarea ---------- */
 .as-context { display: block; margin-top: 14px; }
