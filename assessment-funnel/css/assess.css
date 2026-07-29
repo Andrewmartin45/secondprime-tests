@@ -178,6 +178,20 @@
 .rs-m-mean { font-size: 15px; line-height: 1.65; color: var(--gray); margin: 0; }
 .rs-mirror-solid { border-top: none; padding-top: 10px; margin-top: 8px; }
 
+/* ---------- Booking: compact above-the-calendar header ---------- */
+.bk-main .ap-head { margin-bottom: 20px; }
+.bk-main .ap-head h1 { font-size: clamp(30px, 4vw, 46px); }
+.bk-main .ap-head .ap-sub { font-size: 15.5px; }
+@media (max-width: 600px) {
+  .bk-main .ap-head { margin-bottom: 14px; }
+  .bk-main .ap-head h1 { font-size: 28px; }
+  .bk-main .ap-head .ap-sub { font-size: 14px; }
+  .bk-teaser { padding: 12px 14px 14px; margin-bottom: 20px; }
+  .bk-teaser #bkTease { display: none !important; }
+  .bk-flags { gap: 6px; margin-top: 8px; }
+  .bk-flag { font-size: 12px; padding: 4px 11px; }
+}
+
 /* ---------- Booking: intake flags strip (sits on the light section) ---------- */
 .bk-teaser {
   max-width: 680px; margin: -8px auto 34px; display: flex; align-items: center; justify-content: center;

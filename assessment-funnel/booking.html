@@ -12,7 +12,7 @@
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="css/styles.css?v=1" />
   <link rel="stylesheet" href="css/funnel.css?v=11" />
-  <link rel="stylesheet" href="css/assess.css?v=7" />
+  <link rel="stylesheet" href="css/assess.css?v=8" />
   <!-- Meta pixel (Amartinco LLC's Pixel). Neutral event names only, per Meta health-advertiser rules. -->
   <script>
   (function () {
@@ -33,11 +33,11 @@
     </div>
   </header>
 
-  <main class="ap">
+  <main class="ap bk-main">
     <div class="ap-head">
       <span class="eyebrow">Step 2 of 2 &middot; Intake Received</span>
       <h1 id="bkHeadline">Your intake is in.<br />Pick your time.</h1>
-      <p class="ap-sub">A free 15-minute call. We review your intake before we get on, so it&rsquo;s about you from the first minute: what your answers point to, what we&rsquo;d test first, and whether we can help.<span id="emailNote"></span></p>
+      <p class="ap-sub">A free 15-minute call. We review your intake before we get on, so it&rsquo;s about you from the first minute.<span id="emailNote"></span></p>
     </div>
 
     <div class="bk-teaser" id="bkTeaser" style="display:none">
@@ -45,12 +45,6 @@
         <span class="bk-flags" id="bkFlags"></span>
         <span id="bkTease" style="display:block; margin-top:8px"></span>
       </div>
-    </div>
-
-    <div class="ap-process">
-      <div class="ap-p"><b>01</b><div>We do the homework</div><span>Your intake gets reviewed before the call, every answer</span></div>
-      <div class="ap-p"><b>02</b><div>Can we help?</div><span>A straight answer on whether we&rsquo;re the right fit</span></div>
-      <div class="ap-p"><b>03</b><div>The plan</div><span>What the process looks like, timeline, how to start</span></div>
     </div>
 
     <section class="book-wrap">
@@ -121,8 +115,14 @@
       </div>
     </section>
 
+    <div class="ap-process" style="margin-top:40px">
+      <div class="ap-p"><b>01</b><div>We do the homework</div><span>Your intake gets reviewed before the call, every answer</span></div>
+      <div class="ap-p"><b>02</b><div>Can we help?</div><span>A straight answer on whether we&rsquo;re the right fit</span></div>
+      <div class="ap-p"><b>03</b><div>The plan</div><span>What the process looks like, timeline, how to start</span></div>
+    </div>
+
     <!-- ============ BOOKING VIDEO (Vimeo) ============ -->
-    <div class="as-video" id="bookingVideo" style="margin-top:44px">
+    <div class="as-video" id="bookingVideo" style="margin-top:34px">
       <div style="padding:56.25% 0 0 0;position:relative;border-radius:16px;overflow:hidden;"><iframe src="https://player.vimeo.com/video/1179952534?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Second Prime"></iframe></div>
     </div>
     <script src="https://player.vimeo.com/api/player.js"></script>
@@ -200,7 +200,7 @@
         pre.phone = params.get('phone') || app.phone || '';
       } catch (_) {}
       if (pre.name) $('spb-name').value = pre.name;
-      if (pre.email) { $('spb-email').value = pre.email; $('emailNote').textContent = ' Confirmation will be sent to ' + pre.email + '.'; }
+      if (pre.email) $('spb-email').value = pre.email;
       if (pre.phone) $('spb-phone').value = pre.phone;
       var finish = $('spb-finish');
       var firstName = params.get('first_name') || '';
