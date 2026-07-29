@@ -49,19 +49,11 @@
         <h1 class="as-h1-long">We&rsquo;ll Run 1,000+ Biomarkers In Your Executive Longevity Assessment To Find What Your Standard Labs Missed <span class="accent">(And Turn It Into A Protocol That Makes You Feel Half Your Age)</span></h1>
         <p class="f-hero-sub">Start with a free 15-minute call. If we can help, we&rsquo;ll show you exactly what your standard panel left out and what it&rsquo;s costing you.</p>
 
-        <!-- ============ LANDING VIDEO ============
-             TODO: replace the placeholder below with the real video.
-             Spec: 45–60 seconds, Andrew to camera, 9:16 or 1:1 for mobile.
-             Script lives in VIDEO-SCRIPTS.md (Video 1).
-             Swap the .as-video inner markup for:
-             <video controls playsinline poster="assets/video-poster.jpg" src="assets/landing-video.mp4"></video>
-        -->
+        <!-- ============ LANDING VIDEO (Vimeo) ============ -->
         <div class="as-video reveal in" id="landingVideo">
-          <div class="as-video-frame">
-            <button class="as-play" aria-label="Play video"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
-            <span class="as-video-cap">Andrew Martin &middot; Founder &amp; Biologist &middot; 60 seconds</span>
-          </div>
+          <div style="padding:56.25% 0 0 0;position:relative;border-radius:16px;overflow:hidden;"><iframe src="https://player.vimeo.com/video/1176372724?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Second Prime"></iframe></div>
         </div>
+        <script src="https://player.vimeo.com/api/player.js"></script>
 
         <a class="btn btn-teal btn-lg" href="assessment.html">Start My Intake&ensp;&rarr;</a>
         <p class="f-hero-note">Free. 3 minutes. Your answers arm the call, so it&rsquo;s about you from the first minute.</p>
@@ -266,10 +258,7 @@
     if (revealEls.every((el) => el.classList.contains('in'))) clearInterval(revealTimer);
   }, 350);
 
-  // Video placeholder: until the real video lands, the play button starts the assessment.
-  document.getElementById('landingVideo').addEventListener('click', () => { window.location.href = 'assessment.html'; });
-
-  // Sticky mobile CTA: show once past the hero
+// Sticky mobile CTA: show once past the hero
   const sticky = document.getElementById('fSticky');
   function onStickyScroll() {
     sticky.classList.toggle('show', window.scrollY > window.innerHeight * 0.9);
