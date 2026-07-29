@@ -12,7 +12,7 @@
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="css/styles.css?v=1" />
   <link rel="stylesheet" href="css/funnel.css?v=11" />
-  <link rel="stylesheet" href="css/assess.css?v=4" />
+  <link rel="stylesheet" href="css/assess.css?v=5" />
   <!-- Meta pixel (Amartinco LLC's Pixel). Neutral event names only, per Meta health-advertiser rules. -->
   <script>
   (function () {
@@ -51,7 +51,7 @@
     <div class="ap-head">
       <span class="eyebrow">The Second Prime Intake &middot; Step 1 of 2</span>
       <h1>Let&rsquo;s get your background.</h1>
-      <p class="ap-sub">13 questions, about 3 minutes. Your answers shape what we look for and what we bring to your call. Answer honestly; the read is only as useful as what you put in.</p>
+      <p class="ap-sub">14 questions, about 3 minutes. Your answers shape what we look for and what we bring to your call. Answer honestly; the read is only as useful as what you put in.</p>
     </div>
 
     <div class="ap-card">
@@ -59,7 +59,7 @@
         <span class="qghost" id="qghost" aria-hidden="true">01</span>
         <div class="ap-progress" aria-hidden="true">
           <div class="ap-bar"><i id="qbar"></i></div>
-          <span class="ap-count" id="qcount">1 of 13</span>
+          <span class="ap-count" id="qcount">1 of 14</span>
         </div>
 
         <form id="qform" novalidate>
@@ -220,6 +220,21 @@
             <label class="opt"><input type="radio" name="triggerEvent" value="Nothing specific, staying ahead of it" /><span class="key">E</span><span class="txt">Nothing specific, staying ahead of it</span></label>
           </section>
 
+          <section class="qstep" data-q="tried" data-kind="q">
+            <h2>What have you already tried?</h2>
+            <p class="qsub">Select all that apply. Most of our clients arrive having tried several of these.</p>
+            <label class="opt"><input type="checkbox" name="alreadyTried" value="Regular doctor or concierge medicine" /><span class="key">A</span><span class="txt">Regular doctor or concierge medicine</span></label>
+            <label class="opt"><input type="checkbox" name="alreadyTried" value="TRT or hormone clinic" /><span class="key">B</span><span class="txt">TRT or hormone clinic</span></label>
+            <label class="opt"><input type="checkbox" name="alreadyTried" value="Functional medicine practitioner" /><span class="key">C</span><span class="txt">Functional medicine practitioner</span></label>
+            <label class="opt"><input type="checkbox" name="alreadyTried" value="Trainers, nutritionists, or coaches" /><span class="key">D</span><span class="txt">Trainers, nutritionists, or coaches</span></label>
+            <label class="opt"><input type="checkbox" name="alreadyTried" value="Self-directed (wearables, supplements, research)" /><span class="key">E</span><span class="txt">Self-directed (wearables, supplements, research)</span></label>
+            <label class="opt"><input type="checkbox" name="alreadyTried" value="Nothing serious yet" /><span class="key">F</span><span class="txt">Nothing serious yet</span></label>
+            <div class="qnav">
+              <button type="button" class="qback" data-back>&larr; Back</button>
+              <button type="button" class="btn btn-teal qnext" data-next>Continue</button>
+            </div>
+          </section>
+
           <section class="qstep" data-q="revenue" data-kind="q">
             <span class="as-sec">Fit</span>
             <h2>What&rsquo;s your annual business revenue?</h2>
@@ -288,6 +303,9 @@
               <label class="fld"><span class="fld__k">Email</span><input type="email" name="email" autocomplete="email" /></label>
               <label class="fld"><span class="fld__k">Phone</span><input type="tel" name="phone" autocomplete="tel" /></label>
             </div>
+            <label class="fld as-context"><span class="fld__k">Anything we should know before your call? (optional)</span>
+              <textarea name="context" rows="3" placeholder="A diagnosis, a symptom that worries you, a goal, a question for Andrew. Your words go straight into your call notes."></textarea>
+            </label>
             <div class="qnav">
               <button type="button" class="qback" data-back>&larr; Back</button>
               <button type="submit" class="btn btn-teal qnext" id="qsubmit">Complete my intake</button>
@@ -355,7 +373,7 @@
         var seq = ['outcome', 'age', 'role', 'int1',
                    'energy', 'focus', 'sleep', 'drive', 'int2',
                    'bodycomp', 'family', 'labs', 'int3',
-                   'trigger', money];
+                   'trigger', 'tried', money];
         if (belowThreshold()) seq.push('invest');
         seq.push('timeline', 'int4', 'contact');
         return seq;
@@ -430,7 +448,7 @@
       function qOnly(seq) { return seq.filter(function (q) { return stepEl(q).dataset.kind === 'q'; }); }
       function pad(n) { return (n < 10 ? '0' : '') + n; }
 
-      function paint() {
+      function paint(skipScroll) {
         var seq = sequence();
         form.querySelectorAll('.qstep').forEach(function (s) { s.classList.remove('on'); });
         var cur = seq[idx];
@@ -444,9 +462,14 @@
         count.textContent = kind === 'q' ? qIdx + ' of ' + qs.length : (kind === 'contact' ? 'Last step' : '');
         ghost.textContent = kind === 'q' ? pad(qIdx) : '';
         err.classList.remove('on');
-        var shell = document.querySelector('.ap-shell');
-        var target = shell.getBoundingClientRect().top + window.scrollY - 96;
-        window.scrollTo({ top: Math.max(0, target), behavior: 'smooth' });
+        /* Instant anchor (not smooth): when a tall card is followed by a short
+           one the document shrinks, and a smooth scroll races the layout change
+           and can strand the viewport below the card. */
+        if (!skipScroll) {
+          var shell = document.querySelector('.ap-shell');
+          var target = shell.getBoundingClientRect().top + window.scrollY - 96;
+          window.scrollTo({ top: Math.max(0, target), behavior: 'auto' });
+        }
         var focusable = stepEl(cur).querySelector('input[type="text"], input[type="email"], input[type="tel"]');
         if (focusable && window.matchMedia('(min-width: 961px)').matches) focusable.focus({ preventScroll: true });
       }
@@ -535,6 +558,8 @@
         document.getElementById('qghost').style.display = 'none';
         var el = document.getElementById('calcScreen');
         el.style.display = 'block';
+        var shell = document.querySelector('.ap-shell');
+        window.scrollTo({ top: Math.max(0, shell.getBoundingClientRect().top + window.scrollY - 96), behavior: 'auto' });
         var line = document.getElementById('calcLine');
         var i = 0;
         var t = setInterval(function () {
@@ -562,6 +587,8 @@
           family: picked('family'),
           labs: picked('labs'),
           triggerEvent: picked('triggerEvent'),
+          alreadyTried: Array.prototype.slice.call(form.querySelectorAll('input[name="alreadyTried"]:checked')).map(function (c) { return c.value; }),
+          context: get('context'),
           businessRevenue: picked('businessRevenue'),
           annualIncome: picked('annualIncome'),
           investReady: picked('investReady'),
@@ -614,8 +641,8 @@
             age: data.age,
             trigger_event: data.triggerEvent,
             symptoms: ['Energy: ' + data.energy, 'Focus: ' + data.focus, 'Sleep: ' + data.sleep, 'Drive: ' + data.drive].join(' | '),
-            already_tried: 'Body: ' + data.bodycomp + ' | Family: ' + data.family + ' | Labs: ' + data.labs,
-            notes: 'Second Prime Score ' + result.score + '. Risk: ' + result.risk.pct + ' (' + result.risk.status + ') | Performance: ' + result.perf.pct + ' (' + result.perf.status + ')',
+            already_tried: (data.alreadyTried || []).join(', '),
+            notes: 'Second Prime Score ' + result.score + '. Risk: ' + result.risk.pct + ' (' + result.risk.status + ') | Performance: ' + result.perf.pct + ' (' + result.perf.status + ') | Body: ' + data.bodycomp + ' | Family: ' + data.family + ' | Labs: ' + data.labs + (data.context ? ' | In their words: ' + data.context : ''),
             business_owner: isOwner() ? 'Yes' : 'No',
             business_revenue: data.businessRevenue,
             annual_income: data.annualIncome,
@@ -648,7 +675,7 @@
         });
       });
 
-      paint();
+      paint(true); // first paint: no scroll, so visitors land at the top of the page
     })();
   </script>
 </body>

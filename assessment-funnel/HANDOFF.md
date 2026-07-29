@@ -8,7 +8,7 @@ prospect, and no numeric score is ever shown to them (it exists only for
 internal triage in the webhook). Self-contained files (fonts, logo, images,
 CSS copied from funnel-v2).
 
-**Flow:** `index.html` (landing + video) → `assessment.html` (13 questions +
+**Flow:** `index.html` (landing + video) → `assessment.html` (14 questions +
 4 dynamic trust interstitials) → qualified: `booking.html` → `thank-you.html`
 / disqualified: `results.html` soft path. `FLOW.html` is a visual map of every
 step and branch; open it in a browser.
@@ -19,7 +19,7 @@ step and branch; open it in a browser.
 the assessment. Copy promises the score plus a Risk and Performance read.
 
 **Assessment (`assessment.html`)**
-- 13 questions: outcome, age, role, then 4 performance (energy, focus, sleep,
+- 14 questions: outcome, age, role, then 4 performance (energy, focus, sleep,
   drive), 3 risk (body comp, family history, testing depth), trigger event,
   money question (revenue for owners, income otherwise), conditional $10K
   invest question, timeline, then contact.
