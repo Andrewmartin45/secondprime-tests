@@ -540,6 +540,15 @@
         r.addEventListener('click', function () { setTimeout(next, 280); });
       });
 
+      /* First answer fires a neutral mid-funnel pixel event once, so Meta can
+         optimize on intake starters and retarget the ones who don't finish. */
+      var startedFired = false;
+      form.addEventListener('change', function () {
+        if (startedFired) return;
+        startedFired = true;
+        try { if (window.fbq) fbq('trackCustom', 'intake_started'); } catch (_) {}
+      }, true);
+
       // Age slider readout + fill.
       var slider = document.getElementById('ageslider');
       var ageval = document.getElementById('ageval');
