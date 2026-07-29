@@ -12,7 +12,7 @@
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="css/styles.css?v=1" />
   <link rel="stylesheet" href="css/funnel.css?v=11" />
-  <link rel="stylesheet" href="css/assess.css?v=5" />
+  <link rel="stylesheet" href="css/assess.css?v=6" />
   <!-- Meta pixel (Amartinco LLC's Pixel). Neutral event names only, per Meta health-advertiser rules. -->
   <script>
   (function () {
@@ -216,19 +216,20 @@
         var res = JSON.parse(localStorage.getItem('sp_assessment') || 'null');
         // ?demo=1 previews the teaser strip without stored assessment data.
         if (params.get('demo') && !(res && res.data)) {
-          res = { data: { energy: 'The 3pm crash runs my calendar', family: 'One that concerns me', labs: 'Standard annual physical only' } };
+          res = { data: { energy: 'The 3pm crash runs my calendar', family: 'Heart disease', labs: 'Standard annual physical only' } };
         }
         var FLAGS = [
           { f: 'energy',   match: /crash|coffee/i,            label: 'The afternoon energy crash', w: 5 },
           { f: 'drive',    match: /lower|fraction/i,          label: 'Drive and libido decline', w: 5 },
-          { f: 'bodycomp', match: /waist keeps|nothing I do/i, label: 'Body composition drifting despite effort', w: 5 },
-          { f: 'family',   match: /more than one|concerns me/i, label: 'Family health history', w: 4 },
+          { f: 'bodycomp', match: /30 lbs or more/i,           label: '30+ lbs above your best weight', w: 5 },
+          { f: 'bodycomp', match: /15 to 30/i,                label: '15+ lbs above your best weight', w: 4 },
+          { f: 'family',   match: /heart|diabetes|stroke|cancer|dementia|blood pressure/i, label: 'Family history of chronic disease', w: 4 },
           { f: 'labs',     match: /physical only|been years/i, label: 'No deep bloodwork on record', w: 4 },
           { f: 'sleep',    match: /still wake up tired|broken/i, label: 'Waking up tired after full nights', w: 3 },
           { f: 'focus',    match: /foggy/i,                   label: 'Brain fog most days', w: 3 },
           { f: 'energy',   match: /fading after lunch/i,      label: 'Afternoon energy fade', w: 2 },
           { f: 'focus',    match: /step slower/i,             label: 'Sharpness a step slower', w: 2 },
-          { f: 'bodycomp', match: /softer/i,                  label: 'Body composition starting to drift', w: 2 }
+          { f: 'bodycomp', match: /5 to 15/i,                 label: 'Weight creeping above your best', w: 2 }
         ];
         if (res && res.data) {
           var seen = {}, hits = [];

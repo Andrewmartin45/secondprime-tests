@@ -12,7 +12,7 @@
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="css/styles.css?v=1" />
   <link rel="stylesheet" href="css/funnel.css?v=11" />
-  <link rel="stylesheet" href="css/assess.css?v=5" />
+  <link rel="stylesheet" href="css/assess.css?v=6" />
   <!-- Meta pixel (Amartinco LLC's Pixel). Neutral event names only, per Meta health-advertiser rules. -->
   <script>
   (function () {
@@ -161,20 +161,29 @@
 
           <section class="qstep" data-q="bodycomp" data-kind="q">
             <span class="as-sec">Risk &middot; 1 of 3</span>
-            <h2>What&rsquo;s your body been doing the last few years?</h2>
-            <label class="opt"><input type="radio" name="bodycomp" value="Lean and holding steady" data-bucket="risk" data-pts="0" /><span class="key">A</span><span class="txt">Lean and holding steady</span></label>
-            <label class="opt"><input type="radio" name="bodycomp" value="Softer than I was, but manageable" data-bucket="risk" data-pts="2" /><span class="key">B</span><span class="txt">Softer than I was, but manageable</span></label>
-            <label class="opt"><input type="radio" name="bodycomp" value="Same training, same eating, waist keeps winning" data-bucket="risk" data-pts="4" /><span class="key">C</span><span class="txt">Same training, same eating, waist keeps winning</span></label>
-            <label class="opt"><input type="radio" name="bodycomp" value="Gaining, and nothing I do stops it" data-bucket="risk" data-pts="5" /><span class="key">D</span><span class="txt">Gaining, and nothing I do stops it</span></label>
+            <h2>How far is your weight from your best?</h2>
+            <p class="qsub">Your best adult weight, whenever that was.</p>
+            <label class="opt"><input type="radio" name="bodycomp" value="At my best, or leaner" data-bucket="risk" data-pts="0" /><span class="key">A</span><span class="txt">At my best, or leaner</span></label>
+            <label class="opt"><input type="radio" name="bodycomp" value="Up 5 to 15 lbs" data-bucket="risk" data-pts="2" /><span class="key">B</span><span class="txt">Up 5 to 15 lbs</span></label>
+            <label class="opt"><input type="radio" name="bodycomp" value="Up 15 to 30 lbs" data-bucket="risk" data-pts="4" /><span class="key">C</span><span class="txt">Up 15 to 30 lbs</span></label>
+            <label class="opt"><input type="radio" name="bodycomp" value="Up 30 lbs or more" data-bucket="risk" data-pts="5" /><span class="key">D</span><span class="txt">Up 30 lbs or more</span></label>
           </section>
 
           <section class="qstep" data-q="family" data-kind="q">
             <span class="as-sec">Risk &middot; 2 of 3</span>
-            <h2>Any of these in your family?</h2>
-            <p class="qsub">Parents, siblings, grandparents. Heart disease, diabetes, stroke, dementia, cancer.</p>
-            <label class="opt"><input type="radio" name="family" value="Yes, more than one" data-bucket="risk" data-pts="4" /><span class="key">A</span><span class="txt">Yes, more than one</span></label>
-            <label class="opt"><input type="radio" name="family" value="One that concerns me" data-bucket="risk" data-pts="2" /><span class="key">B</span><span class="txt">One that concerns me</span></label>
-            <label class="opt"><input type="radio" name="family" value="Clean family history" data-bucket="risk" data-pts="0" /><span class="key">C</span><span class="txt">Clean family history</span></label>
+            <h2>Select any chronic diseases that run in your family.</h2>
+            <p class="qsub">Parents, siblings, grandparents. Select all that apply.</p>
+            <label class="opt"><input type="checkbox" name="familyHistory" value="Heart disease" /><span class="key">A</span><span class="txt">Heart disease</span></label>
+            <label class="opt"><input type="checkbox" name="familyHistory" value="Type 2 diabetes" /><span class="key">B</span><span class="txt">Type 2 diabetes</span></label>
+            <label class="opt"><input type="checkbox" name="familyHistory" value="Stroke" /><span class="key">C</span><span class="txt">Stroke</span></label>
+            <label class="opt"><input type="checkbox" name="familyHistory" value="Cancer" /><span class="key">D</span><span class="txt">Cancer</span></label>
+            <label class="opt"><input type="checkbox" name="familyHistory" value="Dementia or Alzheimer's" /><span class="key">E</span><span class="txt">Dementia or Alzheimer&rsquo;s</span></label>
+            <label class="opt"><input type="checkbox" name="familyHistory" value="High blood pressure" /><span class="key">F</span><span class="txt">High blood pressure</span></label>
+            <label class="opt"><input type="checkbox" name="familyHistory" value="None of these" /><span class="key">G</span><span class="txt">None of these</span></label>
+            <div class="qnav">
+              <button type="button" class="qback" data-back>&larr; Back</button>
+              <button type="button" class="btn btn-teal qnext" data-next>Continue</button>
+            </div>
           </section>
 
           <section class="qstep" data-q="labs" data-kind="q">
@@ -191,6 +200,22 @@
             <span class="as-int-tag" id="int3Tag">Case file</span>
             <h2 class="as-int-h" id="int3H"></h2>
             <p class="as-int-p" id="int3P"></p>
+            <div class="as-ranges" aria-hidden="true">
+              <p class="as-ranges-head">3 markers that come back &ldquo;normal&rdquo; and still cost you</p>
+              <div class="as-range">
+                <span class="as-r-name">Free Testosterone <em>drive &middot; muscle &middot; decision speed</em></span>
+                <div class="as-r-bar"><i class="as-r-opt" style="left:62%;width:30%"></i><b class="as-r-you" style="left:24%"></b></div>
+              </div>
+              <div class="as-range">
+                <span class="as-r-name">Fasting Insulin <em>the earliest metabolic warning</em></span>
+                <div class="as-r-bar"><i class="as-r-opt" style="left:4%;width:22%"></i><b class="as-r-you" style="left:66%"></b></div>
+              </div>
+              <div class="as-range">
+                <span class="as-r-name">ApoB <em>predicts heart disease better than cholesterol</em></span>
+                <div class="as-r-bar"><i class="as-r-opt" style="left:4%;width:26%"></i><b class="as-r-you" style="left:58%"></b></div>
+              </div>
+              <p class="as-r-legend"><span class="as-l-track"></span> lab &ldquo;normal&rdquo;&ensp;<span class="as-l-opt"></span> optimal&ensp;<span class="as-l-you"></span> you, told you&rsquo;re &ldquo;fine&rdquo;</p>
+            </div>
             <div class="as-int-case">
               <img src="assets/cases/dustin-head.jpg" alt="" loading="lazy" style="object-position:center 22%" />
               <div>
@@ -238,7 +263,7 @@
           <section class="qstep" data-q="revenue" data-kind="q">
             <span class="as-sec">Fit</span>
             <h2>What&rsquo;s your annual business revenue?</h2>
-            <p class="qsub">A ballpark is fine. It helps us understand the seat you&rsquo;re in.</p>
+            <p class="qsub">A ballpark is fine, and it stays private. Company size changes the stress load we look for, and it lets us confirm our programs fit your situation before we ask for 15 minutes of your time.</p>
             <label class="opt"><input type="radio" name="businessRevenue" value="$0 – $500K" /><span class="key">A</span><span class="txt">$0 &ndash; $500K</span></label>
             <label class="opt"><input type="radio" name="businessRevenue" value="$500K – $1M" /><span class="key">B</span><span class="txt">$500K &ndash; $1M</span></label>
             <label class="opt"><input type="radio" name="businessRevenue" value="$1M – $3M" /><span class="key">C</span><span class="txt">$1M &ndash; $3M</span></label>
@@ -250,7 +275,7 @@
           <section class="qstep" data-q="income" data-kind="q">
             <span class="as-sec">Fit</span>
             <h2>What&rsquo;s your annual income?</h2>
-            <p class="qsub">A ballpark is fine.</p>
+            <p class="qsub">A ballpark is fine, and it stays private. It lets us confirm our programs fit your situation before we ask for 15 minutes of your time.</p>
             <label class="opt"><input type="radio" name="annualIncome" value="$0 – $200K" /><span class="key">A</span><span class="txt">$0 &ndash; $200K</span></label>
             <label class="opt"><input type="radio" name="annualIncome" value="$200K – $400K" /><span class="key">B</span><span class="txt">$200K &ndash; $400K</span></label>
             <label class="opt"><input type="radio" name="annualIncome" value="$400K – $1M" /><span class="key">C</span><span class="txt">$400K &ndash; $1M</span></label>
@@ -284,7 +309,7 @@
               <p>&ldquo;I came in skeptical. I&rsquo;d done bloodwork a dozen times. Andrew found things in week one nobody had flagged.&rdquo;</p>
               <div class="as-int-who"><b>R.S.</b><span>Founder, Tech &middot; Age 44</span></div>
             </div>
-            <p class="as-int-p">One more screen for your details, then you&rsquo;ll pick a time for your call. We review everything you just told us before we get on.</p>
+            <p class="as-int-p">One more screen for your details, then you&rsquo;ll pick a time for your call. We review everything you just told us before we get on. And if we end up working together, it all goes to one team: labs, hormones, nutrition, and training run as one protocol, so you&rsquo;re never the one connecting the dots between specialists.</p>
             <div class="qnav qnav-center">
               <button type="button" class="btn btn-teal qnext" data-next>Continue</button>
             </div>
@@ -359,6 +384,13 @@
 
       function isOwner() { return picked('role') === 'I own or co-own a business'; }
 
+      // Family history: checked diseases, "None of these" excluded.
+      function familyList() {
+        return Array.prototype.slice.call(form.querySelectorAll('input[name="familyHistory"]:checked'))
+          .map(function (c) { return c.value; })
+          .filter(function (v) { return v !== 'None of these'; });
+      }
+
       // Below threshold = owner under $500K revenue, or non-owner under $200K income.
       function belowThreshold() {
         if (isOwner()) return normDash(picked('businessRevenue')) === '$0 - $500K';
@@ -389,15 +421,15 @@
         if (role === 'I own or co-own a business') {
           set('int1Tag', 'Built for owners');
           set('int1H', 'You carry the company. Your biology carries you.');
-          set('int1P', 'We’ve run deep diagnostics for 500+ founders and executives, and the pattern is consistent: the seat you sit in shows up in your blood. Chronic stress load, compressed sleep, decisions all day. The next questions map what that’s costing you.');
+          set('int1P', 'We’ve run 1,000+ biomarkers apiece for 500+ founders and executives, and the pattern is consistent: the seat you sit in shows up in your blood. Chronic stress load, compressed sleep, decisions all day. The next questions map what that’s costing you.');
         } else if (role === 'Executive or senior leader') {
           set('int1Tag', 'Built for operators');
           set('int1H', 'High output has a biological price. We measure it.');
-          set('int1P', 'We’ve run deep diagnostics for 500+ founders and executives. The load you carry shows up in your blood years before it shows up anywhere else. The next questions map what it’s costing you.');
+          set('int1P', 'We’ve run 1,000+ biomarkers apiece for 500+ founders and executives. The load you carry shows up in your blood years before it shows up anywhere else. The next questions map what it’s costing you.');
         } else {
           set('int1Tag', 'Built for high performers');
           set('int1H', 'Output has a biological price. We measure it.');
-          set('int1P', 'We’ve spent 10+ years running deep diagnostics for people who demand a lot from their bodies. The next questions map where yours is drifting.');
+          set('int1P', 'We’ve spent 10+ years running 1,000+ biomarker workups for people who demand a lot from their bodies. The next questions map where yours is drifting.');
         }
       }
 
@@ -409,7 +441,7 @@
         if (dr >= 3 && dr >= e && dr >= sl) {
           set('int2Tag', 'The math on what you just said');
           set('int2H', 'Testosterone falls about 1% a year from your mid-30s.');
-          set('int2P', 'Slow enough that you adapt. Fast enough that by 50, a quarter of your drive, muscle, and recovery can be gone, and every year of it felt “normal.” Drive tracks testosterone closer than almost any symptom, and it’s measurable.');
+          set('int2P', 'Slow enough that you adapt. Fast enough that by 50, a quarter of your drive, muscle, and recovery can be gone, and every year of it felt “normal.” Drive tracks testosterone closer than almost any symptom. We read it against optimal, where a high-output body runs, and that’s a far higher bar than your doctor’s “in range.”');
           quote('My testosterone doubled, inflammation markers are down, and I’m performing at a level I haven’t seen since my 30s.', 'J.M.', 'Founder & CEO, Real Estate · Age 47');
         } else if (e >= 4 || sl >= 3) {
           set('int2Tag', 'You just described a pattern we test for');
@@ -425,9 +457,9 @@
       }
 
       function paintInt3() {
-        var fam = pts('family');
+        var fam = familyList().length;
         var lab = pts('labs');
-        if (fam >= 2) {
+        if (fam >= 1) {
           set('int3Tag', 'About your family history');
           set('int3H', 'Family history is the strongest reason to look early.');
           set('int3P', 'The findings that change a family story show up in blood about a decade before symptoms. Half of heart attack patients had “normal” cholesterol on their last labs (American Heart Journal, 2009). Deep testing is how you find out whether you’re on that path while it’s still cheap to change.');
@@ -483,6 +515,17 @@
       }
       function showErr(msg) { err.textContent = msg; err.classList.add('on'); }
 
+      // "None of these" is exclusive: checking it clears the diseases and vice versa.
+      form.querySelectorAll('input[name="familyHistory"]').forEach(function (c) {
+        c.addEventListener('change', function () {
+          if (!c.checked) return;
+          form.querySelectorAll('input[name="familyHistory"]').forEach(function (o) {
+            if (o === c) return;
+            if (c.value === 'None of these' || o.value === 'None of these') o.checked = false;
+          });
+        });
+      });
+
       // Switching the role answer clears the money answer that no longer applies.
       form.querySelectorAll('input[name="role"]').forEach(function (r) {
         r.addEventListener('change', function () {
@@ -526,10 +569,16 @@
         if (opts[i]) { e.preventDefault(); opts[i].click(); }
       });
 
-      // Back + continue buttons.
+      // Back + continue buttons, with per-step validation.
       form.addEventListener('click', function (e) {
         if (e.target.closest('[data-back]')) { e.preventDefault(); back(); }
-        if (e.target.closest('[data-next]')) { e.preventDefault(); next(); }
+        if (e.target.closest('[data-next]')) {
+          e.preventDefault();
+          if (sequence()[idx] === 'family' && !form.querySelector('input[name="familyHistory"]:checked')) {
+            showErr('Pick at least one, or "None of these."'); return;
+          }
+          next();
+        }
       });
 
       /* ============ SCORING ============
@@ -540,7 +589,9 @@
       function bucketStatus(share) { return share >= 0.6 ? 'flag' : share >= 0.28 ? 'drift' : 'solid'; }
       function computeScore() {
         var perf = pts('energy') + pts('focus') + pts('sleep') + pts('drive');
-        var risk = pts('bodycomp') + pts('family') + pts('labs');
+        var famCount = familyList().length;
+        var famPts = famCount >= 2 ? 4 : famCount === 1 ? 2 : 0;
+        var risk = pts('bodycomp') + famPts + pts('labs');
         var score = Math.round(100 - ((perf + risk) / (PERF_MAX + RISK_MAX)) * 78);
         return {
           score: score,
@@ -584,7 +635,8 @@
           sleep: picked('sleep'),
           drive: picked('drive'),
           bodycomp: picked('bodycomp'),
-          family: picked('family'),
+          familyList: familyList(),
+          family: familyList().length ? familyList().join(', ') : 'None reported',
           labs: picked('labs'),
           triggerEvent: picked('triggerEvent'),
           alreadyTried: Array.prototype.slice.call(form.querySelectorAll('input[name="alreadyTried"]:checked')).map(function (c) { return c.value; }),
@@ -601,10 +653,11 @@
 
         if (!data.firstName || !data.lastName || !data.email || !data.phone) { showErr('Please fill in your name, email, and phone.'); return; }
         if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)) { showErr('That email doesn’t look right. Mind checking it?'); return; }
-        var required = ['outcome', 'role', 'energy', 'focus', 'sleep', 'drive', 'bodycomp', 'family', 'labs', 'triggerEvent', 'timeline'];
+        var required = ['outcome', 'role', 'energy', 'focus', 'sleep', 'drive', 'bodycomp', 'labs', 'triggerEvent', 'timeline'];
         for (var i = 0; i < required.length; i++) {
           if (!data[required[i]]) { showErr('Looks like a question got skipped. Use Back to check your answers.'); return; }
         }
+        if (!form.querySelector('input[name="familyHistory"]:checked')) { showErr('Looks like a question got skipped. Use Back to check your answers.'); return; }
         if (isOwner() ? !data.businessRevenue : !data.annualIncome) { showErr('Looks like a question got skipped. Use Back to check your answers.'); return; }
         if (belowThreshold() && !data.investReady) { showErr('Looks like a question got skipped. Use Back to check your answers.'); return; }
 

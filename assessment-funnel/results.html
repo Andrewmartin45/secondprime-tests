@@ -12,7 +12,7 @@
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="css/styles.css?v=1" />
   <link rel="stylesheet" href="css/funnel.css?v=11" />
-  <link rel="stylesheet" href="css/assess.css?v=5" />
+  <link rel="stylesheet" href="css/assess.css?v=6" />
   <!-- Meta pixel (Amartinco LLC's Pixel). Neutral event names only, per Meta health-advertiser rules. -->
   <script>
   (function () {
@@ -187,7 +187,7 @@
       raw = {
         data: { firstName: 'Andrew', energy: 'The 3pm crash runs my calendar', focus: 'A step slower than I was',
                 sleep: 'I sleep 7-8 hours and still wake up tired', drive: 'Noticeably lower',
-                bodycomp: 'Same training, same eating, waist keeps winning', family: 'One that concerns me',
+                bodycomp: 'Up 15 to 30 lbs', family: 'Heart disease', familyList: ['Heart disease'],
                 labs: 'Standard annual physical only' },
         score: 58,
         perf: { pts: 10, pct: 44, status: 'drift' },
@@ -239,13 +239,9 @@
         'A fraction of what they were': 'Drive at a fraction of what it was is a lab finding waiting to be run. It shows up everywhere: muscle, confidence, decision speed, the edge you built the business with.'
       },
       bodycomp: {
-        'Softer than I was, but manageable': 'Softer on the same habits means something upstream shifted. Caught at this stage it’s one of the most fixable things we see.',
-        'Same training, same eating, waist keeps winning': 'Same effort, worse results is insulin talking. It shows up in blood years before glucose gets flagged, and most physicals never order the test.',
-        'Gaining, and nothing I do stops it': 'Steady gain that ignores effort usually means insulin resistance is already established. The road ends at a diagnosis unless the numbers get read early.'
-      },
-      family: {
-        'Yes, more than one': 'The findings that change a family story show up in blood about a decade before symptoms. Half of heart attack patients had "normal" cholesterol on their last labs.',
-        'One that concerns me': 'One serious family diagnosis is reason enough to look early. The markers that show whether you’re on the same path are measurable today.'
+        'Up 5 to 15 lbs': 'Ten pounds above your best usually means something upstream shifted. Caught at this stage it’s one of the most fixable things we see.',
+        'Up 15 to 30 lbs': '15 to 30 lbs on the same habits is insulin talking. It shows up in blood years before glucose gets flagged, and most physicals never order the test.',
+        'Up 30 lbs or more': '30 lbs or more that ignores effort usually means insulin resistance is already established. The road ends at a diagnosis unless the numbers get read early.'
       },
       labs: {
         'Standard annual physical only': 'A standard physical checks a few dozen markers. The answers usually live in the other 960.',
@@ -274,10 +270,21 @@
     BUCKETS.forEach(function (b) {
       var sec = document.createElement('div');
       sec.className = 'rs-bucket is-' + b.data.status;
+      var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
       var mirrors = b.fields.map(function (f) {
-        var ans = data[f];
-        var meaning = MIRRORS[f] && MIRRORS[f][ans];
-        return meaning ? '<div class="rs-mirror"><p class="rs-m-you">You told us: &ldquo;' + ans.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '&rdquo;</p><p class="rs-m-mean">' + meaning + '</p></div>' : '';
+        var ans, meaning;
+        if (f === 'family') {
+          var list = data.familyList || (data.family && data.family !== 'None reported' ? String(data.family).split(', ') : []);
+          if (!list.length) return '';
+          ans = list.join(', ') + ' in the family';
+          meaning = list.length >= 2
+            ? 'More than one line of family history is the strongest reason to look early. The findings that change that story show up in blood about a decade before symptoms, and half of heart attack patients had "normal" cholesterol on their last labs.'
+            : 'One family diagnosis is reason enough to look early. The markers that show whether you’re on the same path are measurable today.';
+        } else {
+          ans = data[f];
+          meaning = MIRRORS[f] && MIRRORS[f][ans];
+        }
+        return meaning ? '<div class="rs-mirror"><p class="rs-m-you">You told us: &ldquo;' + esc(ans) + '&rdquo;</p><p class="rs-m-mean">' + meaning + '</p></div>' : '';
       }).join('');
       if (!mirrors) mirrors = '<div class="rs-mirror rs-mirror-solid"><p class="rs-m-mean">' + b.solidLine + '</p></div>';
       sec.innerHTML =
