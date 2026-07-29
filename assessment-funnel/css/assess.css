@@ -37,6 +37,11 @@
 
 /* ---------- Landing: 5-system grid + steps ---------- */
 .as-grid5 { grid-template-columns: repeat(5, 1fr); }
+/* Narrow 5-up cards: ghost number moves to the bottom corner (no label collision) and lightens */
+.as-grid5 .so-num { top: auto; right: 14px; bottom: 8px; font-size: 40px; color: #F0EADD; }
+.as-grid5 .so-label { margin-bottom: 12px; }
+.as-grid5 .so-desc { padding-bottom: 18px; }
+@media (max-width: 600px) { .as-grid5 .so-num { font-size: 34px; } .as-grid5 .so-label { margin-bottom: 10px; } }
 @media (max-width: 1080px) { .as-grid5 { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 809px) { .as-grid5 { grid-template-columns: 1fr 1fr; } .as-grid5 .so-card:last-child { grid-column: 1 / -1; } }
 
