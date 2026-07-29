@@ -47,16 +47,11 @@
         <p class="f-hero-note" style="margin-top:12px">We review your intake before the call: what your answers point to, and what we&rsquo;d test first.</p>
       </div>
 
-      <!-- ============ RESULTS VIDEO ============
-           TODO: replace the placeholder with the real video.
-           Spec: 60–90 seconds, Andrew to camera. Script in VIDEO-SCRIPTS.md (Video 2).
-      -->
+      <!-- ============ RESULTS VIDEO (Vimeo) ============ -->
       <div class="as-video" id="resultsVideo" style="margin-bottom:0">
-        <div class="as-video-frame">
-          <button class="as-play" aria-label="Play video"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
-          <span class="as-video-cap">Andrew Martin &middot; What an intake like yours usually means &middot; 90 seconds</span>
-        </div>
+        <div style="padding:56.25% 0 0 0;position:relative;border-radius:16px;overflow:hidden;"><iframe src="https://player.vimeo.com/video/1179952534?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Second Prime"></iframe></div>
       </div>
+      <script src="https://player.vimeo.com/api/player.js"></script>
     </div>
   </section>
 
@@ -341,11 +336,6 @@
     window.addEventListener('scroll', updateNavTheme, { passive: true });
     updateNavTheme();
 
-    // Video placeholder: until the real video lands, clicking scrolls to the CTA.
-    document.getElementById('resultsVideo').addEventListener('click', function () {
-      var target = qualified ? document.getElementById('ctaQualified') : document.getElementById('ctaSoft');
-      target.scrollIntoView({ behavior: 'smooth' });
-    });
   })();
   </script>
 </body>
