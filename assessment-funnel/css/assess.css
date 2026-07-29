@@ -88,18 +88,17 @@
 
 /* ---------- Interstitial: normal-vs-optimal range bars (dark card) ---------- */
 .as-ranges { max-width: 540px; margin: 24px auto 0; text-align: left; }
-.as-ranges-head { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-bright); margin-bottom: 14px; text-align: center; }
-.as-range { margin-bottom: 16px; }
+.as-ranges-head { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-bright); margin-bottom: 6px; text-align: center; }
+.as-ranges-sub { font-size: 13px; color: rgba(225,242,243,0.75); line-height: 1.5; text-align: center; max-width: 46ch; margin: 0 auto 16px; }
+.as-range { margin-bottom: 18px; }
 .as-r-name { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 14px; font-weight: 600; color: #FDFBF8; }
 .as-r-name em { font-style: normal; font-size: 11.5px; font-weight: 400; color: rgba(225,242,243,0.55); text-align: right; }
-.as-r-bar { position: relative; height: 10px; border-radius: 100px; background: rgba(255,255,255,0.14); margin-top: 7px; }
-.as-r-opt { position: absolute; top: 0; bottom: 0; border-radius: 100px; background: rgba(101,200,208,0.9); }
-.as-r-you { position: absolute; top: 50%; transform: translate(-50%, -50%); width: 15px; height: 15px; border-radius: 50%; background: #C4584D; border: 2px solid #FDFBF8; box-shadow: 0 2px 6px rgba(0,0,0,0.35); }
-.as-r-legend { display: flex; align-items: center; justify-content: center; gap: 6px; flex-wrap: wrap; font-size: 12px; color: rgba(225,242,243,0.6); margin-top: 4px; }
-.as-l-track, .as-l-opt, .as-l-you { display: inline-block; border-radius: 100px; }
-.as-l-track { width: 22px; height: 8px; background: rgba(255,255,255,0.14); }
-.as-l-opt { width: 22px; height: 8px; background: rgba(101,200,208,0.9); }
-.as-l-you { width: 11px; height: 11px; border-radius: 50%; background: #C4584D; border: 2px solid #FDFBF8; }
+.as-r-bar { position: relative; height: 20px; border-radius: 100px; background: rgba(255,255,255,0.13); border: 1px solid rgba(255,255,255,0.22); margin-top: 7px; }
+.as-r-zone { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(225,242,243,0.55); white-space: nowrap; }
+.as-r-opt { position: absolute; top: -1px; bottom: -1px; border-radius: 100px; background: rgba(101,200,208,0.95); font-style: normal; font-size: 9px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #0F2F33; display: flex; align-items: center; justify-content: center; }
+.as-r-you { position: absolute; top: 50%; transform: translate(-50%, -50%); width: 17px; height: 17px; border-radius: 50%; background: #C4584D; border: 2px solid #FDFBF8; box-shadow: 0 2px 6px rgba(0,0,0,0.35); }
+.as-r-legend { display: flex; align-items: center; justify-content: center; gap: 7px; font-size: 12px; color: rgba(225,242,243,0.65); margin-top: 2px; }
+.as-l-you { display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: #C4584D; border: 2px solid #FDFBF8; }
 
 /* ---------- Contact step: optional context textarea ---------- */
 .as-context { display: block; margin-top: 14px; }
