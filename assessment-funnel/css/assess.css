@@ -14,7 +14,7 @@
   .as-hero { padding: 86px 0 40px; }
   /* one-line tag: the wrap was costing a full line */
   .as-hero .hero-tag { font-size: clamp(10.5px, 2.9vw, 13px); letter-spacing: 0.08em; margin-bottom: 13px; }
-  .as-hero .as-h1-long { font-size: clamp(23px, 6.8vw, 31px) !important; line-height: 1.16 !important; }
+  .as-hero .as-h1-long { font-size: clamp(23px, 7.6vw, 36px) !important; line-height: 1.15 !important; }
   .as-hero .as-h1-long .accent { margin-top: 5px; }
   .as-hero .f-hero-sub { font-size: clamp(15px, 4.1vw, 18.5px); line-height: 1.42; margin: 11px auto 14px; max-width: 34ch; }
   .as-hero .as-video { margin: 0 auto 17px; max-width: 92%; }
@@ -28,7 +28,7 @@
 /* Short screens: give the video back the room the bigger type took. */
 @media (max-width: 640px) and (max-height: 700px) {
   .as-hero { padding: 80px 0 40px; }
-  .as-hero .as-h1-long { font-size: clamp(22px, 6.5vw, 27px) !important; }
+  .as-hero .as-h1-long { font-size: clamp(22px, 6.9vw, 29px) !important; }
   .as-hero .as-video { max-width: 88%; margin-bottom: 14px; }
   .as-hero .btn-lg { padding: 16px 28px; font-size: 17.5px; }
 }
