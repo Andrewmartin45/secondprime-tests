@@ -12,7 +12,7 @@
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="css/styles.css?v=1" />
   <link rel="stylesheet" href="css/funnel.css?v=11" />
-  <link rel="stylesheet" href="css/assess.css?v=15" />
+  <link rel="stylesheet" href="css/assess.css?v=16" />
   <!-- Meta pixel (Amartinco LLC's Pixel). Neutral event names only, per Meta health-advertiser rules. -->
   <script>
   (function () {
@@ -147,6 +147,7 @@
             <span class="as-int-tag" id="int2Tag">You just described a pattern we test for</span>
             <h2 class="as-int-h" id="int2H">The 3pm fog has a chemistry.</h2>
             <p class="as-int-p" id="int2P"></p>
+            <div class="as-stat" id="int2Stat"><b></b><span></span></div>
             <div class="as-int-quote">
               <span class="as-q-label">Client testimonial</span>
               <div class="as-q-head">
@@ -205,6 +206,7 @@
             <span class="as-int-tag" id="int3Tag">Case file</span>
             <h2 class="as-int-h" id="int3H"></h2>
             <p class="as-int-p" id="int3P"></p>
+            <div class="as-stat" id="int3Stat"><b></b><span></span></div>
             <div class="as-ranges" aria-hidden="true">
               <p class="as-ranges-head">3 markers that come back &ldquo;normal&rdquo; and still cost you</p>
               <div class="as-range">
@@ -388,6 +390,7 @@
     <div class="f-logo" role="img" aria-label="Second Prime"></div>
     <p class="tagline">Health &middot; Performance &middot; Longevity</p>
     <p class="copy">&copy; 2026 Second Prime. All rights reserved.</p>
+    <p class="copy" style="max-width:52ch;margin:8px auto 0;opacity:0.75">Client averages shown are from retested clients. Individual results vary and are not typical or guaranteed.</p>
   </footer>
 
   <script>
@@ -437,6 +440,13 @@
          Each interstitial rewrites itself from the answers just given, so the
          proof always matches what the person said. */
       var set = function (id, txt) { document.getElementById(id).textContent = txt; };
+      /* Matched proof stat. Only uses the client-average figures already
+         published on the site; nothing here is invented. */
+      function setStat(id, num, label) {
+        var el = document.getElementById(id);
+        el.querySelector('b').textContent = num;
+        el.querySelector('span').textContent = label;
+      }
 
       function paintInt1() {
         var role = picked('role');
@@ -468,16 +478,19 @@
           set('int2Tag', 'The math on what you just said');
           set('int2H', 'Testosterone falls about 1% a year from your mid-30s.');
           set('int2P', 'Slow enough to adapt to. Fast enough that a quarter of your drive is gone by 50.');
+          setStat('int2Stat', '+40%', 'average free testosterone increase across client retests');
           quote('My testosterone doubled. I’m performing at a level I haven’t seen since my 30s.', 'J.M.', 'Founder & CEO, Real Estate · Age 47', null);
         } else if (e >= 4 || sl >= 3) {
           set('int2Tag', 'A pattern we test for');
           set('int2H', sl >= 3 && sl > e ? 'Tired after a full night in bed means the sleep itself is broken.' : 'The 3pm fog has a chemistry.');
           set('int2P', 'Coffee at 11, 1, and 3. That pattern is usually blood sugar or cortisol. Both measurable.');
+          setStat('int2Stat', '-52%', 'average inflammatory marker reduction across client retests');
           quote('The brain fog I thought was just ‘getting older’ is completely gone. I’m present with my kids in a way I wasn’t before.', 'Rob', 'Aerospace Engineering Manager · Age 46', 'assets/cases/rob-head.jpg');
         } else {
           set('int2Tag', 'Strong so far');
           set('int2H', 'You’re holding the line better than most owners we test.');
           set('int2P', 'Most founders we test feel fine and still carry findings worth acting on.');
+          setStat('int2Stat', '-12 yrs', 'average biological age reduction across client retests');
           quote('I came in skeptical. I’d done bloodwork a dozen times. Andrew found things in week one nobody had flagged.', 'R.S.', 'Founder, Tech · Age 44', null);
         }
       }
@@ -485,6 +498,12 @@
       function paintInt3() {
         var fam = familyList().length;
         var lab = pts('labs');
+        // Weight answers pull the metabolic stat; everyone else gets the longevity one.
+        if (/lose (25 to 50|50\+)/i.test(picked('bodycomp'))) {
+          setStat('int3Stat', '-35%', 'average insulin resistance reduction across client retests');
+        } else {
+          setStat('int3Stat', '-12 yrs', 'average biological age reduction across client retests');
+        }
         if (fam >= 1) {
           set('int3Tag', 'About your family history');
           set('int3H', 'Family history is the strongest reason to look early.');

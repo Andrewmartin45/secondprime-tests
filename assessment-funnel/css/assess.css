@@ -53,6 +53,11 @@
 }
 .rs-page .as-video, body:not(.rs-page) section[style*="--white"] .as-video { margin-bottom: 0; }
 
+/* ---------- Landing / thank-you: client story video ---------- */
+.as-casevid { max-width: 640px; margin: 0 auto 44px; }
+.as-casevid video { width: 100%; display: block; border-radius: var(--radius); background: #14141B; }
+.as-casevid-cap { text-align: center; font-size: 13.5px; color: var(--gray); margin-top: 10px; }
+
 /* ---------- Landing: 5-system grid + steps ---------- */
 .as-grid5 { grid-template-columns: repeat(5, 1fr); }
 /* Narrow 5-up cards: ghost number moves to the bottom corner (no label collision) and lightens */
@@ -126,6 +131,20 @@
 .as-hole b { flex: none; width: 128px; text-align: right; font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal-bright); }
 .as-hole p { font-size: 13.5px; line-height: 1.55; color: rgba(225,242,243,0.85); margin: 0; }
 @media (max-width: 480px) { .as-hole { flex-direction: column; gap: 3px; } .as-hole b { text-align: left; width: auto; } }
+
+/* ---------- Interstitial: matched proof stat ---------- */
+.as-stat {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  max-width: 460px; margin: 16px auto 0; padding: 12px 18px;
+  background: rgba(101,200,208,0.1); border: 1px solid rgba(101,200,208,0.28); border-radius: 100px;
+}
+.as-stat b { font-family: var(--font-serif); font-weight: 400; font-size: 30px; line-height: 1; color: var(--teal-bright); flex: none; }
+.as-stat span { font-size: 12px; line-height: 1.35; color: rgba(225,242,243,0.7); text-align: left; }
+@media (max-width: 640px) {
+  .as-stat { gap: 10px; padding: 10px 14px; margin-top: 14px; border-radius: 14px; }
+  .as-stat b { font-size: 25px; }
+  .as-stat span { font-size: 11px; }
+}
 
 /* ---------- Interstitial: normal-vs-optimal range bars (dark card) ---------- */
 .as-ranges { max-width: 540px; margin: 24px auto 0; text-align: left; }
@@ -281,6 +300,15 @@
 .rs-m-you { font-family: var(--font-serif); font-size: 18px; line-height: 1.5; color: var(--ink); margin: 0 0 6px; }
 .rs-m-mean { font-size: 15px; line-height: 1.65; color: var(--gray); margin: 0; }
 .rs-mirror-solid { border-top: none; padding-top: 10px; margin-top: 8px; }
+
+/* ---------- Booking: who you'll talk to ---------- */
+.bk-who {
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+  max-width: 680px; margin: 22px auto 0; padding: 0 20px;
+}
+.bk-who img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(69,141,147,0.35); flex: none; }
+.bk-who b { display: block; font-size: 15px; color: var(--ink); }
+.bk-who span { display: block; font-size: 13px; color: var(--gray); }
 
 /* ---------- Booking: video headline + jump link ---------- */
 .bk-vidlink { text-align: center; margin-top: 18px; }
