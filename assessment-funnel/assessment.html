@@ -12,7 +12,7 @@
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="css/styles.css?v=1" />
   <link rel="stylesheet" href="css/funnel.css?v=11" />
-  <link rel="stylesheet" href="css/assess.css?v=19" />
+  <link rel="stylesheet" href="css/assess.css?v=21" />
   <!-- Meta pixel (Amartinco LLC's Pixel). Neutral event names only, per Meta health-advertiser rules. -->
   <script>
   (function () {
@@ -211,17 +211,34 @@
               <p class="as-ranges-head">3 markers that come back &ldquo;normal&rdquo; and still cost you</p>
               <div class="as-range">
                 <span class="as-r-name">Free Testosterone <em>drive &middot; muscle &middot; recovery</em></span>
-                <div class="as-r-bar"><span class="as-r-zone">lab &ldquo;normal&rdquo;</span><i class="as-r-opt" style="left:62%;width:34%">optimal</i><b class="as-r-you" style="left:24%"></b></div>
-                <div class="as-r-gapline"><span style="left:27%;width:33%">the gap between normal and optimal</span></div>
+                <div class="as-r-bar">
+                  <i class="as-r-out cap-l" style="left:0;width:9%"></i>
+                  <i class="as-r-norm" style="left:9%;width:82%">normal</i>
+                  <i class="as-r-out cap-r" style="left:91%;width:9%"></i>
+                  <i class="as-r-opt" style="left:63%;width:28%">optimal</i>
+                  <b class="as-r-you" style="left:26%"></b>
+                </div>
+                <div class="as-r-gapline"><span style="left:28%;width:35%">the gap between normal and optimal</span></div>
               </div>
               <div class="as-range">
                 <span class="as-r-name">Fasting Insulin <em>the earliest metabolic warning</em></span>
-                <div class="as-r-bar"><span class="as-r-zone" style="left:auto;right:12px">lab &ldquo;normal&rdquo;</span><i class="as-r-opt" style="left:2%;width:26%">optimal</i><b class="as-r-you" style="left:66%"></b></div>
+                <div class="as-r-bar">
+                  <i class="as-r-norm lbl-right cap-l" style="left:0;width:88%">normal</i>
+                  <i class="as-r-out cap-r" style="left:88%;width:12%"></i>
+                  <i class="as-r-opt cap-l" style="left:0;width:26%">optimal</i>
+                  <b class="as-r-you" style="left:66%"></b>
+                </div>
               </div>
               <div class="as-range">
                 <span class="as-r-name">ApoB <em>predicts heart disease better than cholesterol</em></span>
-                <div class="as-r-bar"><span class="as-r-zone" style="left:auto;right:12px">lab &ldquo;normal&rdquo;</span><i class="as-r-opt" style="left:2%;width:28%">optimal</i><b class="as-r-you" style="left:58%"></b></div>
+                <div class="as-r-bar">
+                  <i class="as-r-norm lbl-right cap-l" style="left:0;width:86%">normal</i>
+                  <i class="as-r-out cap-r" style="left:86%;width:14%"></i>
+                  <i class="as-r-opt cap-l" style="left:0;width:28%">optimal</i>
+                  <b class="as-r-you" style="left:58%"></b>
+                </div>
               </div>
+              <p class="as-r-key"><i class="k-out"></i>out of range<i class="k-norm"></i>lab &ldquo;normal&rdquo;<i class="k-opt"></i>optimal<b class="k-you"></b>you</p>
             </div>
             <div class="qnav qnav-center">
               <button type="button" class="btn btn-teal qnext" data-next>Continue</button>
@@ -282,19 +299,18 @@
             <span class="as-sec">Fit</span>
             <h2>What&rsquo;s your annual income?</h2>
             <p class="qsub">A ballpark, and it stays private. It confirms we fit before we ask for your time.</p>
-            <label class="opt"><input type="radio" name="annualIncome" value="$0 – $200K" /><span class="key">A</span><span class="txt">$0 &ndash; $200K</span></label>
-            <label class="opt"><input type="radio" name="annualIncome" value="$200K – $400K" /><span class="key">B</span><span class="txt">$200K &ndash; $400K</span></label>
-            <label class="opt"><input type="radio" name="annualIncome" value="$400K – $1M" /><span class="key">C</span><span class="txt">$400K &ndash; $1M</span></label>
-            <label class="opt"><input type="radio" name="annualIncome" value="$1M+" /><span class="key">D</span><span class="txt">$1M+</span></label>
+            <label class="opt"><input type="radio" name="annualIncome" value="$0 – $149K" /><span class="key">A</span><span class="txt">$0 &ndash; $149K</span></label>
+            <label class="opt"><input type="radio" name="annualIncome" value="$150K – $299K" /><span class="key">B</span><span class="txt">$150K &ndash; $299K</span></label>
+            <label class="opt"><input type="radio" name="annualIncome" value="$300K+" /><span class="key">C</span><span class="txt">$300K+</span></label>
           </section>
 
           <section class="qstep" data-q="invest" data-kind="q">
             <span class="as-sec">Fit</span>
             <h2>Are you ready to invest in your health and longevity?</h2>
             <p class="qsub">We&rsquo;re a premium service. Knowing where you stand tells us if we can help.</p>
-            <label class="opt"><input type="radio" name="investReady" value="Yes. I'm comfortable investing at least $10K in my health this year" /><span class="key">A</span><span class="txt">Yes. I&rsquo;m comfortable investing at least $10K in my health this year</span></label>
-            <label class="opt"><input type="radio" name="investReady" value="I could make it happen if it's the right fit" /><span class="key">B</span><span class="txt">I could make it happen if it&rsquo;s the right fit</span></label>
-            <label class="opt"><input type="radio" name="investReady" value="That's more than I can invest right now" /><span class="key">C</span><span class="txt">That&rsquo;s more than I can invest right now</span></label>
+            <label class="opt"><input type="radio" name="investReady" value="Yes, I'm comfortable investing $10K+ in my health this year" /><span class="key">A</span><span class="txt">Yes, I&rsquo;m comfortable investing $10K+ in my health this year</span></label>
+            <label class="opt"><input type="radio" name="investReady" value="Yes, I'm able to invest $2,500-$10K in my health this year" /><span class="key">B</span><span class="txt">Yes, I&rsquo;m able to invest $2,500&ndash;$10K in my health this year</span></label>
+            <label class="opt"><input type="radio" name="investReady" value="No, I am not in a position to invest in my health" /><span class="key">C</span><span class="txt">No, I am not in a position to invest in my health</span></label>
           </section>
 
           <section class="qstep" data-q="timeline" data-kind="q">
@@ -306,20 +322,6 @@
             <label class="opt"><input type="radio" name="timeline" value="Just exploring for now" /><span class="key">C</span><span class="txt">Just exploring for now</span></label>
           </section>
 
-          <!-- INTERSTITIAL 4: pre-contact expectation setting -->
-          <section class="qstep as-int" data-q="int4" data-kind="int">
-            <span class="as-int-tag">Last stretch</span>
-            <h2 class="as-int-h">Your intake is almost in.</h2>
-            <div class="as-int-quote">
-              <div class="f-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <p>&ldquo;I came in skeptical. I&rsquo;d done bloodwork a dozen times. Andrew found things in week one nobody had flagged.&rdquo;</p>
-              <div class="as-int-who"><b>R.S.</b><span>Founder, Tech &middot; Age 44</span></div>
-            </div>
-            <p class="as-int-p">Details next, then your call time. One team, one protocol: labs, hormones, nutrition, training.</p>
-            <div class="qnav qnav-center">
-              <button type="button" class="btn btn-teal qnext" data-next>Continue</button>
-            </div>
-          </section>
 
           <!-- ============ CONTACT ============ -->
 
@@ -407,7 +409,7 @@
       // Below threshold = owner under $500K revenue, or non-owner under $200K income.
       function belowThreshold() {
         if (isOwner()) return normDash(picked('businessRevenue')) === '$0 - $500K';
-        if (picked('role')) return normDash(picked('annualIncome')) === '$0 - $200K';
+        if (picked('role')) return normDash(picked('annualIncome')) === '$0 - $149K';
         return false;
       }
 
@@ -420,7 +422,7 @@
                    'bodycomp', 'family', 'labs', 'int3',
                    'trigger', 'tried', 'int5t', money];
         if (belowThreshold()) seq.push('invest');
-        seq.push('timeline', 'int4', 'contact');
+        seq.push('timeline', 'contact');
         return seq;
       }
 
@@ -475,9 +477,9 @@
           quote('My testosterone doubled. I’m performing at a level I haven’t seen since my 30s.', 'J.M.', 'Founder & CEO, Real Estate · Age 47', null);
         } else if (e >= 4 || sl >= 3) {
           set('int2Tag', 'A pattern we test for');
-          set('int2H', sl >= 3 && sl > e ? 'Tired after a full night in bed means the sleep itself is broken.' : 'The 3pm fog has a chemistry.');
+          set('int2H', sl >= 3 && sl > e ? 'Tired after a full night in bed means the sleep itself is broken.' : 'The 3pm crash has a chemistry.');
           set('int2P', 'Coffee at 11, 1, and 3. That pattern is usually blood sugar or cortisol. Both measurable.');
-          setStat('int2Stat', '-52%', 'average inflammatory marker reduction across client retests');
+          setStat('int2Stat', '+64%', 'more energy reported by clients within 3 months');
           quote('The brain fog I thought was just ‘getting older’ is completely gone. I’m present with my kids in a way I wasn’t before.', 'Rob', 'Aerospace Engineering Manager · Age 46', 'assets/cases/rob-head.jpg');
         } else {
           set('int2Tag', 'Strong so far');
@@ -493,7 +495,7 @@
         var lab = pts('labs');
         /* The AHA stat is the boxed number here: it sets up the bars below,
            which is the whole point of this card. */
-        setStat('int3Stat', '50%', 'of heart attack patients had “normal” cholesterol on their last labs · American Heart Journal, 2009');
+        setStat('int3Stat', '50%', 'of heart attack patients had “normal” cholesterol · American Heart Journal, 2009');
         if (fam >= 1) {
           set('int3Tag', 'About your family history');
           set('int3H', 'Family history is the strongest reason to look early.');
@@ -756,19 +758,28 @@
 
         var result = computeScore();
 
-        /* Qualification gate (same thresholds as funnel v2). */
+        /* Qualification gate. Above threshold books the 15-minute call. Below
+           threshold, the invest answer decides: $10K+ books the same call,
+           $2,500-$10K routes to the 30-minute lower-tier call, no is a pass. */
         var below =
           (isOwner() && normDash(data.businessRevenue) === '$0 - $500K') ||
-          (!isOwner() && normDash(data.annualIncome) === '$0 - $200K');
-        var canInvest = /\$10K|make it happen/i.test(data.investReady || '');
-        var disqualified = below && !canInvest;
+          (!isOwner() && normDash(data.annualIncome) === '$0 - $149K');
+        var tier = 'core';
+        if (below) {
+          var inv = data.investReady || '';
+          if (/\$10K\+/i.test(inv)) tier = 'core';
+          else if (/2,500|2500/i.test(inv)) tier = 'lower';
+          else tier = 'dq';
+        }
+        var disqualified = tier === 'dq';
 
         var payload = {
           data: data,
           score: result.score,
           perf: result.perf,
           risk: result.risk,
-          qualified: !disqualified
+          qualified: !disqualified,
+          tier: tier
         };
         try { localStorage.setItem('sp_assessment', JSON.stringify(payload)); } catch (_) {}
         try { localStorage.setItem('sp_application', JSON.stringify(data)); } catch (_) {}
@@ -792,7 +803,7 @@
             investment: data.investReady || 'Skipped (above threshold)',
             timeline: data.timeline,
             heard_about: 'Assessment Funnel',
-            qualified: disqualified ? 'No' : 'Yes',
+            qualified: disqualified ? 'No' : (tier === 'lower' ? 'Yes - lower tier' : 'Yes'),
             application_source: 'Assessment Funnel V1'
           });
           fetch('https://services.leadconnectorhq.com/hooks/FlDP3vggPbCWokd7J6xc/webhook-trigger/152fcbfd-cb5a-4bd7-b31e-5f60a2c91073', {
@@ -814,6 +825,7 @@
             first_name: data.firstName, last_name: data.lastName,
             email: data.email, phone: data.phone
           });
+          if (tier === 'lower') qs.set('tier', 'lower');
           window.location.href = 'booking.html?' + qs.toString();
         });
       });

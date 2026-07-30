@@ -169,19 +169,43 @@
 .as-range { margin-bottom: 16px; }
 .as-r-name { display: flex; justify-content: flex-start; align-items: baseline; gap: 10px; font-size: 14px; font-weight: 600; color: #FDFBF8; flex-wrap: wrap; }
 .as-r-name em { font-style: normal; font-size: 11.5px; font-weight: 400; color: rgba(225,242,243,0.6); text-align: left; }
-.as-r-bar { position: relative; height: 22px; border-radius: 100px; background: rgba(255,255,255,0.13); border: 1px solid rgba(255,255,255,0.22); margin-top: 27px; }
-.as-r-zone { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(225,242,243,0.6); white-space: nowrap; }
-.as-r-opt { position: absolute; top: -1px; bottom: -1px; border-radius: 100px; background: rgba(101,200,208,0.95); font-style: normal; font-size: 9px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #0F2F33; display: flex; align-items: center; justify-content: center; }
-.as-r-you { position: absolute; top: 50%; transform: translate(-50%, -50%); width: 18px; height: 18px; border-radius: 50%; background: #C4584D; border: 2px solid #FDFBF8; box-shadow: 0 2px 6px rgba(0,0,0,0.35); }
+/* 3-zone bar: red = out of range, green = the lab's "normal", blue = optimal */
+.as-r-bar { position: relative; height: 22px; border-radius: 100px; margin-top: 27px; }
+.as-r-out, .as-r-norm, .as-r-opt {
+  position: absolute; top: 0; bottom: 0; font-style: normal;
+  font-size: 9px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+  display: flex; align-items: center;
+}
+.as-r-out { background: #C4584D; }
+.as-r-norm { background: #4F8F5B; color: rgba(255,255,255,0.9); justify-content: center; }
+.as-r-norm.lbl-left { justify-content: flex-start; padding-left: 12px; }
+.as-r-norm.lbl-right { justify-content: flex-end; padding-right: 20px; }
+.as-r-opt { background: #65C8D0; color: #0F2F33; justify-content: center; z-index: 2; }
+.cap-l { border-top-left-radius: 100px; border-bottom-left-radius: 100px; }
+.cap-r { border-top-right-radius: 100px; border-bottom-right-radius: 100px; }
+.as-r-you {
+  position: absolute; top: 50%; left: 0; transform: translate(-50%, -50%); z-index: 3;
+  width: 18px; height: 18px; border-radius: 50%; background: #FDFBF8;
+  border: 3px solid #1F1F27; box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+/* colour key */
+.as-r-key { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 5px;
+  font-size: 10px; letter-spacing: 0.02em; color: rgba(225,242,243,0.72); margin-top: 14px; }
+.as-r-key i, .as-r-key b { display: inline-block; width: 14px; height: 9px; border-radius: 3px; margin-left: 10px; }
+.as-r-key i:first-child { margin-left: 0; }
+.as-r-key .k-out { background: #C4584D; }
+.as-r-key .k-norm { background: #4F8F5B; }
+.as-r-key .k-opt { background: #65C8D0; }
+.as-r-key .k-you { width: 11px; height: 11px; border-radius: 50%; background: #FDFBF8; border: 2px solid #1F1F27; }
 /* "YOU" pill pinned to the dot, with a pointer, so the dot explains itself */
 .as-r-you::before {
-  content: "YOU"; position: absolute; left: 50%; top: -24px; transform: translateX(-50%);
+  content: "YOU"; position: absolute; left: 50%; top: -25px; transform: translateX(-50%);
   font-size: 9px; font-weight: 800; letter-spacing: 0.12em; color: #FDFBF8;
-  background: #C4584D; border-radius: 6px; padding: 2px 8px; line-height: 1.5; white-space: nowrap;
+  background: #1F1F27; border-radius: 6px; padding: 2px 8px; line-height: 1.5; white-space: nowrap;
 }
 .as-r-you::after {
-  content: ""; position: absolute; left: 50%; top: -8px; transform: translateX(-50%);
-  border: 4px solid transparent; border-top: 5px solid #C4584D;
+  content: ""; position: absolute; left: 50%; top: -9px; transform: translateX(-50%);
+  border: 4px solid transparent; border-top: 5px solid #1F1F27;
 }
 /* Dashed gap annotation from YOU to optimal (first bar teaches all three) */
 .as-r-gapline { position: relative; height: 20px; margin-top: 5px; }
@@ -239,12 +263,13 @@
   .as-r-name { font-size: 13px; }
   .as-r-name em { font-size: 10.5px; }
   .as-r-bar { height: 20px; margin-top: 24px; }
-  /* Narrow bars: the dot collides with the in-bar label, so label the first bar
-     only (between dot and optimal) and let it teach the other two. */
-  .as-range:nth-of-type(1) .as-r-zone { left: 34%; right: auto; }
-  .as-range:nth-of-type(n+2) .as-r-zone { display: none; }
-  .as-r-zone, .as-r-opt { font-size: 8.5px; letter-spacing: 0.06em; }
+  /* Narrow bars: shrink the in-bar labels so they don't collide with the dot */
+  .as-r-norm, .as-r-opt { font-size: 8px; letter-spacing: 0.04em; }
+  .as-r-norm.lbl-left { padding-left: 8px; }
+  .as-r-norm.lbl-right { padding-right: 14px; }
   .as-r-gapline span { font-size: 8.5px; }
+  .as-r-key { font-size: 9px; gap: 3px; margin-top: 12px; }
+  .as-r-key i, .as-r-key b { margin-left: 7px; }
   .as-holes { margin-top: 16px; }
   .as-hole { padding: 9px 0; }
   .as-hole p { font-size: 12.5px; line-height: 1.45; }
