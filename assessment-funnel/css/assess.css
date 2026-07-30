@@ -58,6 +58,15 @@
 .as-casevid video { width: 100%; display: block; border-radius: var(--radius); background: #14141B; }
 .as-casevid-cap { text-align: center; font-size: 13.5px; color: var(--gray); margin-top: 10px; }
 
+/* Vertical case study (240x426 source): constrain width so it stays phone-sized */
+.as-vertvid { max-width: 340px; margin: 0 auto 44px; }
+.as-vertvid-frame {
+  position: relative; padding-top: 177.5%; border-radius: var(--radius);
+  overflow: hidden; background: #14141B;
+}
+.as-vertvid-frame iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+@media (max-width: 480px) { .as-vertvid { max-width: 300px; } }
+
 /* ---------- Landing: 5-system grid + steps ---------- */
 .as-grid5 { grid-template-columns: repeat(5, 1fr); }
 /* Narrow 5-up cards: ghost number moves to the bottom corner (no label collision) and lightens */
