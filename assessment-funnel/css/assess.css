@@ -7,6 +7,24 @@
 .as-h1-long .accent { margin-top: 10px; font-size: 0.82em; }
 @media (max-width: 809px) { .as-h1-long { font-size: 24px !important; } }
 
+/* ---------- Landing hero: get the CTA above the fold on phones ---------- */
+@media (max-width: 640px) {
+  .as-hero { padding: 84px 0 40px; }
+  /* one-line tag: the wrap was costing a full line */
+  .as-hero .hero-tag { font-size: 10.5px; letter-spacing: 0.08em; margin-bottom: 12px; }
+  .as-hero .as-h1-long { font-size: 21px !important; line-height: 1.14 !important; }
+  .as-hero .as-h1-long .accent { margin-top: 5px; }
+  .as-hero .f-hero-sub { font-size: 14px; line-height: 1.45; margin: 10px auto 14px; max-width: 34ch; }
+  .as-hero .as-video { margin: 0 auto 16px; max-width: 90%; }
+  .as-hero .btn-lg { padding: 15px 26px; font-size: 15px; }
+  .as-hero .f-hero-note { margin-top: 10px; font-size: 12px; }
+  .as-hero .f-hero-stats { margin-top: 30px; }
+}
+@media (max-width: 380px) {
+  .as-hero .hero-tag { font-size: 9.5px; letter-spacing: 0.06em; }
+  .as-hero .as-h1-long { font-size: 20.5px !important; }
+}
+
 /* ---------- Video placeholder (landing + results) ---------- */
 .as-video { max-width: 720px; margin: 34px auto 38px; cursor: pointer; }
 .as-video-frame {
