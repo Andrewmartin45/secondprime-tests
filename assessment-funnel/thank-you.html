@@ -12,7 +12,7 @@
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="css/styles.css?v=1" />
   <link rel="stylesheet" href="css/funnel.css?v=11" />
-  <link rel="stylesheet" href="css/assess.css?v=21" />
+  <link rel="stylesheet" href="css/assess.css?v=22" />
   <!-- Meta pixel (Amartinco LLC's Pixel). Booking completion fires the neutral 'Schedule' event here. -->
   <script>
   (function () {
@@ -54,18 +54,17 @@
 
     <div class="ap-process">
       <div class="ap-p"><b>01</b><div>Confirmation email</div><span>Everything you need to know before the call</span></div>
-      <div class="ap-p"><b>02</b><div>Your 15-minute call</div><span>A diagnostic conversation with zero pressure</span></div>
-      <div class="ap-p"><b>03</b><div>Honest assessment</div><span>A straight answer on whether we&rsquo;re the right fit</span></div>
+      <div class="ap-p"><b>02</b><div>Your <span class="ty-len">15-minute</span> call</div><span>A diagnostic conversation with zero pressure</span></div>
+      <div class="ap-p"><b>03</b><div>Full workup</div><span>What we&rsquo;d test, in what order, and what it tells us</span></div>
     </div>
 
     <div class="ap-card">
       <div class="ap-shell">
         <div class="ty-prep">
-          <h3>Get the most out of your 15 minutes</h3>
-          <p class="ty-sub">Three things worth doing before we talk.</p>
+          <h3>Two things before we talk</h3>
+          <p class="ty-sub">Nothing to prepare. Just show up.</p>
           <div class="ty-item"><b>1</b><div>Accept the calendar invite<span>It&rsquo;s the difference between a plan and a maybe.</span></div></div>
-          <div class="ty-item"><b>2</b><div>Have recent labs handy, if you have them<span>Bloodwork, a calcium score, wearable data. Anything measured helps us go deeper, faster. None of it is required.</span></div></div>
-          <div class="ty-item"><b>3</b><div>Know your one thing<span>The single outcome that would make the next 12 months a win. We&rsquo;ll build the conversation around it.</span></div></div>
+          <div class="ty-item"><b>2</b><div>Be somewhere you can take a Zoom<span>The link is in your invite. Camera optional, quiet spot helps.</span></div></div>
           <p style="text-align:center; margin:22px 0 4px"><a class="btn btn-teal" href="results.html">See your intake summary&ensp;&rarr;</a></p>
         </div>
       </div>
@@ -108,6 +107,13 @@
         try { first = (JSON.parse(localStorage.getItem('sp_application') || '{}').firstName || ''); } catch (_) {}
       }
       if (first) document.getElementById('tyHeadline').textContent = first + ', see you on the call.';
+
+      // Same page for both paths, one word swapped: 15-minute or 30-minute.
+      var tier = params.get('tier');
+      if (!tier) { try { tier = JSON.parse(localStorage.getItem('sp_assessment') || '{}').tier || ''; } catch (_) {} }
+      if (tier === 'lower') {
+        document.querySelectorAll('.ty-len').forEach(function (el) { el.textContent = '30-minute'; });
+      }
     })();
   </script>
 </body>

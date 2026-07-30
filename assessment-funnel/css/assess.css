@@ -7,23 +7,55 @@
 .as-h1-long .accent { margin-top: 10px; font-size: 0.82em; }
 @media (max-width: 809px) { .as-h1-long { font-size: 24px !important; } }
 
-/* ---------- Landing hero: get the CTA above the fold on phones ---------- */
+/* ---------- Landing hero: fill the phone screen, CTA last thing above the fold ---------- */
 @media (max-width: 640px) {
-  .as-hero { padding: 84px 0 40px; }
+  .as-hero { padding: 86px 0 40px; }
   /* one-line tag: the wrap was costing a full line */
-  .as-hero .hero-tag { font-size: 10.5px; letter-spacing: 0.08em; margin-bottom: 12px; }
-  .as-hero .as-h1-long { font-size: 21px !important; line-height: 1.14 !important; }
-  .as-hero .as-h1-long .accent { margin-top: 5px; }
-  .as-hero .f-hero-sub { font-size: 14px; line-height: 1.45; margin: 10px auto 14px; max-width: 34ch; }
-  .as-hero .as-video { margin: 0 auto 16px; max-width: 90%; }
-  .as-hero .btn-lg { padding: 15px 26px; font-size: 15px; }
-  .as-hero .f-hero-note { margin-top: 10px; font-size: 12px; }
-  .as-hero .f-hero-stats { margin-top: 30px; }
+  .as-hero .hero-tag { font-size: 11.5px; letter-spacing: 0.08em; margin-bottom: 12px; }
+  .as-hero .as-h1-long { font-size: 25px !important; line-height: 1.16 !important; }
+  .as-hero .as-h1-long .accent { margin-top: 4px; }
+  .as-hero .f-hero-sub { font-size: 16px; line-height: 1.42; margin: 10px auto 13px; max-width: 34ch; }
+  .as-hero .as-video { margin: 0 auto 16px; max-width: 85%; }
+  .as-hero .btn-lg { padding: 16px 28px; font-size: 17.5px; width: min(100%, 340px); justify-content: center; }
+  .as-hero .f-hero-note { margin-top: 10px; font-size: 13px; }
+  .as-hero .f-hero-stats { margin-top: 34px; }
 }
 @media (max-width: 380px) {
-  .as-hero .hero-tag { font-size: 9.5px; letter-spacing: 0.06em; }
-  .as-hero .as-h1-long { font-size: 20.5px !important; }
+  .as-hero .hero-tag { font-size: 10.5px; letter-spacing: 0.06em; }
+  .as-hero .as-h1-long { font-size: 23px !important; }
+  .as-hero .f-hero-sub { font-size: 15px; }
 }
+
+/* ---------- Landing CTA: one loud element on a page of teal ----------
+   Everything on this hero is teal (nav button, player controls, accent line),
+   so the button had nothing to win against. The nav CTA drops to an outline
+   and the hero button gets weight, a warm edge and a glow. */
+.as-land .nav .btn-ghost {
+  background: transparent; color: var(--sand-light);
+  border: 1px solid rgba(253,251,248,0.35); font-weight: 500;
+}
+.as-land .nav .btn-ghost:hover { border-color: var(--teal-bright); color: var(--teal-bright); background: transparent; }
+.as-land .nav.scrolled .btn-ghost, .as-land .nav.light .btn-ghost {
+  background: var(--near-black); color: var(--sand-light); border-color: var(--near-black);
+}
+
+.as-cta {
+  background: linear-gradient(180deg, #8CF0F8 0%, var(--teal-bright) 55%, #46AEB8 100%) !important;
+  color: #05191C !important; font-weight: 700; letter-spacing: 0.01em;
+  border: 1px solid rgba(255,255,255,0.55);
+  box-shadow: 0 0 0 5px rgba(101,200,208,0.13), 0 16px 34px rgba(101,200,208,0.34);
+  animation: as-cta-pulse 2.6s ease-out 1.2s 2;
+}
+.as-cta:hover {
+  background: linear-gradient(180deg, #A6F6FD 0%, #78ECF5 55%, #52C3CE 100%) !important;
+  box-shadow: 0 0 0 7px rgba(101,200,208,0.18), 0 18px 40px rgba(101,200,208,0.45);
+  transform: translateY(-1px);
+}
+@keyframes as-cta-pulse {
+  0%, 100% { box-shadow: 0 0 0 5px rgba(101,200,208,0.13), 0 16px 34px rgba(101,200,208,0.34); }
+  50%      { box-shadow: 0 0 0 12px rgba(101,200,208,0.05), 0 16px 40px rgba(101,200,208,0.5); }
+}
+@media (prefers-reduced-motion: reduce) { .as-cta { animation: none; } }
 
 /* ---------- Video placeholder (landing + results) ---------- */
 .as-video { max-width: 720px; margin: 34px auto 38px; cursor: pointer; }
@@ -432,4 +464,38 @@
   .rs-hero { padding-top: calc(72px + 40px); }
   .as-int-case { flex-direction: column; text-align: center; }
   .as-int-stats { gap: 22px; }
+}
+
+/* ---------- Booking: rolling day strip (replaces the month grid) ---------- */
+.spb__more {
+  background: none; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; cursor: pointer;
+  color: rgba(225,242,243,0.8); font-family: var(--font-sans); font-size: 13px; padding: 8px 13px;
+}
+.spb__more:hover { border-color: var(--teal-bright); color: var(--teal-bright); }
+
+.spb__strip { display: grid; grid-template-columns: repeat(7, 1fr); gap: 7px; }
+.spb__d {
+  display: flex; flex-direction: column; align-items: center; gap: 1px; padding: 9px 2px 8px;
+  border-radius: 11px; border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.06);
+  font-family: var(--font-sans); color: #F2F7F7; cursor: pointer; transition: all 0.16s ease;
+}
+.spb__d-dow { font-size: 10.5px; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(225,242,243,0.6); }
+.spb__d-num { font-family: var(--font-serif); font-weight: 400; font-size: 21px; line-height: 1.1; }
+.spb__d-mon { font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(225,242,243,0.45); }
+.spb__d.is-open:hover { border-color: var(--teal-bright); background: rgba(101,200,208,0.14); }
+.spb__d.is-closed { opacity: 0.32; cursor: default; background: none; border-color: rgba(255,255,255,0.09); }
+.spb__d.is-sel { border-color: var(--teal-bright); background: rgba(101,200,208,0.2); box-shadow: 0 0 0 1px var(--teal-bright); }
+.spb__d.is-sel .spb__d-dow, .spb__d.is-sel .spb__d-mon { color: var(--teal-bright); }
+
+.spb__times { margin-top: 22px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.12); }
+.spb__times-head { margin-bottom: 12px; }
+.spb__times-head span { color: var(--sand-light); text-transform: none; letter-spacing: 0; font-size: 13px; }
+.spb__tz { margin-top: 14px; font-size: 12.5px; color: rgba(225,242,243,0.5); }
+.spb__none { grid-column: 1 / -1; text-align: center; color: rgba(225,242,243,0.6); font-size: 14px; padding: 16px 0; }
+
+@media (max-width: 560px) {
+  .spb__strip { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .spb__d { padding: 8px 2px 7px; }
+  .spb__d-num { font-size: 19px; }
+  .spb__slots { grid-template-columns: repeat(2, 1fr); }
 }

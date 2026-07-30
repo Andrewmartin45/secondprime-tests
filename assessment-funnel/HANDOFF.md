@@ -9,7 +9,7 @@ internal triage in the webhook). Self-contained files (fonts, logo, images,
 CSS copied from funnel-v2).
 
 **Flow:** `index.html` (landing + video) → `assessment.html` (14 questions +
-4 dynamic trust interstitials) → qualified: `booking.html` → `thank-you.html`
+4 dynamic trust interstitials: role, performance, risk, what-you've-tried) → qualified: `booking.html` → `thank-you.html`
 / disqualified: `results.html` soft path. `FLOW.html` is a visual map of every
 step and branch; open it in a browser.
 
@@ -34,11 +34,16 @@ the assessment. Copy promises the score plus a Risk and Performance read.
   deduction points). Risk = body comp + family + testing gap (max 14). Bucket
   status: solid under 28%, drifting to 60%, flagged above. Overall score =
   100 minus scaled deductions, floor ~22.
-- Qualification: same gate as funnel v2. Owners under $500K revenue and
-  non-owners under $200K income get the $10K question; a "more than I can
-  invest" there disqualifies.
-- Routing after submit: qualified → `booking.html` directly (results are the
-  call's agenda, never shown first). Disqualified → `results.html` soft path.
+- Qualification gate, THREE outcomes. Owners at $500K+ revenue and non-owners
+  at $150K+ income qualify automatically (tier `core`). Below that they get the
+  invest question:
+  - "$10K+" → tier `core` → 15-minute call (custom teal calendar)
+  - "$2,500-$10K" → tier `lower` → `booking.html?tier=lower`, same custom
+    calendar pointed at the 30-minute GHL calendar (`85vCxdmO6uvmsJmx97Rp`)
+    for a one-call close on the lower-tier offer
+  - "No" → tier `dq` → `results.html` soft path
+  The tier is saved in `sp_assessment.tier` and sent to GHL in `qualified`
+  (`Yes`, `Yes - lower tier`, or `No`).
 
 **Intake summary (`results.html`)** — for disqualified users, the thank-you
 link, and the email link. No gauge, no number: status chips (Risk /
@@ -52,12 +57,19 @@ preview modes.
 Pick your time." Above the calendar: up to 3 plain-language flags computed
 from their answers ("The afternoon energy crash", "Family health history"),
 never a score. Video slot below the calendar ("what happens on the call").
-Custom calendar with GHL widget fallback, same as funnel v2. `?demo=1`
-previews the flags strip.
+Calendar is a rolling day strip: today plus the next 14 days, no month
+navigation, days without availability dimmed, first open day preselected and
+its times rendered right below (one screen instead of three). "More dates"
+extends to 30. GHL widget fallback if `/api` isn't there. Both tiers use the
+same UI; `?tier=lower` just sends `tier=lower` to `/api/slots` and `/api/book`,
+which map it to the 30-minute calendar server-side. `?demo=1` previews the
+flags strip and fills the calendar with sample availability.
 
-**Thank-you (`thank-you.html`)** — show-rate homework + "see your full
-breakdown" button to the results page. Curiosity gets satisfied after
-booking.
+**Thank-you (`thank-you.html`)** — one page for both tiers. `?tier=lower` (or
+the stored tier) swaps "15-minute" for "30-minute"; everything else is
+identical. Two prep items only: accept the invite, be somewhere you can take a
+Zoom. Nothing about labs, the call needs no prep. Plus the "see your intake
+summary" button to the results page.
 
 ## Wiring
 
@@ -77,12 +89,14 @@ booking.
 - **Videos:** two slots (landing hero, top of results). Scripts in
   `VIDEO-SCRIPTS.md`. Until real videos land, the landing placeholder click
   starts the assessment and the results placeholder scrolls to the CTA.
-- **GHL calendar:** cap availability at 14 days out, align the widget copy to
-  "15-minute call," instant SMS confirmation + reminder (highest-impact
-  show-rate lever in the research).
+- **GHL calendar:** cap availability at 14 days out (the strip shows 14 by
+  default), align the widget copy to "15-minute call," instant SMS
+  confirmation + reminder (highest-impact show-rate lever in the research).
 - **Hosting:** static anywhere (booking falls back to the GHL widget) or
-  Vercel with `GHL_CALENDAR_ID` + `GHL_API_KEY` for the native calendar
-  (`api/` included). Preview lives at tests.secondprime.io/assessment-funnel/.
+  Vercel with `GHL_API_KEY` for the native calendar (`api/` included). Calendar
+  ids default to the live ones in code; `GHL_CALENDAR_ID` (15-min) and
+  `GHL_CALENDAR_ID_LOWER` (30-min) override them. Preview lives at
+  tests.secondprime.io/assessment-funnel/.
 
 ## Brand rules baked in (do not deviate)
 

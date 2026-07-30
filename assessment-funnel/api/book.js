@@ -1,15 +1,23 @@
-// POST /api/book  { name, email, phone, slot }
+// POST /api/book  { name, email, phone, slot, tier }
 // Upserts the contact, then books the appointment on the GHL calendar.
+// `tier` picks the calendar: core = 15-minute call, lower = 30-minute lower-tier
+// call. Same server-side mapping as /api/slots.
+const CALENDARS = {
+  core: process.env.GHL_CALENDAR_ID || 'q2ivh7vI9bOR6uWq5rxb',
+  lower: process.env.GHL_CALENDAR_ID_LOWER || '85vCxdmO6uvmsJmx97Rp',
+};
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { name, email, phone, slot } = req.body || {};
+  const { name, email, phone, slot, tier } = req.body || {};
   if (!name || !email || !phone || !slot) {
     return res.status(400).json({ error: 'name, email, phone, and slot are required' });
   }
 
+  const isLower = tier === 'lower';
   const apiKey = process.env.GHL_API_KEY;
-  const calendarId = process.env.GHL_CALENDAR_ID;
+  const calendarId = CALENDARS[isLower ? 'lower' : 'core'];
   const locationId = process.env.GHL_LOCATION_ID;
   if (!apiKey || !calendarId || !locationId) {
     return res.status(500).json({ error: 'Booking not configured' });
@@ -35,7 +43,7 @@ export default async function handler(req, res) {
         lastName,
         email,
         phone,
-        tags: ['consult-booked'],
+        tags: isLower ? ['consult-booked', 'lower-tier'] : ['consult-booked'],
         source: 'Website Calendar Booking',
       }),
     });
@@ -56,7 +64,7 @@ export default async function handler(req, res) {
         locationId,
         contactId,
         startTime: slot,
-        title: `Consult - ${name}`,
+        title: `${isLower ? 'Strategy Call' : 'Consult'} - ${name}`,
         appointmentStatus: 'confirmed',
         toNotify: true,
       }),

@@ -1,14 +1,22 @@
-// GET /api/slots?startDate=YYYY-MM-DD&endDate=YYYY-MM-DD&timezone=America/New_York
+// GET /api/slots?startDate=YYYY-MM-DD&endDate=YYYY-MM-DD&timezone=America/New_York&tier=core|lower
 // Returns GHL calendar free-slots for the given range.
+// Two calendars: `core` is the 15-minute call, `lower` the 30-minute lower-tier
+// call. The tier maps to an id server-side so the query can't point us at an
+// arbitrary calendar.
+export const CALENDARS = {
+  core: process.env.GHL_CALENDAR_ID || 'q2ivh7vI9bOR6uWq5rxb',
+  lower: process.env.GHL_CALENDAR_ID_LOWER || '85vCxdmO6uvmsJmx97Rp',
+};
+
 export default async function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { startDate, endDate, timezone = 'America/New_York' } = req.query || {};
+  const { startDate, endDate, timezone = 'America/New_York', tier } = req.query || {};
   if (!startDate || !endDate) {
     return res.status(400).json({ error: 'startDate and endDate required' });
   }
 
-  const calendarId = process.env.GHL_CALENDAR_ID;
+  const calendarId = CALENDARS[tier === 'lower' ? 'lower' : 'core'];
   const apiKey = process.env.GHL_API_KEY;
   if (!calendarId || !apiKey) {
     return res.status(500).json({ error: 'Calendar not configured' });
