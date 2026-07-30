@@ -1,19 +1,19 @@
-# Intake funnel videos
+# Assessment funnel videos
 
 Two videos, both Andrew to camera. Shoot vertical or square for mobile, and
 caption everything (cold traffic watches with sound off first). Placeholder
 frames are on the pages; swap instructions are in the HTML comments.
 
-Positioning rule for both: this funnel is an intake, step 1 of working with
+Positioning rule for both: this funnel is an assessment, step 1 of working with
 Second Prime. The call is where they get answers and a direction. Never say
-"we'll review your results together." The intake arms us; the call pays it
+"we'll review your results together." The assessment arms us; the call pays it
 off.
 
 ---
 
 ## Video 1 — Landing page hero (45 to 60 seconds)
 
-Job: stop the scroll, name the person, and make starting the intake feel like
+Job: stop the scroll, name the person, and make starting the assessment feel like
 starting the program.
 
 **Structure:**
@@ -28,15 +28,15 @@ starting the program.
 3. **Credibility, one line (0:20-0:28).** "I'm Andrew Martin. I'm a
    biologist, and for 10 years I've run deep diagnostics, over 1,000
    biomarkers, for more than 500 founders and executives."
-4. **What happens here (0:28-0:48).** "Below this video is the same intake
+4. **What happens here (0:28-0:48).** "Below this video is the same assessment
    every client of ours starts with. 14 questions, 3 minutes: your
    background, your symptoms, your risk factors. Then you book a 15-minute
-   call, and here's the difference: we go through your intake before we ever
+   call, and here's the difference: we go through your assessment before we ever
    get on. So the call is about you from the first minute. What your answers
    point to, what I'd test first, and whether we can actually help."
 5. **CTA (0:48-0:60).** "It's free, your answers stay private, and the worst
    case is you spend 3 minutes and 15 minutes and walk away knowing where to
-   look. Start the intake."
+   look. Start the assessment."
 
 **Delivery:** flat, confident, clinical-but-warm. A scientist talking to a
 peer, one idea per sentence.
@@ -45,14 +45,14 @@ peer, one idea per sentence.
 
 ## Video 2 — Booking page, below the calendar (about 60 seconds)
 
-Job: they just finished the intake and they're staring at a calendar. Kill
+Job: they just finished the assessment and they're staring at a calendar. Kill
 the "why do I need a call" objection by showing the call is where the value
-lands, and that it's safe. This same video plays on the intake summary page
+lands, and that it's safe. This same video plays on the assessment summary page
 for people who come back from the email.
 
 **Structure:**
 
-1. **Acknowledge where they are (0:00-0:08).** "Your intake's in. Before you
+1. **Acknowledge where they are (0:00-0:08).** "Your assessment's in. Before you
    pick a time, here's exactly what happens on this call."
 2. **The homework promise (0:08-0:22).** "Before we get on, we go through
    every answer you gave. Not a skim. By the time we talk, we already know
@@ -78,7 +78,7 @@ plainly and mean them.
 
 ## Why these angles
 
-- The intake framing matches how the whole funnel now reads: step 1 intake,
+- The assessment framing matches how the whole funnel now reads: step 1 assessment,
   step 2 call. The video never sells a "results reveal," because the call is
   the reveal.
 - "We do the homework before the call" is the strongest booking motivator

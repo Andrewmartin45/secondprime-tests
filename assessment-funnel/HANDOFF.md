@@ -1,12 +1,23 @@
 # Second Prime Assessment Funnel — Handoff
 
-Built July 2026 for cold Meta traffic, repositioned July 27 after Andrew's
-review. POSITIONING (do not drift from this): the funnel is an INTAKE, step 1
-of working with Second Prime, and the call is step 2 where they get answers
-and a direction. The intake arms the team; nobody "reviews results" with the
-prospect, and no numeric score is ever shown to them (it exists only for
-internal triage in the webhook). Self-contained files (fonts, logo, images,
-CSS copied from funnel-v2).
+Built July 2026 for cold Meta traffic, repositioned July 27, renamed July 30.
+
+POSITIONING (do not drift from this): the funnel is step 1 of the Executive
+Longevity Assessment, and the call is step 2 where they get answers and a
+direction. Step 1 arms the team; nobody "reviews results" with the prospect,
+and no numeric score is ever shown to them (it exists only for internal triage
+in the webhook). Self-contained files (fonts, logo, images, CSS copied from
+funnel-v2).
+
+NAMING (July 30): the product is **The Executive Longevity Assessment**, and
+the 14 questions are step 1 of it. The word "intake" is retired everywhere a
+prospect can read it. It's post-commitment language, so on a cold landing page
+it asks people to enrol before they've decided. CTA is "Start My Assessment"
+with a "Step 1: 14 questions, about 2 minutes" note under it, and that note is
+load-bearing: without it, "assessment" reads as the 1,000-biomarker panel
+rather than the questionnaire. One exception, deliberate: the Meta custom event
+is still `intake_started`, so campaign history stays intact if one already
+exists. Rename it only before launch, never after.
 
 **Flow:** `index.html` (landing + video) → `assessment.html` (14 questions +
 4 dynamic trust interstitials: role, performance, risk, what-you've-tried) → qualified: `booking.html` → `thank-you.html`
@@ -45,15 +56,15 @@ the assessment. Copy promises the score plus a Risk and Performance read.
   The tier is saved in `sp_assessment.tier` and sent to GHL in `qualified`
   (`Yes`, `Yes - lower tier`, or `No`).
 
-**Intake summary (`results.html`)** — for disqualified users, the thank-you
+**Assessment summary (`results.html`)** — for disqualified users, the thank-you
 link, and the email link. No gauge, no number: status chips (Risk /
 Performance) up top, book CTA + video at the very top (both hidden for DQ),
 then the two sections, worse one first, each with "mirror" cards: the
 person's own answer quoted back, with what it usually means in labs. Direct
-visits with no stored result bounce to the intake. `?demo=1` / `?demo=dq`
+visits with no stored result bounce to the assessment. `?demo=1` / `?demo=dq`
 preview modes.
 
-**Booking (`booking.html`)** — step 2 of 2. Headline: "Your intake is in.
+**Booking (`booking.html`)** — step 2 of 2. Headline: "Your assessment is in.
 Pick your time." Above the calendar: up to 3 plain-language flags computed
 from their answers ("The afternoon energy crash", "Family health history"),
 never a score. Video slot below the calendar ("what happens on the call").
@@ -68,7 +79,7 @@ flags strip and fills the calendar with sample availability.
 **Thank-you (`thank-you.html`)** — one page for both tiers. `?tier=lower` (or
 the stored tier) swaps "15-minute" for "30-minute"; everything else is
 identical. Two prep items only: accept the invite, be somewhere you can take a
-Zoom. Nothing about labs, the call needs no prep. Plus the "see your intake
+Zoom. Nothing about labs, the call needs no prep. Plus the "see your assessment
 summary" button to the results page.
 
 ## Wiring
@@ -109,7 +120,7 @@ summary" button to the results page.
 - The call is a **15-minute call** everywhere. No pricing on any page.
 - Stats and testimonials reused verbatim from funnel-v2 / the live site plus
   the Market Copy Messaging File. If you add claims, source them first.
-- Client-average figures used in the intake, all supplied by Andrew and shown
+- Client-average figures used in the assessment, all supplied by Andrew and shown
   with an "average across client retests" qualifier plus a footer disclaimer:
   26 lbs average weight loss and 64% more energy reported at 3 months
   (interstitial 1, everyone), +40% free testosterone, -52% inflammatory

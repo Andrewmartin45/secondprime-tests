@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Executive Longevity Assessment | Second Prime</title>
-  <meta name="description" content="Step 1 of 2: a 2-3 minute intake that maps your risk and performance gaps before your call." />
+  <meta name="description" content="Step 1 of 2: a 2-3 minute assessment that maps your risk and performance gaps before your call." />
   <meta name="robots" content="noindex, nofollow" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
@@ -326,7 +326,7 @@
           <!-- ============ CONTACT ============ -->
 
           <section class="qstep" data-q="contact" data-kind="contact">
-            <h2>Last step. Who is this intake for?</h2>
+            <h2>Last step. Who is this assessment for?</h2>
             <p class="qsub">Your summary goes here. Call time is next.</p>
             <div class="fld-row">
               <label class="fld"><span class="fld__k">First name</span><input type="text" name="firstName" autocomplete="given-name" /></label>
@@ -341,7 +341,7 @@
             </label>
             <div class="qnav">
               <button type="button" class="qback" data-back>&larr; Back</button>
-              <button type="submit" class="btn btn-teal qnext" id="qsubmit">Complete my intake</button>
+              <button type="submit" class="btn btn-teal qnext" id="qsubmit">Complete my assessment</button>
             </div>
             <p class="qfine">Free. Your answers stay private, and are never sold or shared.</p>
           </section>
@@ -358,7 +358,7 @@
         <!-- Calculating overlay -->
         <div class="as-calc" id="calcScreen" style="display:none">
           <div class="as-calc-ring"></div>
-          <h2>Logging your intake&hellip;</h2>
+          <h2>Logging your assessment&hellip;</h2>
           <p id="calcLine">Reading your background</p>
         </div>
 
@@ -623,7 +623,7 @@
       });
 
       /* First answer fires a neutral mid-funnel pixel event once, so Meta can
-         optimize on intake starters and retarget the ones who don't finish. */
+         optimize on assessment starters and retarget the ones who don't finish. */
       var startedFired = false;
       form.addEventListener('change', function () {
         if (startedFired) return;

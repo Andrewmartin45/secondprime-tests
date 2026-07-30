@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Intake Summary | Second Prime</title>
-  <meta name="description" content="Your intake summary: risk and performance gaps, in your own words." />
+  <title>Your Assessment Summary | Second Prime</title>
+  <meta name="description" content="Your assessment summary: risk and performance gaps, in your own words." />
   <meta name="robots" content="noindex, nofollow" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
@@ -38,13 +38,13 @@
   <!-- ============ SCORE + VIDEO + TOP CTA ============ -->
   <section class="rs-hero rs-hero-tight">
     <div class="container center">
-      <span class="hero-tag">Your Intake Summary</span>
-      <h1 id="rsHeadline">Here&rsquo;s what your intake flagged.</h1>
+      <span class="hero-tag">Your Assessment Summary</span>
+      <h1 id="rsHeadline">Here&rsquo;s what your assessment flagged.</h1>
       <div class="rs-herochips" id="heroChips"></div>
       <p class="rs-verdict" id="verdict"></p>
       <div class="rs-topcta" id="topCta">
         <a class="btn btn-teal btn-lg" href="booking.html" id="bookBtn">Book My Free 15-Minute Call&ensp;&rarr;</a>
-        <p class="f-hero-note" style="margin-top:12px">We review your intake before the call: what your answers point to, and what we&rsquo;d test first.</p>
+        <p class="f-hero-note" style="margin-top:12px">We review your assessment before the call: what your answers point to, and what we&rsquo;d test first.</p>
       </div>
 
       <!-- ============ RESULTS VIDEO (Vimeo) ============ -->
@@ -86,14 +86,14 @@
     <div class="container center">
       <span class="eyebrow">The Next 15 Minutes That Matter</span>
       <h2>The next step is a conversation.</h2>
-      <p class="lead">A free 15-minute call with our team. We come armed with your intake, tell you what we&rsquo;d test first and why, and give you a straight answer on whether we can help. If we can&rsquo;t, we&rsquo;ll say so.</p>
+      <p class="lead">A free 15-minute call with our team. We come armed with your assessment, tell you what we&rsquo;d test first and why, and give you a straight answer on whether we can help. If we can&rsquo;t, we&rsquo;ll say so.</p>
       <div class="rs-cta-steps">
-        <div><b>01</b><span>We review your intake before the call, every answer</span></div>
+        <div><b>01</b><span>We review your assessment before the call, every answer</span></div>
         <div><b>02</b><span>You get the read: what&rsquo;s likely driving what you feel</span></div>
         <div><b>03</b><span>A straight yes or no on whether we&rsquo;re the right team</span></div>
       </div>
       <a class="btn btn-teal btn-lg" href="booking.html" id="bookBtn2">Book My Free 15-Minute Call&ensp;&rarr;</a>
-      <p class="note">We take on a limited number of new clients each month. Your intake is saved either way.</p>
+      <p class="note">We take on a limited number of new clients each month. Your assessment is saved either way.</p>
     </div>
   </section>
 
@@ -204,7 +204,7 @@
 
     // Headline, status chips, verdict. The numeric score stays internal (webhook
     // triage) and never renders here; flags mean something, numbers don't.
-    document.getElementById('rsHeadline').textContent = first ? first + ', here’s what your intake flagged.' : 'Here’s what your intake flagged.';
+    document.getElementById('rsHeadline').textContent = first ? first + ', here’s what your assessment flagged.' : 'Here’s what your assessment flagged.';
     var STATUS = { solid: 'Solid', drift: 'Drifting', flag: 'Flagged' };
     document.getElementById('heroChips').innerHTML =
       '<span class="rs-hchip is-' + raw.risk.status + '">Risk &middot; ' + STATUS[raw.risk.status] + '</span>' +
@@ -215,7 +215,7 @@
     else if (statuses.indexOf('drift') >= 0) verdict = 'You’re drifting. Slowly enough that every year feels normal, and it’s measurable. Here it is in your own words.';
     else verdict = 'Nothing loud in your answers. The gaps worth closing are the quiet ones, and those only show up in blood.';
     document.getElementById('verdict').textContent = verdict;
-    document.getElementById('stickyScore').textContent = 'Your intake summary is in';
+    document.getElementById('stickyScore').textContent = 'Your assessment summary is in';
 
     /* ============ THE TWO READS ============
        Each bucket renders a score bar plus mirror cards: the answer they gave,
