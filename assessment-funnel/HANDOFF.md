@@ -57,10 +57,10 @@ preview modes.
 Pick your time." Above the calendar: up to 3 plain-language flags computed
 from their answers ("The afternoon energy crash", "Family health history"),
 never a score. Video slot below the calendar ("what happens on the call").
-Calendar is a rolling day strip: today plus the next 14 days, no month
-navigation, days without availability dimmed, first open day preselected and
-its times rendered right below (one screen instead of three). "More dates"
-extends to 30. GHL widget fallback if `/api` isn't there. Both tiers use the
+Calendar is a two-week grid, Monday start: this week on top, next week below,
+no month navigation. Days already gone are ghosted, days with no availability
+dimmed, first open day preselected with its times right below (one screen
+instead of three). "More dates" extends to 4 weeks. GHL widget fallback if `/api` isn't there. Both tiers use the
 same UI; `?tier=lower` just sends `tier=lower` to `/api/slots` and `/api/book`,
 which map it to the 30-minute calendar server-side. `?demo=1` previews the
 flags strip and fills the calendar with sample availability.
@@ -89,7 +89,7 @@ summary" button to the results page.
 - **Videos:** two slots (landing hero, top of results). Scripts in
   `VIDEO-SCRIPTS.md`. Until real videos land, the landing placeholder click
   starts the assessment and the results placeholder scrolls to the CTA.
-- **GHL calendar:** cap availability at 14 days out (the strip shows 14 by
+- **GHL calendar:** cap availability at 14 days out (the grid shows 2 weeks by
   default), align the widget copy to "15-minute call," instant SMS
   confirmation + reminder (highest-impact show-rate lever in the research).
 - **Hosting:** static anywhere (booking falls back to the GHL widget) or
@@ -101,6 +101,10 @@ summary" button to the results page.
 ## Brand rules baked in (do not deviate)
 
 - Zodiak headlines, Satoshi everything else, loaded locally.
+- Landing CTA is amber (`--amber` #FF9500), the only warm color on the funnel.
+  The page is teal end to end, including Vimeo's own play button and scrubber,
+  so the CTA needs a color nothing else uses. Nav CTA is a ghost outline for
+  the same reason. Everything else stays teal.
 - New styles live in `css/assess.css` only; bump `?v=` on edits.
 - The call is a **15-minute call** everywhere. No pricing on any page.
 - Stats and testimonials reused verbatim from funnel-v2 / the live site plus

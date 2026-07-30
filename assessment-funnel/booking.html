@@ -12,7 +12,7 @@
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="css/styles.css?v=1" />
   <link rel="stylesheet" href="css/funnel.css?v=11" />
-  <link rel="stylesheet" href="css/assess.css?v=22" />
+  <link rel="stylesheet" href="css/assess.css?v=24" />
   <!-- Meta pixel (Amartinco LLC's Pixel). Neutral event names only, per Meta health-advertiser rules. -->
   <script>
   (function () {
@@ -60,6 +60,7 @@
               </div>
               <button class="spb__more" id="spb-more" type="button" style="display:none">More dates</button>
             </div>
+            <div class="spb__dow"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
             <div class="spb__strip" id="spb-days"></div>
             <div class="spb__loading" id="spb-loading" style="display:none;"><div class="spb__spinner"></div>Loading available times&hellip;</div>
             <div class="spb__times" id="spb-step-times" style="display:none;">
@@ -157,11 +158,10 @@
   <script src="https://link.secondprime.io/js/form_embed.js" type="text/javascript"></script>
   <script>
     (function () {
-      var DOW = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
       var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
       var userTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      var windowDays = 14;          // rolling window, starting today
-      var MAX_DAYS = 30;            // what "More dates" expands to
+      var windowWeeks = 2;          // current week + next, Monday-start
+      var MAX_WEEKS = 4;            // what "More dates" expands to
       var availableSlots = {};
       var selectedDate = '';
       var selectedSlot = '';
@@ -174,7 +174,7 @@
       function demoSlots() {
         var out = {};
         var d = new Date();
-        for (var i = 1; i <= MAX_DAYS; i++) {
+        for (var i = 1; i <= MAX_WEEKS * 7; i++) {
           var day = new Date(d.getFullYear(), d.getMonth(), d.getDate() + i);
           var dow = day.getDay();
           if (dow === 0 || dow === 6) continue;
@@ -283,7 +283,7 @@
 
       $('spb-back-times').addEventListener('click', function () { stepForm.style.display = 'none'; stepCal.style.display = 'block'; });
       moreBtn.addEventListener('click', function () {
-        windowDays = MAX_DAYS;
+        windowWeeks = MAX_WEEKS;
         moreBtn.style.display = 'none';
         renderStrip();
       });
@@ -295,37 +295,44 @@
         var t = new Date();
         return new Date(t.getFullYear(), t.getMonth(), t.getDate() + n);
       }
+      // Monday of the current week, so the grid always reads as calendar weeks.
+      function weekStart() {
+        var t = new Date();
+        var back = (t.getDay() + 6) % 7;
+        return new Date(t.getFullYear(), t.getMonth(), t.getDate() - back);
+      }
 
-      /* Rolling strip: today plus the next N days, no month navigation. Days
-         with no availability stay visible but dimmed, so the first open slot
-         is obvious without clicking anything. */
+      /* Full weeks, Monday to Sunday: this week on top, next week below. Days
+         already gone and days with no availability stay in place but dimmed,
+         so the shape of the week never moves. */
       function renderStrip() {
-        var html = '', firstOpen = '';
-        for (var i = 0; i < windowDays; i++) {
-          var d = addDays(i);
+        var mon = weekStart(), todayKey = key(addDays(0));
+        var html = '', firstOpen = '', total = windowWeeks * 7;
+        for (var i = 0; i < total; i++) {
+          var d = new Date(mon.getFullYear(), mon.getMonth(), mon.getDate() + i);
           var k = key(d);
-          var open = availableSlots[k] && availableSlots[k].length > 0;
+          var past = k < todayKey;
+          var open = !past && availableSlots[k] && availableSlots[k].length > 0;
           if (open && !firstOpen) firstOpen = k;
-          var label = i === 0 ? 'Today' : (i === 1 ? 'Tmrw' : DOW[d.getDay()]);
-          var cls = 'spb__d' + (open ? ' is-open' : ' is-closed') + (k === selectedDate ? ' is-sel' : '');
+          var cls = 'spb__d' + (past ? ' is-past' : (open ? ' is-open' : ' is-closed')) +
+                    (k === todayKey ? ' is-today' : '') + (k === selectedDate ? ' is-sel' : '');
           html += '<button type="button" class="' + cls + '" data-date="' + k + '"' + (open ? '' : ' disabled') + '>' +
-                  '<span class="spb__d-dow">' + label + '</span>' +
                   '<span class="spb__d-num">' + d.getDate() + '</span>' +
-                  '<span class="spb__d-mon">' + MON[d.getMonth()] + '</span></button>';
+                  '<span class="spb__d-mon">' + (k === todayKey ? 'Today' : MON[d.getMonth()]) + '</span></button>';
         }
         daysEl.innerHTML = html;
         daysEl.querySelectorAll('.spb__d.is-open').forEach(function (btn) {
           btn.addEventListener('click', function () { showTimes(btn.dataset.date); });
         });
 
-        var last = addDays(windowDays - 1);
-        rangeLabel.textContent = MON[new Date().getMonth()] + ' ' + new Date().getDate() + ' – ' + MON[last.getMonth()] + ' ' + last.getDate();
-        moreBtn.style.display = windowDays < MAX_DAYS ? '' : 'none';
+        var last = new Date(mon.getFullYear(), mon.getMonth(), mon.getDate() + total - 1);
+        rangeLabel.textContent = MON[mon.getMonth()] + ' ' + mon.getDate() + ' – ' + MON[last.getMonth()] + ' ' + last.getDate();
+        moreBtn.style.display = windowWeeks < MAX_WEEKS ? '' : 'none';
 
         if (!firstOpen) {
           stepTimes.style.display = 'none';
-          if (windowDays >= MAX_DAYS) {
-            daysEl.insertAdjacentHTML('afterend', '<p class="spb__none">Nothing open in the next ' + MAX_DAYS + ' days. Email hello@secondprime.io and we’ll find a time.</p>');
+          if (windowWeeks >= MAX_WEEKS && !document.querySelector('.spb__none-wk')) {
+            daysEl.insertAdjacentHTML('afterend', '<p class="spb__none spb__none-wk">Nothing open in the next ' + MAX_WEEKS + ' weeks. Email hello@secondprime.io and we’ll find a time.</p>');
           }
           return;
         }
@@ -337,7 +344,7 @@
         if (apiDead || demoMode) return;
         loadingEl.style.display = 'block';
         var startDate = key(addDays(0));
-        var endDate = key(addDays(MAX_DAYS));
+        var endDate = key(addDays(MAX_WEEKS * 7));
         try {
           var res = await fetch('/api/slots?startDate=' + startDate + '&endDate=' + endDate +
                                 '&timezone=' + encodeURIComponent(userTz) + (isLower ? '&tier=lower' : ''));
