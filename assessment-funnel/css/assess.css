@@ -141,6 +141,10 @@
 .as-hole p { font-size: 13.5px; line-height: 1.55; color: rgba(225,242,243,0.85); margin: 0; }
 @media (max-width: 480px) { .as-hole { flex-direction: column; gap: 3px; } .as-hole b { text-align: left; width: auto; } }
 
+/* Client-average line: numbers carry the emphasis */
+.as-int-pstat { margin-top: 10px; color: rgba(225,242,243,0.7); }
+.as-int-pstat b { color: var(--teal-bright); font-weight: 700; }
+
 /* ---------- Interstitial: matched proof stat ---------- */
 .as-stat {
   display: flex; align-items: center; justify-content: center; gap: 12px;

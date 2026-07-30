@@ -12,7 +12,7 @@
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="css/styles.css?v=1" />
   <link rel="stylesheet" href="css/funnel.css?v=11" />
-  <link rel="stylesheet" href="css/assess.css?v=17" />
+  <link rel="stylesheet" href="css/assess.css?v=18" />
   <!-- Meta pixel (Amartinco LLC's Pixel). Neutral event names only, per Meta health-advertiser rules. -->
   <script>
   (function () {
@@ -99,7 +99,8 @@
           <section class="qstep as-int" data-q="int1" data-kind="int">
             <span class="as-int-tag" id="int1Tag">Built for owners</span>
             <h2 class="as-int-h" id="int1H">You carry the company. Your biology carries you.</h2>
-            <p class="as-int-p" id="int1P">We&rsquo;ve run deep diagnostics for 500+ founders and executives, and the pattern is consistent: the seat you sit in shows up in your blood. Chronic stress load, compressed sleep, decisions all day. The next questions map what that&rsquo;s costing you.</p>
+            <p class="as-int-p" id="int1P"></p>
+            <p class="as-int-p as-int-pstat" id="int1Stat"></p>
             <div class="qnav qnav-center">
               <button type="button" class="btn btn-teal qnext" data-next>Keep going</button>
             </div>
@@ -223,18 +224,6 @@
                 <div class="as-r-bar"><span class="as-r-zone" style="left:auto;right:12px">lab &ldquo;normal&rdquo;</span><i class="as-r-opt" style="left:2%;width:28%">optimal</i><b class="as-r-you" style="left:58%"></b></div>
               </div>
             </div>
-            <div class="as-int-case">
-              <img src="assets/cases/dustin-head.jpg" alt="" loading="lazy" style="object-position:center 22%" />
-              <div>
-                <h3 class="as-int-casetitle">His doctor said everything looked &ldquo;normal.&rdquo; We found 32 deficiencies and built his longevity protocol from them.</h3>
-                <span class="as-int-sub">Construction founder, Indiana &middot; Age 41</span>
-              </div>
-            </div>
-            <ul class="as-int-stats">
-              <li><b>-47 lbs</b><span>body weight</span></li>
-              <li><b>693 &rarr; 167</b><span>triglycerides</span></li>
-              <li><b>+35%</b><span>testosterone</span></li>
-            </ul>
             <div class="qnav qnav-center">
               <button type="button" class="btn btn-teal qnext" data-next>Continue</button>
             </div>
@@ -442,26 +431,31 @@
       var set = function (id, txt) { document.getElementById(id).textContent = txt; };
       /* Matched proof stat. Only uses the client-average figures already
          published on the site; nothing here is invented. */
+      var usedStat = '';
       function setStat(id, num, label) {
         var el = document.getElementById(id);
         el.querySelector('b').textContent = num;
         el.querySelector('span').textContent = label;
+        if (id === 'int2Stat') usedStat = num;
       }
 
       function paintInt1() {
         var role = picked('role');
+        /* Client averages: 26 lbs lost, 64% more energy reported at 3 months. */
+        document.getElementById('int1Stat').innerHTML =
+          'The average client loses <b>26 lbs</b> and reports <b>64% more energy</b> within 3 months.';
         if (role === 'I own or co-own a business') {
           set('int1Tag', 'Built for owners');
           set('int1H', 'You carry the company. Your biology carries you.');
-          set('int1P', 'We’ve helped 500+ founders like you get their energy and drive back. 1,000+ biomarkers each.');
+          set('int1P', 'We’ve helped 500+ founders like you get their energy, drive, and body back by optimizing their biology.');
         } else if (role === 'Executive or senior leader') {
           set('int1Tag', 'Built for operators');
           set('int1H', 'High output has a biological price. We measure it.');
-          set('int1P', 'We’ve helped 500+ executives like you get their energy and drive back. 1,000+ biomarkers each.');
+          set('int1P', 'We’ve helped 500+ executives like you get their energy, drive, and body back by optimizing their biology.');
         } else {
           set('int1Tag', 'Built for high performers');
           set('int1H', 'Output has a biological price. We measure it.');
-          set('int1P', 'We’ve helped 500+ high performers get their energy and drive back. 1,000+ biomarkers each.');
+          set('int1P', 'We’ve helped 500+ high performers get their energy, drive, and body back by optimizing their biology.');
         }
       }
 
@@ -498,8 +492,9 @@
       function paintInt3() {
         var fam = familyList().length;
         var lab = pts('labs');
-        // Weight answers pull the metabolic stat; everyone else gets the longevity one.
-        if (/lose (25 to 50|50\+)/i.test(picked('bodycomp'))) {
+        /* Weight answers pull the metabolic stat. Otherwise the longevity one,
+           unless interstitial 2 already used it. */
+        if (/lose (25 to 50|50\+)/i.test(picked('bodycomp')) || usedStat === '-12 yrs') {
           setStat('int3Stat', '-35%', 'average insulin resistance reduction across client retests');
         } else {
           setStat('int3Stat', '-12 yrs', 'average biological age reduction across client retests');
@@ -574,7 +569,7 @@
         if (!skipScroll) {
           var shell = document.querySelector('.ap-shell');
           var target = shell.getBoundingClientRect().top + window.scrollY - 96;
-          window.scrollTo({ top: Math.max(0, target), behavior: 'auto' });
+          window.scrollTo({ top: Math.max(0, target), behavior: 'instant' });
         }
         var focusable = stepEl(cur).querySelector('input[type="text"], input[type="email"], input[type="tel"]');
         if (focusable && window.matchMedia('(min-width: 961px)').matches) focusable.focus({ preventScroll: true });
@@ -713,7 +708,7 @@
         var el = document.getElementById('calcScreen');
         el.style.display = 'block';
         var shell = document.querySelector('.ap-shell');
-        window.scrollTo({ top: Math.max(0, shell.getBoundingClientRect().top + window.scrollY - 96), behavior: 'auto' });
+        window.scrollTo({ top: Math.max(0, shell.getBoundingClientRect().top + window.scrollY - 96), behavior: 'instant' });
         var line = document.getElementById('calcLine');
         var i = 0;
         var t = setInterval(function () {
