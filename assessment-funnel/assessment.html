@@ -12,7 +12,7 @@
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="css/styles.css?v=1" />
   <link rel="stylesheet" href="css/funnel.css?v=11" />
-  <link rel="stylesheet" href="css/assess.css?v=18" />
+  <link rel="stylesheet" href="css/assess.css?v=19" />
   <!-- Meta pixel (Amartinco LLC's Pixel). Neutral event names only, per Meta health-advertiser rules. -->
   <script>
   (function () {
@@ -206,8 +206,7 @@
           <section class="qstep as-int" data-q="int3" data-kind="int">
             <span class="as-int-tag" id="int3Tag">Case file</span>
             <h2 class="as-int-h" id="int3H"></h2>
-            <p class="as-int-p" id="int3P"></p>
-            <div class="as-stat" id="int3Stat"><b></b><span></span></div>
+            <div class="as-stat as-stat-cite" id="int3Stat"><b></b><span></span></div>
             <div class="as-ranges" aria-hidden="true">
               <p class="as-ranges-head">3 markers that come back &ldquo;normal&rdquo; and still cost you</p>
               <div class="as-range">
@@ -492,25 +491,18 @@
       function paintInt3() {
         var fam = familyList().length;
         var lab = pts('labs');
-        /* Weight answers pull the metabolic stat. Otherwise the longevity one,
-           unless interstitial 2 already used it. */
-        if (/lose (25 to 50|50\+)/i.test(picked('bodycomp')) || usedStat === '-12 yrs') {
-          setStat('int3Stat', '-35%', 'average insulin resistance reduction across client retests');
-        } else {
-          setStat('int3Stat', '-12 yrs', 'average biological age reduction across client retests');
-        }
+        /* The AHA stat is the boxed number here: it sets up the bars below,
+           which is the whole point of this card. */
+        setStat('int3Stat', '50%', 'of heart attack patients had “normal” cholesterol on their last labs · American Heart Journal, 2009');
         if (fam >= 1) {
           set('int3Tag', 'About your family history');
           set('int3H', 'Family history is the strongest reason to look early.');
-          set('int3P', 'Half of heart attack patients had “normal” cholesterol on their last labs (American Heart Journal, 2009).');
         } else if (lab >= 3) {
           set('int3Tag', 'About your last physical');
           set('int3H', 'A standard physical checks a few dozen markers. We measure 1,000+.');
-          set('int3P', 'Half of heart attack patients had “normal” cholesterol on their last labs (American Heart Journal, 2009).');
         } else {
           set('int3Tag', 'You test deeper than most');
           set('int3H', 'The data is only half. The read is the other half.');
-          set('int3P', 'Most executive lab folders were never read against optimal ranges. That’s where the findings hide.');
         }
       }
 

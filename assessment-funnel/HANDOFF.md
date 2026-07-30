@@ -91,5 +91,11 @@ booking.
 - The call is a **15-minute call** everywhere. No pricing on any page.
 - Stats and testimonials reused verbatim from funnel-v2 / the live site plus
   the Market Copy Messaging File. If you add claims, source them first.
+- Client-average figures used in the intake, all supplied by Andrew and shown
+  with an "average across client retests" qualifier plus a footer disclaimer:
+  26 lbs average weight loss and 64% more energy reported at 3 months
+  (interstitial 1, everyone), +40% free testosterone, -52% inflammatory
+  markers, -35% insulin resistance, -12 yrs biological age (interstitials 2
+  and 3, matched to answers). Keep the substantiation for these on file.
 - Score disclaimer (educational, not a diagnosis) stays in both footers and
   the results email.
