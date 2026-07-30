@@ -167,6 +167,54 @@
 .as-context textarea::placeholder { color: rgba(225,242,243,0.45); }
 .as-context textarea:focus { border-color: rgba(101,200,208,0.6); }
 
+/* ---------- Floating Continue bar (phones, tall interstitials) ---------- */
+.as-mobcta { display: none; }
+@media (max-width: 640px) {
+  .as-mobcta.show {
+    display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    padding: 14px 20px calc(14px + env(safe-area-inset-bottom, 0px));
+    background: linear-gradient(to top, rgba(16,38,43,0.97) 55%, rgba(16,38,43,0));
+    text-align: center; pointer-events: auto;
+  }
+  .as-mobcta.show .btn { width: 100%; max-width: 380px; }
+}
+
+/* ---------- Interstitials on phones: keep Continue in frame ---------- */
+@media (max-width: 640px) {
+  .as-int-tag { font-size: 10px; letter-spacing: 0.1em; padding: 6px 13px; margin-bottom: 14px; }
+  .as-int-h { font-size: 20px !important; line-height: 1.18; }
+  .as-int-p { font-size: 13.5px; line-height: 1.5; margin-top: 12px; max-width: 40ch; }
+  .as-int-quote { padding: 16px 18px; margin-top: 16px; }
+  .as-int-quote p { font-size: 15px; line-height: 1.45; }
+  .as-q-label { font-size: 9.5px; margin-bottom: 9px; }
+  .as-q-head { gap: 10px; margin-bottom: 9px; }
+  .as-q-ava { width: 38px; height: 38px; }
+  .as-q-id b { font-size: 14px; }
+  .as-q-id span { font-size: 11.5px; }
+  .as-int-case { margin-top: 16px; gap: 12px; }
+  .as-int-case img { width: 56px; height: 56px; }
+  .as-int-casetitle { font-size: 17px; }
+  .as-int-stats { gap: 18px; margin-top: 16px; }
+  .as-int-stats b { font-size: 24px; }
+  .as-int-stats span { font-size: 10px; }
+  .as-ranges { margin-top: 18px; }
+  .as-ranges-head { font-size: 10.5px; margin-bottom: 14px; }
+  .as-range { margin-bottom: 12px; }
+  .as-r-name { font-size: 13px; }
+  .as-r-name em { font-size: 10.5px; }
+  .as-r-bar { height: 20px; margin-top: 24px; }
+  /* Narrow bars: the dot collides with the in-bar label, so label the first bar
+     only (between dot and optimal) and let it teach the other two. */
+  .as-range:nth-of-type(1) .as-r-zone { left: 34%; right: auto; }
+  .as-range:nth-of-type(n+2) .as-r-zone { display: none; }
+  .as-r-zone, .as-r-opt { font-size: 8.5px; letter-spacing: 0.06em; }
+  .as-r-gapline span { font-size: 8.5px; }
+  .as-holes { margin-top: 16px; }
+  .as-hole { padding: 9px 0; }
+  .as-hole p { font-size: 12.5px; line-height: 1.45; }
+  .qnav-center { margin-top: 18px; }
+}
+
 /* ---------- Assessment: calculating screen ---------- */
 .as-calc { text-align: center; padding: 44px 8px 36px; color: #FDFBF8; }
 .as-calc h2 { color: #FDFBF8; margin: 24px 0 10px; }
