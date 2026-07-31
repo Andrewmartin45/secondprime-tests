@@ -12,7 +12,7 @@
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="css/styles.css?v=1" />
   <link rel="stylesheet" href="css/funnel.css?v=11" />
-  <link rel="stylesheet" href="css/assess.css?v=30" />
+  <link rel="stylesheet" href="css/assess.css?v=31" />
   <!-- Meta pixel (Amartinco LLC's Pixel). Booking completion fires the neutral 'Schedule' event here. -->
   <script>
   (function () {
@@ -22,6 +22,16 @@
     fbq('track', 'PageView');
     fbq('track', 'Schedule');
   })();
+  </script>
+  <!-- First-party tracking (our own database, separate from the pixel). See TRACKING.md. -->
+  <script src="js/experiments.js?v=1"></script>
+  <script src="js/track.js?v=1"></script>
+  <script>
+    try {
+      var spTier = new URLSearchParams(location.search).get('tier');
+      if (!spTier) { var spRes = JSON.parse(localStorage.getItem('sp_assessment') || 'null'); spTier = spRes && spRes.tier; }
+      spTrack('thankyou_view', { tier: spTier || 'core' });
+    } catch (_) {}
   </script>
   <style>
     .ty-prep { max-width: 640px; margin: 0 auto; padding: 0 20px; }
