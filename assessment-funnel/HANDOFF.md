@@ -10,16 +10,37 @@ in the webhook). Self-contained files (fonts, logo, images, CSS copied from
 funnel-v2).
 
 NAMING (July 30): the product is **The Executive Longevity Assessment**, and
-the 14 questions are step 1 of it. The word "intake" is retired everywhere a
+the 15 questions are step 1 of it. The word "intake" is retired everywhere a
 prospect can read it. It's post-commitment language, so on a cold landing page
 it asks people to enrol before they've decided. CTA is "Start My Assessment"
-with a "Step 1: 14 questions, about 2 minutes" note under it, and that note is
+with a "Step 1: 15 questions, about 2 minutes" note under it, and that note is
 load-bearing: without it, "assessment" reads as the 1,000-biomarker panel
 rather than the questionnaire. One exception, deliberate: the Meta custom event
 is still `intake_started`, so campaign history stays intact if one already
 exists. Rename it only before launch, never after.
 
-**Flow:** `index.html` (landing + video) → `assessment.html` (14 questions +
+## Two repos, and who owns what
+
+This funnel and its analytics are built in parallel, often in separate
+sessions. The split is deliberate:
+
+| Repo | Holds |
+| --- | --- |
+| `assessment-funnel` (this one) | The five pages, CSS, assets, the calendar functions in `api/`, and the client-side tracking in `js/` |
+| `funnel-analytics` | The Supabase schema, edge functions, the dashboard UI, and the Meta spend scripts |
+
+The seam is `js/track.js` and `js/experiments.js`. They live here because
+events have to fire from these pages, but they are written against the schema
+in `funnel-analytics`. Changing an event name, a `question_id` or a
+`data-cta` value breaks the dashboard silently. `TRACKING.md` lists the rules
+that protect that contract; read it before editing any page.
+
+Working copy is `~/SecondPrimeSite/assessment-funnel`, a clone of this repo.
+Pull before you edit and commit before you walk away. Do not sync files into
+this folder from anywhere else: an earlier overwrite nearly took out the
+tracking work, and git is the only thing that catches it.
+
+**Flow:** `index.html` (landing + video) → `assessment.html` (15 questions +
 4 dynamic trust interstitials: role, performance, risk, what-you've-tried) → qualified: `booking.html` → `thank-you.html`
 / disqualified: `results.html` soft path. `FLOW.html` is a visual map of every
 step and branch; open it in a browser.
@@ -30,8 +51,9 @@ step and branch; open it in a browser.
 the assessment. Copy promises the score plus a Risk and Performance read.
 
 **Assessment (`assessment.html`)**
-- 14 questions: outcome, age, role, then 4 performance (energy, focus, sleep,
-  drive), 3 risk (body comp, family history, testing depth), trigger event,
+- 15 questions: goals (multi-select), age, role, then 4 performance (energy,
+  focus, sleep, drive), 3 risk (body comp, family history, testing depth),
+  longevity (multi-select, the "at 85" question), trigger event,
   money question (revenue for owners, income otherwise), conditional $10K
   invest question, timeline, then contact.
 - 4 interstitials, 3 of them DYNAMIC: each reads the answers just given and
