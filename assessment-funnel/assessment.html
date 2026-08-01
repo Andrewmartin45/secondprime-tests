@@ -24,7 +24,7 @@
   </script>
   <!-- First-party tracking (our own database, separate from the pixel). See TRACKING.md. -->
   <script src="js/experiments.js?v=1"></script>
-  <script src="js/track.js?v=1"></script>
+  <script src="js/track.js?v=4"></script>
   <style>
     /* Age slider (dark jewel card variant) */
     .age-read { text-align: center; margin: 10px 0 6px; }
@@ -418,6 +418,12 @@
       var stepEl = function (q) { return form.querySelector('.qstep[data-q="' + q + '"]'); };
       var idx = 0;
 
+      /* The dash characters in this class are DATA, not copy. The radio option values at
+         lines 318-330 write their ranges with en dashes, and the qualification gate below
+         compares them against hyphenated literals, so this is what makes the two match.
+         Strip these characters to satisfy a dash linter and you silently change who
+         qualifies. api/lead.js carries the same class for the band-to-tag mapping; keep
+         them in step. */
       function normDash(s) { return String(s || '').replace(/[–—-]/g, '-').replace(/\s+/g, ' ').trim(); }
       function picked(n) { var el = form.querySelector('input[name="' + n + '"]:checked'); return el ? el.value : ''; }
       function pts(n) { var el = form.querySelector('input[name="' + n + '"]:checked'); return el ? (+el.dataset.pts || 0) : 0; }
@@ -947,6 +953,28 @@
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: wh.toString(),
             mode: 'no-cors',
+            keepalive: true
+          }).catch(function () {});
+        } catch (_) {}
+
+        /* Band tags + timezone, which the inbound webhook cannot carry. Separate call
+           because GHL's workflow builder would need nine hand-built branches to derive
+           the band, and the contact it creates has no timezone, so every reminder would
+           send on the account default. Fire-and-forget: never block the redirect. */
+        try {
+          fetch('/api/lead', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: (data.firstName || '') + ' ' + (data.lastName || ''),
+              email: data.email,
+              phone: data.phone,
+              tier: tier,
+              businessOwner: isOwner() ? 'Yes' : 'No',
+              businessRevenue: data.businessRevenue,
+              annualIncome: data.annualIncome,
+              timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+            }),
             keepalive: true
           }).catch(function () {});
         } catch (_) {}
